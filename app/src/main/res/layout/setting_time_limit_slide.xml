@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/setting_screen">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_setting"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/setting_title"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="@dimen/desc_padding"
+            android:paddingRight="@dimen/desc_padding"
+            android:text="@string/time_setting_information"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/slide_desc" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/time_limit_btn1"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:button="@drawable/radio_button_boy_selector"
+                android:checked="true"
+                android:onClick="didTapButton"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/time_limit_btn2"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:button="@drawable/radio_button_girl_selector"
+                android:onClick="didTapButton"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/time_limit_btn3"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:button="@drawable/radio_button_girl_selector"
+                android:onClick="didTapButton"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:id="@+id/time_limit_btn4"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:button="@drawable/radio_button_girl_selector"
+                android:onClick="didTapButton"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_weight="1" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</RelativeLayout>

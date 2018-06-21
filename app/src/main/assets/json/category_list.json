@@ -1,0 +1,16 @@
+{
+  "category_lists": [
+    {
+      "category": "뽀로로",
+      "category_image": "category_pororo"
+    },
+    {
+      "category": "타요와 친구들",
+      "category_image": "category_tayo"
+    },
+    {
+      "category": "코코몽",
+      "category_image": "category_cocomong"
+    }
+  ]
+}
