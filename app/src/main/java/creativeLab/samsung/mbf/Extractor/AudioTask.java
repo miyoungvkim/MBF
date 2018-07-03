@@ -14,33 +14,21 @@ import android.util.Log;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-public class AudioExtractorTask extends Thread {
+public class AudioTask extends Thread {
     final String TAG = "AudioExtrator";
     final Context mContext;
     MediaCodec codec;
     long timeoutUs = 1000;
     AudioTrack audioTrack;
-    long mstartTime = 0;
-    long mDuration = 0;
     private String mUrlString;
     private int sourceRawResId = -1;
 
-    public AudioExtractorTask(Context c) {
+    public AudioTask(Context c) {
         mContext = c;
-    }
-
-    public AudioExtractorTask(Context c, int resid) {
-        mContext = c;
-        sourceRawResId = resid;
     }
 
     public void setUrlString(String mUrlString) {
         this.mUrlString = mUrlString;
-    }
-
-    public void setTime(long startTime, long duration) {
-        this.mstartTime = startTime;
-        this.mDuration = duration;
     }
 
     @Override
@@ -74,7 +62,6 @@ public class AudioExtractorTask extends Thread {
                     codec.configure(format, null, null, 0);
                     codec.start();
 
-
                     int TIMEOUT_US = 1000;
                     int inputIndex = codec.dequeueInputBuffer(TIMEOUT_US);
                     if (inputIndex >= 0) {
@@ -98,7 +85,7 @@ public class AudioExtractorTask extends Thread {
                                 break;
                             }
                             default:
-                                Log.d(TAG, "WAV channels error \n");
+                                Log.e(TAG, "WAV channels error \n");
                                 return;
                         }
 
@@ -106,7 +93,6 @@ public class AudioExtractorTask extends Thread {
                                 AudioManager.STREAM_MUSIC, sampleRate, channels, AudioFormat.ENCODING_PCM_16BIT, // BitsPerSample를 알수있는 방법이 없다.
                                 AudioTrack.getMinBufferSize(sampleRate, channels, AudioFormat.ENCODING_PCM_16BIT),
                                 AudioTrack.MODE_STREAM);
-
                         try {
                             codec = MediaCodec.createDecoderByType(mime);
                         } catch (IOException e) {
@@ -126,10 +112,7 @@ public class AudioExtractorTask extends Thread {
 
                         audioTrack.play();
 
-                        long startTime = mstartTime;
-                        long endTime = mstartTime + mDuration;
-
-                        extractor.seekTo(startTime, MediaExtractor.SEEK_TO_CLOSEST_SYNC);
+                        extractor.seekTo(0, MediaExtractor.SEEK_TO_CLOSEST_SYNC);
 
                         while (!outputEos) {
                             if (!inputEos) {
@@ -144,10 +127,6 @@ public class AudioExtractorTask extends Thread {
                                         presentationTimeUs = 0;
                                     } else {
                                         presentationTimeUs = extractor.getSampleTime();
-                                    }
-                                    if (presentationTimeUs > endTime) {
-                                        audioTrack.stop();
-                                        break;
                                     }
 
                                     codec.queueInputBuffer(
@@ -168,7 +147,6 @@ public class AudioExtractorTask extends Thread {
                             outputBufIndex = codec.dequeueOutputBuffer(info, timeoutUs);
                             if (outputBufIndex >= 0) {
                                 writeBuffer = codec.getOutputBuffer(outputBufIndex);
-
                                 writeBuffer.position(info.offset);
                                 writeBuffer.limit(info.offset + info.size);
 
@@ -193,7 +171,6 @@ public class AudioExtractorTask extends Thread {
                 } catch (IOException e) {
                     Log.e(TAG, "error !!!!!! " + e);
                 }
-
             }
         }
         extractor.release();

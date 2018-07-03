@@ -34,7 +34,8 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Comparator;
 
-import creativeLab.samsung.mbf.Extractor.AudioExtractorTask;
+import creativeLab.samsung.mbf.Extractor.AudioExtractor;
+import creativeLab.samsung.mbf.Extractor.AudioTask;
 import creativeLab.samsung.mbf.Extractor.FullscreenVideoView;
 import creativeLab.samsung.mbf.Extractor.ImageClassifier;
 import creativeLab.samsung.mbf.Extractor.ImageClassifierQuantizedMobileNet;
@@ -83,7 +84,7 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
     MediaController myMediaController;
     Context mContext;
     AlertDialog.Builder myCaptureDialog;
-    AudioExtractorTask audioExtrator;
+
     MediaPlayer.OnCompletionListener myVideoViewCompletionListener =
             new MediaPlayer.OnCompletionListener() {
                 @Override
@@ -255,20 +256,25 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
                     myCaptureDialog.setView(capturedImageView);
                     myCaptureDialog.show();
 ////////////
-
-                    Log.e("TAG", "kmi audio extractor start");
                     try {
-                        audioExtrator = new AudioExtractorTask(PlayActivity_with_tensorflow.this, R.raw.pororo01);
-                        long start_time = 10 * 1000 * 1000; // start from 10 sec
+                        // 1 : Extract audio data as a mp4 file.
+                        AudioExtractor mAudioExtractor = new AudioExtractor(PlayActivity_with_tensorflow.this);
+                        mAudioExtractor.setUrlString(video_url);
+                        long startTime = 10 * 1000 * 1000; // start from 10 sec
                         long duration = 5 * 1000 * 1000;    // play duration : 5 sec
-                        audioExtrator.setTime(start_time, duration);
-                        audioExtrator.start();
+                        mAudioExtractor.setTime(startTime, duration);
+                        String extractedAudioPath = mAudioExtractor.getExtractedAudioDataPath("pororo01");
+                        // example log : extractedAudioPath = /storage/emulated/0/Android/data/creativeLab.samsung.mbf/cache/pororo01.mp4
+                        Log.e("TAG", "extractedAudioPath = " + extractedAudioPath);
+
+                        // 2 : Play extracted audio data using mp4 file. it will be use as a debugging.
+                        AudioTask mAudioTask = new AudioTask(PlayActivity_with_tensorflow.this);
+                        mAudioTask.setUrlString(extractedAudioPath);
+                        mAudioTask.start();
                     } catch (Exception e) {
                         Log.e("TAG", "audioExtrator Error !! " + e);
-
                     }
 
-                    Log.e("TAG", "kmi audio extractor ed");
                 }
 
             }
