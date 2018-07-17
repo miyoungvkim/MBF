@@ -167,17 +167,19 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
         // available, and "onSurfaceTextureAvailable" will not be called. In that case, we can open
         // a camera and start preview from here (otherwise, we wait until the surface is ready in
         // the SurfaceTextureListener).
+        mbfController.start();
     }
 
     @Override
     public void onPause() {
         myVideoView.pause();
+        mbfController.stop();
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        // classifier.close();
+        mbfController.stop();
         super.onDestroy();
     }
 

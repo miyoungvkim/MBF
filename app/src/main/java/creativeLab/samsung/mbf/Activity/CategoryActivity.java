@@ -25,10 +25,10 @@ import creativeLab.samsung.mbf.Utils.Animation;
 
 import static creativeLab.samsung.mbf.Utils.json.AssetJSONFile;
 
-public class MainActivity extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private AnimationAdapter adapter;
+    private CategoryListAdapter adapter;
     private List<Animation> animationList;
     private View decorView;
     private int uiOption;
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_category);
 
         recyclerView = findViewById(R.id.recycler_view);
         btnSetting = findViewById(R.id.btn_setting);
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         animationList = new ArrayList<>();
-        adapter = new AnimationAdapter(this, animationList);
+        adapter = new CategoryListAdapter(this, animationList);
 
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void launchFingerPrintScreen() {
-        startActivity(new Intent(MainActivity.this, FingerprintActivity.class));
+        startActivity(new Intent(CategoryActivity.this, FingerprintActivity.class));
         //finish();
     }
 

@@ -46,7 +46,6 @@ import javax.crypto.SecretKey;
 
 import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.Utils.Animation;
-import creativeLab.samsung.mbf.Utils.FingerprintHandler;
 
 public class FingerprintActivity extends AppCompatActivity {
 

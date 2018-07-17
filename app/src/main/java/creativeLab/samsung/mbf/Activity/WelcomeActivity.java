@@ -52,11 +52,11 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (prefManager.isFirstTimeLaunch()) {
-                    Intent nextIntent = new Intent(WelcomeActivity.this, SettingActivity.class);
+                    Intent nextIntent = new Intent(WelcomeActivity.this, InitialSettingActivity.class);
                     startActivity(nextIntent);
                     finish();
                 } else {
-                    Intent nextIntent = new Intent(WelcomeActivity.this, MainActivity.class);
+                    Intent nextIntent = new Intent(WelcomeActivity.this, CategoryActivity.class);
                     startActivity(nextIntent);
                     finish();
                 }

@@ -108,6 +108,10 @@ public class MBFController {
         //////////////////////////////////////////////////////
     }
 
+    public void stop() {
+        stopBackgroundThread();
+    }
+
     public Bitmap getExtractedImage() {
         Bitmap resultbitmap = null;
         int currentPosition = videoView.getCurrentPosition(); //in millisecond
@@ -203,16 +207,18 @@ public class MBFController {
      * Stops the background thread and its {@link Handler}.
      */
     private void stopBackgroundThread() {
-        backgroundThread.quitSafely();
-        try {
-            backgroundThread.join();
-            backgroundThread = null;
-            backgroundHandler = null;
-            synchronized (lock) {
-                runClassifier = false;
+        if (backgroundThread != null) {
+            backgroundThread.quitSafely();
+            try {
+                backgroundThread.join();
+                backgroundThread = null;
+                backgroundHandler = null;
+                synchronized (lock) {
+                    runClassifier = false;
+                }
+            } catch (InterruptedException e) {
+                Log.e(TAG, "Interrupted when stopping background thread", e);
             }
-        } catch (InterruptedException e) {
-            Log.e(TAG, "Interrupted when stopping background thread", e);
         }
     }
 

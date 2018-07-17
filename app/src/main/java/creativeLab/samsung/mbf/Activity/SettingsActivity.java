@@ -18,8 +18,8 @@ import android.view.WindowManager;
 
 import creativeLab.samsung.mbf.R;
 
-public class PreferenceActivity extends AppCompatPreferenceActivity {
-    private static final String TAG = PreferenceActivity.class.getSimpleName();
+public class SettingsActivity extends AppCompatPreferenceActivity {
+    private static final String TAG = SettingsActivity.class.getSimpleName();
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
@@ -111,7 +111,7 @@ public class PreferenceActivity extends AppCompatPreferenceActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        addPreferencesFromResource(R.layout.activity_preference);
+        addPreferencesFromResource(R.layout.activity_settings);
         // gallery EditText change listener
         bindPreferenceSummaryToValue(findPreference(getString(R.string.key_gallery_name)));
 
@@ -122,7 +122,7 @@ public class PreferenceActivity extends AppCompatPreferenceActivity {
         Preference myPref = findPreference(getString(R.string.key_send_feedback));
         myPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             public boolean onPreferenceClick(Preference preference) {
-                sendFeedback(PreferenceActivity.this);
+                sendFeedback(SettingsActivity.this);
                 return true;
             }
         });

@@ -59,7 +59,7 @@ public class EpisodeActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_category);
 
         recyclerView = findViewById(R.id.recycler_view);
         btnSetting = findViewById(R.id.btn_setting);

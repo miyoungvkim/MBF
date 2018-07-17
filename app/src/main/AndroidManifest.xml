@@ -20,19 +20,20 @@
 
         <activity
             android:name=".Activity.FingerprintActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_finger_print"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
 
         <activity
-            android:name=".Activity.SettingActivity"
+            android:name=".Activity.InitialSettingActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".Activity.MainActivity"
+            android:name=".Activity.CategoryActivity"
             android:label="@string/title_activity_welcome"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
@@ -56,7 +57,8 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
-            android:name=".Activity.PreferenceActivity"
+            android:name=".Activity.SettingsActivity"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>

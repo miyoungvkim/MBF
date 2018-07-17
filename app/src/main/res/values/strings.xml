@@ -7,6 +7,10 @@
     <string name="favorite">FAVORITE</string>
     <string name="search">SEARCH</string>
     <string name="setting">SETTING</string>
+    <string name="initial_setting_name_title">아이의 프로필</string>
+    <string name="initial_setting_name_guide">수다쟁이에서 불려지고 싶은 아이의 이름을 입력해주세요</string>
+    <string name="nickname">아이의 닉네임   </string>
+    <string name="intial_setting_name_input_wrong_message">아이의 이름을 입력해주세요</string>
     <string name="age_setting">자녀의 나이를 설정해주세요</string>
     <string name="finger_print_setting">지문 사용</string>
     <string name="finger_print_information">자녀의 무분별한 앱 사용을 방지할 수 있어요</string>

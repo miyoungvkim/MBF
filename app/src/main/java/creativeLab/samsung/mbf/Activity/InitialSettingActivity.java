@@ -17,13 +17,15 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.Utils.BounceInterpolator;
 
-public class SettingActivity extends AppCompatActivity {
+public class InitialSettingActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -31,6 +33,8 @@ public class SettingActivity extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
+    private EditText baby_name;
+
     //	viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
@@ -87,21 +91,21 @@ public class SettingActivity extends AppCompatActivity {
             finish();
         }
 
-        setContentView(R.layout.activity_setting);
+        setContentView(R.layout.activity_initialsetting);
 
         viewPager = findViewById(R.id.view_pager);
         dotsLayout = findViewById(R.id.layoutDots);
         btnSkip = findViewById(R.id.btn_skip);
         btnNext = findViewById(R.id.btn_next);
 
-
         // layouts of all welcome sliders
         // add few more layouts if you want
         layouts = new int[]{
-                R.layout.setting_age_slide,
-                R.layout.setting_finger_print_slide,
-                R.layout.setting_time_limit_slide,
-                R.layout.setting_watch_mode_slide};
+                R.layout.initialsetting_name_slide,
+                R.layout.initialsetting_age_slide,
+                R.layout.initialsetting_finger_print_slide,
+                R.layout.initialsetting_time_limit_slide,
+                R.layout.initialsetting_watch_mode_slide};
 
         // adding bottom dots
         addBottomDots(0);
@@ -122,13 +126,23 @@ public class SettingActivity extends AppCompatActivity {
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 // checking for last page
                 // if last page home screen will be launched
                 int current = getItem(+1);
                 if (current < layouts.length) {
-                    // move to next screen
-                    viewPager.setCurrentItem(current);
+                    if (current == 1) {
+                        if (baby_name.getText().toString().length() == 0) {
+                            Toast.makeText(InitialSettingActivity.this, R.string.intial_setting_name_input_wrong_message, Toast.LENGTH_SHORT).show();
+                        } else {
+                            String Inputed_txt = baby_name.getText().toString();
+                            //  Log.d("TAG", "Input text " + Inputed_txt);
+                            viewPager.setCurrentItem(current);
+                        }
+                    } else {
+                        // move to next screen
+                        viewPager.setCurrentItem(current);
+                    }
                 } else {
                     launchHomeScreen();
                 }
@@ -209,7 +223,7 @@ public class SettingActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(SettingActivity.this, MainActivity.class));
+        startActivity(new Intent(InitialSettingActivity.this, CategoryActivity.class));
         //startActivity(new Intent(WelcomeActivity.this, FingerprintActivity.class));
         finish();
     }
@@ -240,7 +254,9 @@ public class SettingActivity extends AppCompatActivity {
 
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
-
+            if (position == 0) {
+                baby_name = view.findViewById(R.id.edittxt_initial_setting_name_baby_name);
+            }
             return view;
         }
 

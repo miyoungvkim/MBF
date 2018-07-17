@@ -20,15 +20,13 @@ import java.util.List;
 import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.Utils.Animation;
 
-/**
- * Created by Ravi Tamada on 18/05/16.
- */
-public class AnimationAdapter extends RecyclerView.Adapter<AnimationAdapter.MyViewHolder> {
+
+public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Animation> albumList;
 
-    public AnimationAdapter(Context mContext, List<Animation> albumList) {
+    public CategoryListAdapter(Context mContext, List<Animation> albumList) {
         this.mContext = mContext;
         this.albumList = albumList;
     }

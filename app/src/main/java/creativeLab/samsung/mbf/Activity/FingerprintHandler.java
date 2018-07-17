@@ -1,4 +1,4 @@
-package creativeLab.samsung.mbf.Utils;
+package creativeLab.samsung.mbf.Activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -10,7 +10,6 @@ import android.os.CancellationSignal;
 import android.support.v4.app.ActivityCompat;
 import android.widget.TextView;
 
-import creativeLab.samsung.mbf.Activity.PreferenceActivity;
 import creativeLab.samsung.mbf.R;
 
 /**
@@ -51,7 +50,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
         ((Activity) context).finish();
-        Intent intent = new Intent(context, PreferenceActivity.class);
+        Intent intent = new Intent(context, SettingsActivity.class);
         context.startActivity(intent);
     }
 
