@@ -1,0 +1,52 @@
+{
+  "episode_list" : [
+    {
+        "pororo":[
+          {
+            "id": "pororo_01_01",
+            "youtube_id": "DpvUZnNpm0I",
+            "title": "1화 우리는 친구",
+            "file_name": "pororo_01_01",
+            "thumbnail": "episode_pororo_01_01"
+          },
+          {
+            "id": "pororo_01_02",
+            "youtube_id": "WfoDGwRkxZA",
+            "title": "2화 괜찮아 괜찮아",
+            "file_name": "pororo_01_02",
+            "thumbnail": "episode_pororo_01_02"
+          },
+          {
+            "id": "pororo_01_03",
+            "youtube_id": "PEHoPbbpa04",
+            "title": "3화 욕심은 이제 그만",
+            "file_name": "pororo_01_03",
+            "thumbnail": "episode_pororo_01_03"
+          }
+       ],
+      "tayo": [
+        {
+          "id": "tayo_01_01",
+          "youtube_id": "c3H71rrSBV0",
+          "title": "1화 새내기 꼬마버스의 하루",
+          "file_name": "tayo_01_01",
+          "thumbnail": "episode_tayo_01_01"
+        },
+        {
+          "id": "tayo_01_02",
+          "youtube_id": "hUGUORuoSL8",
+          "title": "2화 길잃은 타요",
+          "file_name": "tayo_01_01",
+          "thumbnail": "episode_tayo_01_02"
+        },
+        {
+          "id": "tayo_01_03",
+          "youtube_id": "VWPqKrCy19o",
+          "title": "3화 타요의 첫 운행",
+          "file_name": "tayo_01_01",
+          "thumbnail": "episode_tayo_01_03"
+        }
+      ]
+    }
+  ]
+}

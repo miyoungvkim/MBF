@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/time_setting"
+            android:text="@string/initial_setting_age_setting_title"
             android:textColor="@android:color/white"
             android:textSize="@dimen/setting_title"
             android:textStyle="bold" />
@@ -25,7 +25,7 @@
             android:layout_marginTop="20dp"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="@string/time_setting_information"
+            android:text="@string/initial_setting_name_guide"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />
@@ -41,48 +41,52 @@
 
             <RadioButton
                 android:id="@+id/time_limit_btn1"
-                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
                 android:button="@drawable/radio_button_boy_selector"
                 android:checked="true"
-                android:onClick="didTapButton"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1"/>
+                android:onClick="didTapButton"
+                android:padding="10dp"
+                android:text="10분" />
 
             <RadioButton
                 android:id="@+id/time_limit_btn2"
-                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
                 android:button="@drawable/radio_button_girl_selector"
-                android:onClick="didTapButton"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1" />
+                android:onClick="didTapButton"
+                android:padding="10dp"
+                android:text="20분" />
 
             <RadioButton
                 android:id="@+id/time_limit_btn3"
-                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
                 android:button="@drawable/radio_button_girl_selector"
-                android:onClick="didTapButton"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1" />
+                android:onClick="didTapButton"
+                android:padding="10dp"
+                android:text="30분" />
 
             <RadioButton
                 android:id="@+id/time_limit_btn4"
-                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
                 android:button="@drawable/radio_button_girl_selector"
-                android:onClick="didTapButton"
                 android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1" />
+                android:onClick="didTapButton"
+                android:padding="10dp"
+                android:text="1시간" />
 
         </RadioGroup>
 

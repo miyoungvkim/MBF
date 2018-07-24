@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.WelcomeActivity"
+            android:name=".activity.WelcomeActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
         </activity>
 
         <activity
-            android:name=".Activity.FingerprintActivity"
+            android:name=".activity.FingerprintActivity"
             android:screenOrientation="landscape"
             android:label="@string/title_activity_finger_print"
             android:theme="@style/AppTheme.NoActionBar">
@@ -27,37 +27,37 @@
         </activity>
 
         <activity
-            android:name=".Activity.InitialSettingActivity"
+            android:name=".activity.InitialSettingActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".Activity.CategoryActivity"
+            android:name=".activity.CategoryActivity"
             android:label="@string/title_activity_welcome"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".Activity.EpisodeActivity"
+            android:name=".activity.EpisodeActivity"
             android:label="@string/title_activity_welcome"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".Activity.PlayActivity_exoplayer"
+            android:name=".activity.PlayActivity_exoplayer"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
-            android:name=".Activity.PlayActivity_with_tensorflow"
+            android:name=".activity.PlayActivity_with_tensorflow"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity
-            android:name=".Activity.SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:screenOrientation="landscape"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar"/>
