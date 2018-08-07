@@ -58,4 +58,6 @@ dependencies {
 
     // add for tensorflow
     compile 'org.tensorflow:tensorflow-lite:+'
+    // add for db helper
+    compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 }

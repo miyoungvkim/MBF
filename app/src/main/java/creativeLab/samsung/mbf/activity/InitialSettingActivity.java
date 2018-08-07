@@ -9,7 +9,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -154,8 +153,8 @@ public class InitialSettingActivity extends AppCompatActivity {
                             break;
                         }
                         case R.layout.initialsetting_time_limit_slide : {
-                            int selectedLimitTime = radioLimitTime.getCheckedRadioButtonId();
-                            UserInfo.setLimitiedTime(selectedLimitTime);
+                            int selectedTime = radioLimitTime.getCheckedRadioButtonId();
+                            UserInfo.setLimitedTime(selectedTime);
                             break;
                         }
                         default :

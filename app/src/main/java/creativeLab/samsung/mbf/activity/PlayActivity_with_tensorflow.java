@@ -21,23 +21,22 @@ import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.mbf.AudioTask;
 import creativeLab.samsung.mbf.mbf.FullscreenVideoView;
 import creativeLab.samsung.mbf.mbf.MBFController;
+import creativeLab.samsung.mbf.mbf.extractor.AudioExtractor;
+import creativeLab.samsung.mbf.utils.MBFLog;
 
 public class PlayActivity_with_tensorflow extends AppCompatActivity {
-    private static final String TAG = "MBF|PlayActivity";
+    private static final String TAG = PlayActivity_with_tensorflow.class.getSimpleName();
 
-    FullscreenVideoView myVideoView;
-    MediaController myMediaController;
-    Context mContext;
-    AlertDialog.Builder myCaptureDialog;
-    ImageView videoFrame;
-    String selectedFileName = null;
-
+    private FullscreenVideoView myVideoView;
+    private MediaController myMediaController;
+    private Context context;
     MediaPlayer.OnCompletionListener myVideoViewCompletionListener =
             new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer arg0) {
-                    Toast.makeText(mContext, "End of Video", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "End of Video", Toast.LENGTH_SHORT).show();
                     myVideoView.pause();
+                    finish();
                 }
             };
     MediaPlayer.OnPreparedListener MyVideoViewPreparedListener =
@@ -45,20 +44,25 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
                     // long duration = myVideoView.getDuration(); //in millisecond
-                    //  Toast.makeText(mContext,"Duration: " + duration + " (ms)",  Toast.LENGTH_SHORT).show();
-                    Toast.makeText(mContext, "onPrepared", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(context,"Duration: " + duration + " (ms)",  Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "onPrepared", Toast.LENGTH_SHORT).show();
                 }
             };
     MediaPlayer.OnErrorListener myVideoViewErrorListener =
             new MediaPlayer.OnErrorListener() {
                 @Override
                 public boolean onError(MediaPlayer mp, int what, int extra) {
-                    Toast.makeText(mContext, "Error!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Error!!!", Toast.LENGTH_SHORT).show();
                     return true;
                 }
             };
+    private AlertDialog.Builder myCaptureDialog;
+    private ImageView videoFrame;
+    private String selectedFileName = null;
+    private MBFController mbfController;
     private View decorView;
     private int uiOption;
+
     public final Handler videoFrameHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -84,8 +88,6 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
         }
     }
 
-    private MBFController mbfController;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,23 +110,20 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
         myVideoView = findViewById(R.id.video_texture);
         videoFrame = findViewById(R.id.videoFrame);
 
-        mContext = this;
+        context = this;
 
         selectedFileName = this.getIntent().getStringExtra("FILE_NAME");
         if(selectedFileName == null) {
-            Log.e(TAG, "selectedFileName == null ");
+            MBFLog.e("selectedFileName == null ");
             selectedFileName = "pororo_01_01"; // default animation File name
         }
 
         String video_url = "android.resource://" + getPackageName() + "/raw/" + selectedFileName;
 
-        mbfController = new MBFController(mContext);
-        mbfController.setVideoFrameHandler(videoFrameHandler);
-        mbfController.setVideoView(myVideoView);
-        mbfController.setVideoURL(video_url);
+        mbfController = new MBFController(context, videoFrameHandler, myVideoView, video_url);
         mbfController.start();
 
-        myMediaController = new MediaController(mContext);
+        myMediaController = new MediaController(context);
         myVideoView.setMediaController(myMediaController);
         myVideoView.setOnCompletionListener(myVideoViewCompletionListener);
         myVideoView.setOnPreparedListener(MyVideoViewPreparedListener);
@@ -140,21 +139,28 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
             public void onClick(View arg0) {
                 Bitmap bmFrame = mbfController.getExtractedImage();
                 if (bmFrame == null) {
-                    Toast.makeText(mContext, "bmFrame == null!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "bmFrame == null!", Toast.LENGTH_SHORT).show();
                 } else {
-                    myCaptureDialog = new AlertDialog.Builder(mContext);
-                    ImageView capturedImageView = new ImageView(mContext);
+                    myCaptureDialog = new AlertDialog.Builder(context);
+                    ImageView capturedImageView = new ImageView(context);
                     capturedImageView.setImageBitmap(bmFrame);
                     ViewGroup.LayoutParams capturedImageViewLayoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     capturedImageView.setLayoutParams(capturedImageViewLayoutParams);
 
                     myCaptureDialog.setView(capturedImageView);
                     myCaptureDialog.show();
-                    videoFrame.setVisibility(View.VISIBLE);
 ////////////
                     try {
-                        String extractedAudioPath = mbfController.getExtractedAudioDataPath();
-                        Log.e(TAG, "extractedAudioPath = " + extractedAudioPath);
+                        // 1. extract audio data
+                        // example log : extractedAudioPath = /storage/emulated/0/Android/data/creativeLab.samsung.mbf/cache/pororo01.mp4
+                        String outputFilename = "pororo01";
+                        String resultAudioPath = null;
+                        AudioExtractor mAudioExtractor = new AudioExtractor(context);
+                        mAudioExtractor.setUrlString(video_url);
+                        long startTime = 20 * 1000 * 1000; // start from 20 sec
+                        long duration = 5 * 1000 * 1000;    // play duration : 5 sec
+                        mAudioExtractor.startExtractedAudioData(startTime, duration, outputFilename);
+                        String extractedAudioPath = mAudioExtractor.getExtractedAudioFile();
 
                         // 2 : Play extracted audio data using mp4 file. it will be use as a debugging.
                         AudioTask mAudioTask = new AudioTask(PlayActivity_with_tensorflow.this);

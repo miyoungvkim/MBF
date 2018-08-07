@@ -7,61 +7,52 @@ import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.media.MediaMuxer;
 import android.net.Uri;
-import android.util.Log;
 
 import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 
+import creativeLab.samsung.mbf.mbf.MBFInfo;
+import creativeLab.samsung.mbf.utils.MBFLog;
+
 public class AudioExtractor {
-    final String TAG = "AudioExtrator";
-    final Context mContext;
-    int MAX_SAMPLE_SIZE = 256 * 1024;
-    long mstartTime = 0;
-    long mduration = 0;
-    private String mUrlString;
+    private final Context context;
+    private int MAX_SAMPLE_SIZE = 256 * 1024;
+    private String urlString;
     private int sourceRawResId = -1;
+    private String extractedAudioFile = null;
 
-    public AudioExtractor(Context c) {
-        this.mContext = c;
+    public AudioExtractor(Context context) {
+        this.context = context;
     }
 
-    // ex :  AudioExtractor adioExtractor = new AudioExtractor(mContext, R.raw.A
-    public AudioExtractor(Context context, int resourceId) {
-        this.mContext = context;
-        this.sourceRawResId = resourceId;
+    public void setUrlString(String urlString) {
+        this.urlString = urlString;
     }
 
-    public void setUrlString(String mUrlString) {
-        this.mUrlString = mUrlString;
-    }
-
-    public void setResourceId(int resid) {
-        this.sourceRawResId = resid;
-    }
-
-    public void setTime(long startTime, long duration) {
-        this.mstartTime = startTime;
-        this.mduration = duration;
-    }
-
-    // getExtracted_Audio("pororo01")
-    public String getExtractedAudioDataPath(String outputFilename) {
+    public int startExtractedAudioData(long startTime, long duration, String outputFilename) {
+        int ret = MBFInfo.MBF_NO_DATA;
         // "/storage/emulated/0/Android/data/creativeLab.samsung.mbf/cache/pororo01.mp4"
-        String dstDirectoryPath = mContext.getExternalCacheDir().getAbsolutePath();
+        String dstDirectoryPath = context.getExternalCacheDir().getAbsolutePath() + "/audio";
+        if (dstDirectoryPath == null)
+            return ret;
+
         String dstMediaPath = dstDirectoryPath + "/" + outputFilename + ".mp4";
         File dir = new File(dstDirectoryPath);
-        if (!dir.exists()) dir.mkdirs();
+        if (!dir.exists())
+            dir.mkdirs();
+
+        long endTime = startTime + duration;
 
         // Set up MediaExtractor to read from the source.
         MediaExtractor extractor = new MediaExtractor();
         try {
-            if (mUrlString != null) {
-                if (mUrlString.startsWith("android.resource://"))
-                    extractor.setDataSource(mContext, Uri.parse(mUrlString), null);
-                else extractor.setDataSource(mUrlString);
+            if (urlString != null) {
+                if (urlString.startsWith("android.resource://"))
+                    extractor.setDataSource(context, Uri.parse(urlString), null);
+                else extractor.setDataSource(urlString);
             } else {
-                AssetFileDescriptor fd = mContext.getResources().openRawResourceFd(sourceRawResId);
+                AssetFileDescriptor fd = context.getResources().openRawResourceFd(sourceRawResId);
                 extractor.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(), fd.getDeclaredLength());
                 fd.close();
             }
@@ -81,9 +72,6 @@ public class AudioExtractor {
                     int dstIndex = muxer.addTrack(format);
                     indexMap.put(i, dstIndex);
                     extractor.selectTrack(i);
-
-                    long startTime = mstartTime;
-                    long endTime = mstartTime + mduration;
 
                     extractor.seekTo(startTime, MediaExtractor.SEEK_TO_CLOSEST_SYNC);
 
@@ -112,7 +100,7 @@ public class AudioExtractor {
                             muxer.writeSampleData(indexMap.get(trackIndex), dstBuf, bufferInfo);
                             extractor.advance();
                             frameCount++;
-                            Log.d(TAG, "Frame (" + frameCount + ") " +
+                            MBFLog.d("Frame (" + frameCount + ") " +
                                     "PresentationTimeUs:" + bufferInfo.presentationTimeUs +
                                     " Flags:" + bufferInfo.flags +
                                     " TrackIndex:" + trackIndex +
@@ -121,13 +109,20 @@ public class AudioExtractor {
                     }
                     muxer.stop();
                     muxer.release();
+                    MBFLog.e("Success to Extract Audio data as a mp4 file. (" + dstMediaPath + ")");
+                    this.extractedAudioFile = dstMediaPath;
+                    ret = MBFInfo.MBF_SUCCESS;
                 }
             }
         } catch (Exception e) {
-            Log.d(TAG, "fail to Extract Audio data. Error : " + e);
-            dstMediaPath = null;
+            MBFLog.e("fail to Extract Audio data. Error : " + e);
+            ret = MBFInfo.MBF_ERROR;
         }
-        Log.d(TAG, "Success to Extract Audio data as a mp4 file. (" + dstMediaPath + ")");
-        return dstMediaPath;
+        return ret;
     }
+
+    public String getExtractedAudioFile() {
+        return extractedAudioFile;
+    }
+
 }
