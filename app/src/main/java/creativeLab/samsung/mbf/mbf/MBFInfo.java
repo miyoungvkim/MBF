@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 import creativeLab.samsung.mbf.mbf.extractor.AudioExtractor;
 import creativeLab.samsung.mbf.utils.DBManager;
+import creativeLab.samsung.mbf.utils.FileManager;
 import creativeLab.samsung.mbf.utils.MBFLog;
 import creativeLab.samsung.mbf.utils.UserInfo;
 
@@ -22,10 +23,17 @@ public class MBFInfo {
     public static final int MBF_SUCCESS = 0;
     public static final int MBF_ERROR = -1;
     public static final int MBF_NO_DATA = 1;
+
+    public static final int MBF_STATE_CONTENTS_PLAY = 0;
+    public static final int MBF_STATE_MBF_READY = 1;
+    public static final int MBF_STATE_MBF_PLAY = 2;
+
     private static final String DATABASE_FILE_NAME = "mbfDB.db";
     private static final String DATABASE_TABLE_VOICE_KEYWORD = "voiceKeywordTable";
     private static final String DATABASE_TABLE_REACTION = "reactionTable";
-    private static final String DATABASE_PREDEFINED_STRING_NAME = "[NAME]";
+    private static final String DATABASE_TABLE_SCENE = "sceneTable";
+    private static final String DATABASE_PREDEFINED_STRING_NAME = "[Name_id]";
+
     private String videoUrl;
     private Bitmap extractedBitmapFile;
     private String extractedAudioFilePath;
@@ -36,6 +44,7 @@ public class MBFInfo {
     private ArrayList<String> voiceKeywordList;
     private ArrayList<String> reactionMentList;
     private String reactionMent;
+    private String reactionMent2 = "";
 
     private int catchCount;
     private boolean isReactionUsed;
@@ -89,7 +98,7 @@ public class MBFInfo {
         animationID = null;
         charaterID = null;
         emotionID = null;
-
+        reactionMent2 = "";
 //        if(voiceKeywordList != null)
 //            voiceKeywordList.clear();
 
@@ -174,6 +183,20 @@ public class MBFInfo {
         return reactionMent;
     }
 
+    public String getReactionMent2() {
+        return reactionMent2;
+    }
+
+    public void setReactionMent(String ment, String reactionMent2) {
+        if (reactionMentList != null) {
+            reactionMentList.clear();
+            reactionMentList = null;
+        }
+        this.reactionMent = ment;
+        this.reactionMent2 = reactionMent2;
+        MBFLog.d("set reaction Ment = " + ment);
+    }
+
     public void setReactionMent(String reactionMent) {
         if (reactionMentList != null) {
             reactionMentList.clear();
@@ -182,6 +205,7 @@ public class MBFInfo {
         this.reactionMent = reactionMent;
         MBFLog.d("set reaction Ment = " + reactionMent);
     }
+
 
     public ArrayList<String> getReactionMentList() {
         return reactionMentList;
@@ -260,6 +284,27 @@ public class MBFInfo {
         }
         cursor.close();
         return list;
+    }
+
+    public String getSceneTextFromDB(String str) {
+        if (str.length() <= 0) {
+            return null;
+        }
+
+        String query = "SELECT * FROM " + DATABASE_TABLE_SCENE + " WHERE sceneID LIKE \'" + str + "\'";
+        Cursor cursor = mbfDB.getDBCusor(query);
+        String res = null;
+        if (cursor != null && cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            do {
+                res = cursor.getString(cursor.getColumnIndex("sceneNameKR"));
+                break;
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        MBFLog.d("[getSceneTextFromDB Result] " + res);
+        return res;
     }
 
     public int getCatchCount() {
@@ -364,10 +409,8 @@ public class MBFInfo {
     }
 
     private void saveBitmapToFileCache(Bitmap bitmap, String outputFilename) {
-        String dstDirectoryPath = context.getExternalCacheDir().getAbsolutePath() + "/image";
-        String dstMediaPath = dstDirectoryPath + "/" + outputFilename + ".jpg";
-        File dir = new File(dstDirectoryPath);
-        if (!dir.exists()) dir.mkdirs();
+
+        String dstMediaPath = FileManager.getExternalCacheFilePath(context, "image", outputFilename, "jpg");
 
         File fileCacheItem = new File(dstMediaPath);
         OutputStream out = null;

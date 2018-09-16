@@ -20,21 +20,33 @@
 
     <Button
         android:id="@+id/capture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="146dp"
+        android:layout_height="75dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="capture" />
 
-    <ImageView
-        android:id="@+id/videoFrame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationVideoFrameLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="#88000000"
         android:visibility="invisible"
-        app:srcCompat="@drawable/frame" />
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/party_penguin" />
 
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationVideoFrameCharacter"
+        android:layout_width="239dp"
+        android:layout_height="122dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="31dp"
+        android:visibility="invisible"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/happybirthday" />
 </RelativeLayout>

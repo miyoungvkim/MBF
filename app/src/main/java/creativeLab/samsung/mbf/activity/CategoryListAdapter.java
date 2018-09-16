@@ -23,7 +23,7 @@ import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.utils.AnimationInfo;
 
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.MyViewHolder> {
-    private static final String TAG = "MBF|CategoryListAdapter";
+    private static final String TAG = CategoryListAdapter.class.getSimpleName();
 
     private Context mContext;
     private List<AnimationInfo> categoryList;
@@ -64,7 +64,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
                 if(categoryInfo.getEpisodeNum() == 0) {
                     Toast.makeText(mContext, "No Episode now ....." + holder.title.getText(), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(mContext, "click " + holder.title.getText(), Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(mContext, "click " + holder.title.getText(), Toast.LENGTH_SHORT).show();
 
                     try {
                         Intent intent = new Intent(mContext, EpisodeActivity.class);

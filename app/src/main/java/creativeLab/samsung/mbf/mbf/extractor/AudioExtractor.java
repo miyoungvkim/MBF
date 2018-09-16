@@ -8,11 +8,11 @@ import android.media.MediaFormat;
 import android.media.MediaMuxer;
 import android.net.Uri;
 
-import java.io.File;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 
 import creativeLab.samsung.mbf.mbf.MBFInfo;
+import creativeLab.samsung.mbf.utils.FileManager;
 import creativeLab.samsung.mbf.utils.MBFLog;
 
 public class AudioExtractor {
@@ -33,14 +33,7 @@ public class AudioExtractor {
     public int startExtractedAudioData(long startTime, long duration, String outputFilename) {
         int ret = MBFInfo.MBF_NO_DATA;
         // "/storage/emulated/0/Android/data/creativeLab.samsung.mbf/cache/pororo01.mp4"
-        String dstDirectoryPath = context.getExternalCacheDir().getAbsolutePath() + "/audio";
-        if (dstDirectoryPath == null)
-            return ret;
-
-        String dstMediaPath = dstDirectoryPath + "/" + outputFilename + ".mp4";
-        File dir = new File(dstDirectoryPath);
-        if (!dir.exists())
-            dir.mkdirs();
+        String dstMediaPath = FileManager.getExternalCacheFilePath(context, "audio", outputFilename, "mp4");
 
         long endTime = startTime + duration;
 

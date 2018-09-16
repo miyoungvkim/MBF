@@ -23,7 +23,7 @@ import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.utils.AnimationInfo;
 
 public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.MyViewHolder> {
-    private static final String TAG = "MBF|EpisodeListAdapter";
+    private static final String TAG = EpisodeListAdapter.class.getSimpleName();
 
     private Context mContext;
     private List<AnimationInfo> episodeList;
@@ -62,7 +62,7 @@ public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, "click " + holder.getNumber() + " " + holder.title.getText(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(mContext, "click " + holder.getNumber() + " " + holder.title.getText(), Toast.LENGTH_SHORT).show();
 
                 try {
                     Intent intent = new Intent(mContext, PlayActivity_with_tensorflow.class);

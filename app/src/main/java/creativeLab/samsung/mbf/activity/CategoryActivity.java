@@ -26,6 +26,7 @@ import static creativeLab.samsung.mbf.utils.json.AssetJSONFile;
 
 
 public class CategoryActivity extends AppCompatActivity {
+    private static final String TAG = CategoryActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
     private CategoryListAdapter adapter;

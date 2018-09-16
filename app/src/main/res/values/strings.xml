@@ -18,9 +18,9 @@
     <string name="finger_print_setting">지문 사용</string>
     <string name="finger_print_information">자녀의 무분별한 앱 사용을 방지할 수 있어요</string>
 
-    <string name="initial_setting_limitied_time_title">부모님을 위한 안심 설정</string>
+    <string name="initial_setting_limitied_time_title">부모님을 위한 안심 시간 설정</string>
 
-    <string name="initial_setting_limitied_time_guide">아이의 연령에 맞는 영상을 볼 수 있도록 연령을 설정해보세요</string>
+    <string name="initial_setting_limitied_time_guide">아이가 영상을 보는 최대 시간을 설정해보세요</string>
     <string name="mode_setting">시청모드 설정</string>
     <string name="mode_setting_information">창의력 향상, 영어단어 학습</string>
 

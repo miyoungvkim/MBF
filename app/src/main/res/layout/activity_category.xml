@@ -17,7 +17,7 @@
             android:layout_alignParentLeft="true"
             android:background="@null"
             android:text="@string/favorite"
-            android:textColor="@android:color/white" />
+            android:textColor="#dd222222" />
 
         <Button
             android:id="@+id/btn_search"
@@ -27,7 +27,7 @@
             android:layout_alignParentRight="true"
             android:background="@null"
             android:text="@string/search"
-            android:textColor="@android:color/white" />
+            android:textColor="#dd222222" />
 
         <include layout="@layout/content_main" />
 
@@ -39,8 +39,7 @@
             android:layout_alignParentRight="true"
             android:background="@null"
             android:text="@string/setting"
-            android:textColor="@android:color/white" />
-
+            android:textColor="#dd222222" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -16,24 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    // 20180607 add for tenserflow
-    aaptOptions {
-        noCompress "tflite"
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     //
 }
-
-// 20180607 add for tenserflow
-repositories {
-    maven {
-        url 'http://google.bintray.com/tensorflow'
-    }
-}
-//
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -57,7 +45,7 @@ dependencies {
     compile 'com.google.android.exoplayer:exoplayer:r2.5.1'
 
     // add for tensorflow
-    compile 'org.tensorflow:tensorflow-lite:+'
+    compile 'org.tensorflow:tensorflow-android:+'
     // add for db helper
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
 }

@@ -12,7 +12,6 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,7 +27,7 @@ import creativeLab.samsung.mbf.utils.AnimationInfo;
 import static creativeLab.samsung.mbf.utils.json.AssetJSONFile;
 
 public class EpisodeActivity extends AppCompatActivity {
-    private static final String TAG = "MBF|EpisodeActivity";
+    private static final String TAG = EpisodeActivity.class.getSimpleName();
 
     private RecyclerView recyclerView;
     private EpisodeListAdapter adapter;
