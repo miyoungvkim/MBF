@@ -1,0 +1,22 @@
+{
+  "category_list": [
+    {
+      "id": "pororo",
+      "title": "뽀로로",
+      "episode_num" : 3,
+      "thumbnail": "category_pororo"
+    },
+    {
+      "id": "tayo",
+      "title": "타요와 친구들",
+      "episode_num" : 3,
+      "thumbnail": "category_tayo"
+    },
+    {
+      "id": "cocomong",
+      "title": "코코몽",
+      "episode_num": 3,
+      "thumbnail": "category_cocomong"
+    }
+  ]
+}

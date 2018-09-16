@@ -1,0 +1,222 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\6927c03c1b045a1df58a742383976b19\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\fdb11d97f76b4103aaac8bb32f9becab\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\b69750e129cd09980fd5228915d48c1c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.airbnb.android:lottie:2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\lottie-2.5.1.aar\2663c46ba0b8166ac54599d45fb1dc5a\AndroidManifest.xml:2:1-14:12
+MERGED from [com.google.android.exoplayer:exoplayer:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-r2.5.1.aar\f802a10a92fca6469dcb09193e58f749\AndroidManifest.xml:17:1-25:12
+MERGED from [org.tensorflow:tensorflow-android:1.11.0-rc0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.11.0-rc0.aar\e0b60f15c4f0be278aad3f9b162fc208\AndroidManifest.xml:2:1-8:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\055369763eef0028f0425900413f5e5e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\37cb06040bdeddc536266262f43e2aa9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\0e5f1cdfd5618a23e12491a394471f4e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\45414631c0a65d7080edf19e52975e29\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\fa1d3b2d9544af0a56251dc4770bc4d6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\dfdfdda2ba5387d446d692de23dabeb1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\99d65c07576b9b72158be09931601dd8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\826831d87c79392ccff662305383bf56\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.exoplayer:exoplayer-dash:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-dash-r2.5.1.aar\a4076d71db6d1207fb6aa02163ac3d29\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\767509410620d0ad91602dafe675b610\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\410dcd7362c10989c58a9d2b8d8cc5db\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.exoplayer:exoplayer-hls:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-hls-r2.5.1.aar\ed092d7dfd0443c8c8d3cd3e4b55a41b\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-smoothstreaming-r2.5.1.aar\695392338beb0cebc88910c4e8df910e\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.exoplayer:exoplayer-ui:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-ui-r2.5.1.aar\e2ecaa2c2eac55749d74c9162a95129f\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.exoplayer:exoplayer-core:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-core-r2.5.1.aar\ea1865bee09aa8a9b9ec3151844a3d73\AndroidManifest.xml:17:1-25:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\70593d0a1310b4a6017b404e7d694eab\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\635a37192f3bad78defcd2ea82972d23\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\df38433cd57bc655b80feb97cfa8b6d0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\027b9fbb8c2f553f1196ff51ea9dc38a\AndroidManifest.xml:17:1-22:12
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+	package
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:2:5-38
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.USE_FINGERPRINT
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:3:5-74
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:3:22-71
+uses-permission#android.permission.INTERNET
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:4:5-66
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:5:5-80
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:5:22-77
+application
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:7:5-65:19
+MERGED from [com.airbnb.android:lottie:2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\lottie-2.5.1.aar\2663c46ba0b8166ac54599d45fb1dc5a\AndroidManifest.xml:12:5-20
+MERGED from [com.airbnb.android:lottie:2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\lottie-2.5.1.aar\2663c46ba0b8166ac54599d45fb1dc5a\AndroidManifest.xml:12:5-20
+MERGED from [org.tensorflow:tensorflow-android:1.11.0-rc0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.11.0-rc0.aar\e0b60f15c4f0be278aad3f9b162fc208\AndroidManifest.xml:5:5-6:19
+MERGED from [org.tensorflow:tensorflow-android:1.11.0-rc0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\tensorflow-android-1.11.0-rc0.aar\e0b60f15c4f0be278aad3f9b162fc208\AndroidManifest.xml:5:5-6:19
+	android:supportsRtl
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:10:9-41
+	android:roundIcon
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:8:9-35
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:12:9-40
+activity#creativeLab.samsung.mbf.activity.WelcomeActivity
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:13:9-20:20
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:15:13-50
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:14:13-53
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:16:13-19:29
+action#android.intent.action.MAIN
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:18:27-74
+activity#creativeLab.samsung.mbf.activity.FingerprintActivity
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:22:9-28:20
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:24:13-50
+	android:label
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:25:13-64
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:26:13-56
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:23:13-57
+activity#creativeLab.samsung.mbf.activity.InitialSettingActivity
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:30:9-34:20
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:32:13-50
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:33:13-56
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:31:13-60
+activity#creativeLab.samsung.mbf.activity.CategoryActivity
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:36:9-41:20
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:39:13-50
+	android:label
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:38:13-59
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:40:13-56
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:37:13-54
+activity#creativeLab.samsung.mbf.activity.EpisodeActivity
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:43:9-48:20
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:46:13-50
+	android:label
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:45:13-59
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:47:13-56
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:44:13-53
+activity#creativeLab.samsung.mbf.activity.PlayActivity_exoplayer
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:50:9-53:68
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:52:13-50
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:53:13-56
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:51:13-60
+activity#creativeLab.samsung.mbf.activity.PlayActivity_with_tensorflow
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:55:9-58:68
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:57:13-50
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:58:13-56
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:56:13-66
+activity#creativeLab.samsung.mbf.activity.SettingsActivity
+ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:60:9-64:58
+	android:screenOrientation
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:62:13-50
+	android:label
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:63:13-60
+	android:theme
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:64:13-56
+	android:name
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:61:13-54
+uses-sdk
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\6927c03c1b045a1df58a742383976b19\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\6927c03c1b045a1df58a742383976b19\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\fdb11d97f76b4103aaac8bb32f9becab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\fdb11d97f76b4103aaac8bb32f9becab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\b69750e129cd09980fd5228915d48c1c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\b69750e129cd09980fd5228915d48c1c\AndroidManifest.xml:20:5-44
+MERGED from [com.airbnb.android:lottie:2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\lottie-2.5.1.aar\2663c46ba0b8166ac54599d45fb1dc5a\AndroidManifest.xml:8:5-10:41
+MERGED from [com.airbnb.android:lottie:2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\lottie-2.5.1.aar\2663c46ba0b8166ac54599d45fb1dc5a\AndroidManifest.xml:8:5-10:41
+MERGED from [com.google.android.exoplayer:exoplayer:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-r2.5.1.aar\f802a10a92fca6469dcb09193e58f749\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-r2.5.1.aar\f802a10a92fca6469dcb09193e58f749\AndroidManifest.xml:21:5-23:41
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\055369763eef0028f0425900413f5e5e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\055369763eef0028f0425900413f5e5e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\37cb06040bdeddc536266262f43e2aa9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\37cb06040bdeddc536266262f43e2aa9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\0e5f1cdfd5618a23e12491a394471f4e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\0e5f1cdfd5618a23e12491a394471f4e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\45414631c0a65d7080edf19e52975e29\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\45414631c0a65d7080edf19e52975e29\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\fa1d3b2d9544af0a56251dc4770bc4d6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\fa1d3b2d9544af0a56251dc4770bc4d6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\dfdfdda2ba5387d446d692de23dabeb1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\dfdfdda2ba5387d446d692de23dabeb1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\99d65c07576b9b72158be09931601dd8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\99d65c07576b9b72158be09931601dd8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\826831d87c79392ccff662305383bf56\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\826831d87c79392ccff662305383bf56\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.exoplayer:exoplayer-dash:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-dash-r2.5.1.aar\a4076d71db6d1207fb6aa02163ac3d29\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-dash:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-dash-r2.5.1.aar\a4076d71db6d1207fb6aa02163ac3d29\AndroidManifest.xml:21:5-23:41
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\767509410620d0ad91602dafe675b610\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\767509410620d0ad91602dafe675b610\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\410dcd7362c10989c58a9d2b8d8cc5db\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\410dcd7362c10989c58a9d2b8d8cc5db\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.exoplayer:exoplayer-hls:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-hls-r2.5.1.aar\ed092d7dfd0443c8c8d3cd3e4b55a41b\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-hls:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-hls-r2.5.1.aar\ed092d7dfd0443c8c8d3cd3e4b55a41b\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-smoothstreaming-r2.5.1.aar\695392338beb0cebc88910c4e8df910e\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-smoothstreaming:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-smoothstreaming-r2.5.1.aar\695392338beb0cebc88910c4e8df910e\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-ui-r2.5.1.aar\e2ecaa2c2eac55749d74c9162a95129f\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-ui:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-ui-r2.5.1.aar\e2ecaa2c2eac55749d74c9162a95129f\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-core-r2.5.1.aar\ea1865bee09aa8a9b9ec3151844a3d73\AndroidManifest.xml:21:5-23:41
+MERGED from [com.google.android.exoplayer:exoplayer-core:r2.5.1] C:\Users\user\.gradle\caches\transforms-1\files-1.1\exoplayer-core-r2.5.1.aar\ea1865bee09aa8a9b9ec3151844a3d73\AndroidManifest.xml:21:5-23:41
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\70593d0a1310b4a6017b404e7d694eab\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\70593d0a1310b4a6017b404e7d694eab\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\635a37192f3bad78defcd2ea82972d23\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\635a37192f3bad78defcd2ea82972d23\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\df38433cd57bc655b80feb97cfa8b6d0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\df38433cd57bc655b80feb97cfa8b6d0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\027b9fbb8c2f553f1196ff51ea9dc38a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\user\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\027b9fbb8c2f553f1196ff51ea9dc38a\AndroidManifest.xml:20:5-44
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+IMPLIED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12 reason: tensorflow.contrib.android has a targetSdkVersion < 4
+uses-permission#android.permission.READ_PHONE_STATE
+IMPLIED from D:\AndroidProject\20180912_try_to_make_mp3_logic\MBF_v2_20180910_demo_v6\app\src\main\AndroidManifest.xml:1:1-67:12 reason: tensorflow.contrib.android has a targetSdkVersion < 4
