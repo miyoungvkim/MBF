@@ -1,4 +1,4 @@
-#Sun Sep 16 21:50:58 KST 2018
+#Fri Nov 02 00:15:20 KST 2018
 path.3=classes.dex
 path.2=classes.dex
 path.1=classes.dex
@@ -7,7 +7,7 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=D\:\\AndroidProject\\20180912_try_to_make_mp3_logic\\MBF_v2_20180910_demo_v6\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\11
-base.2=D\:\\AndroidProject\\20180912_try_to_make_mp3_logic\\MBF_v2_20180910_demo_v6\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\13
-base.1=D\:\\AndroidProject\\20180912_try_to_make_mp3_logic\\MBF_v2_20180910_demo_v6\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\12
-base.0=D\:\\AndroidProject\\20180912_try_to_make_mp3_logic\\MBF_v2_20180910_demo_v6\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\14
+base.3=D\:\\AndroidProject\\20181101_MBF_MERGE\\MBF222\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\31
+base.2=D\:\\AndroidProject\\20181101_MBF_MERGE\\MBF222\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\32
+base.1=D\:\\AndroidProject\\20181101_MBF_MERGE\\MBF222\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\29
+base.0=D\:\\AndroidProject\\20181101_MBF_MERGE\\MBF222\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\30

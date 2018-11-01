@@ -35,25 +35,21 @@
             android:name="creativeLab.samsung.mbf.activity.FingerprintActivity"
             android:label="@string/title_activity_finger_print"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="creativeLab.samsung.mbf.activity.InitialSettingActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="creativeLab.samsung.mbf.activity.CategoryActivity"
             android:label="@string/title_activity_welcome"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="creativeLab.samsung.mbf.activity.EpisodeActivity"
             android:label="@string/title_activity_welcome"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="creativeLab.samsung.mbf.activity.PlayActivity_exoplayer"
             android:screenOrientation="landscape"
@@ -65,6 +61,16 @@
         <activity
             android:name="creativeLab.samsung.mbf.activity.SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="creativeLab.samsung.mbf.activity.SearchActivity"
+            android:label="Search"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="creativeLab.samsung.mbf.activity.FavoriteActivity"
+            android:label="Favorite"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
 

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\AndroidProject\\20180912_try_to_make_mp3_logic\\MBF_v2_20180910_demo_v6\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-eu-rES\\values-eu-rES.xml",
+            "outputFile": "D:\\AndroidProject\\20181101_MBF_MERGE\\MBF222\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-eu-rES\\values-eu-rES.xml",
             "map": [
                 {
                     "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\exoplayer-ui-r2.5.1.aar\\e2ecaa2c2eac55749d74c9162a95129f\\res\\values-eu-rES\\values-eu-rES.xml",

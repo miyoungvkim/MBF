@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\AndroidProject\\20180912_try_to_make_mp3_logic\\MBF_v2_20180910_demo_v6\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-my\\values-my.xml",
+            "outputFile": "D:\\AndroidProject\\20181101_MBF_MERGE\\MBF222\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-my\\values-my.xml",
             "map": [
                 {
                     "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\410dcd7362c10989c58a9d2b8d8cc5db\\res\\values-my\\values-my.xml",

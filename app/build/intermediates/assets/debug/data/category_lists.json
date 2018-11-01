@@ -4,19 +4,25 @@
       "id": "pororo",
       "title": "뽀로로",
       "episode_num" : 3,
-      "thumbnail": "category_pororo"
+      "thumbnail": "home_thumbnail_pororo"
     },
     {
       "id": "tayo",
-      "title": "타요와 친구들",
+      "title": "꼬마버스 타요",
       "episode_num" : 3,
-      "thumbnail": "category_tayo"
+      "thumbnail": "home_thumbnail_tayo"
     },
     {
       "id": "cocomong",
       "title": "코코몽",
       "episode_num": 3,
-      "thumbnail": "category_cocomong"
+      "thumbnail": "home_thumbnail_coco"
+    },
+    {
+      "id": "cocomong2",
+      "title": "코코몽2",
+      "episode_num": 3,
+      "thumbnail": "home_thumbnail_coco"
     }
   ]
 }

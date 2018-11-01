@@ -1,4 +1,4 @@
-#Sun Sep 16 21:50:49 KST 2018
-base.0=D\:\\AndroidProject\\20180912_try_to_make_mp3_logic\\MBF_v2_20180910_demo_v6\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\5
+#Fri Nov 02 00:15:14 KST 2018
+base.0=D\:\\AndroidProject\\20181101_MBF_MERGE\\MBF222\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\23
 path.0=classes.dex
 renamed.0=classes.dex
