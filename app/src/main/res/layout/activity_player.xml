@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/player_view"
+        app:surface_type="texture_view"
         android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black"
         />
+
+    <org.tensorflow.demo.OverlayView
+        android:id="@+id/tracking_overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btn_capture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:background="@android:color/white"
-        android:text="capture"
+        android:text="debug Mode"
         android:textColor="@android:color/black" />
 </RelativeLayout>

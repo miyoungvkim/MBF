@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_weight="1"
-                android:button="@drawable/radio_button_boy_selector"
+                android:button="@drawable/radio_button_age"
                 android:checked="true"
                 android:gravity="center_vertical|center_horizontal"
                 android:onClick="didTapButton"

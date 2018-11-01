@@ -29,6 +29,7 @@ import android.util.Pair;
 import android.util.TypedValue;
 import android.widget.Toast;
 
+import org.tensorflow.demo.Classifier;
 import org.tensorflow.demo.Classifier.Recognition;
 import org.tensorflow.demo.env.BorderedText;
 import org.tensorflow.demo.env.ImageUtils;
@@ -140,7 +141,22 @@ public class MultiBoxTracker {
         processResults(timestamp, results, frame);
     }
 
-    public synchronized void draw(final Canvas canvas) {
+    public synchronized void trackResultsModified(
+            final List<Recognition> results, final byte[] frame, final long timestamp, int w, int h) {
+        logger.i("Processing %d results from %d", results.size(), timestamp);
+        frameWidth = w;
+        frameHeight = h;
+        processResults(timestamp, results, frame);
+    }
+
+    private List<Classifier.Recognition> results = null;
+
+    /*public void setOriginalRecognitionResult(List<Classifier.Recognition> r)
+    {
+        results = r;
+    }*/
+
+    public synchronized void draw(final Canvas canvas, final List<Classifier.Recognition> results) {
         final boolean rotated = sensorOrientation % 180 == 90;
         final float multiplier =
                 Math.min(canvas.getHeight() / (float) (rotated ? frameWidth : frameHeight),
@@ -154,11 +170,11 @@ public class MultiBoxTracker {
                         sensorOrientation,
                         false);
         for (final TrackedRecognition recognition : trackedObjects) {
-            final RectF trackedPos =
+            //int i = 0;
+            final RectF trackedPos = //recognition.location;
                     (objectTracker != null)
                             ? recognition.trackedObject.getTrackedPositionInPreviewFrame()
                             : new RectF(recognition.location);
-
             getFrameToCanvasMatrix().mapRect(trackedPos);
             boxPaint.setColor(recognition.color);
 
@@ -194,7 +210,7 @@ public class MultiBoxTracker {
                 String message =
                         "Object tracking support not found. "
                                 + "See tensorflow/examples/android/README.md for details.";
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                //Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 logger.e(message);
             }
         }

@@ -21,6 +21,19 @@
     <color name="setting_screen">#40c4ff</color>
     <color name="main_screen">#ffeeeeee</color>
 
+    <color name="black">#000000</color>
+    <color name="white">#fafafa</color>
+    <color name="bright_cyan">#3ed4ff</color>
+    <color name="light_gold">#ffe85c</color>
+    <color name="brownish_grey">#676767</color>
+    <color name="grey_blue">#65738a</color>
+    <color name="slate">#465060</color>
+    <color name="very_light_pink">#e5e5e5</color>
+    <color name="strawberry">#ea3247</color>
+    <color name="dark_sky_blue">#3584de</color>
+    <color name="cerulean_blue">#006ce5</color>
+    <color name="blue">#005dc6</color>
+
 
 
     <!-- dots inactive colors -->

@@ -97,14 +97,13 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
+        public TextView title;
         public ImageView thumbnail, overflow;
         public int number = -1;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
-            count = view.findViewById(R.id.count);
             thumbnail = view.findViewById(R.id.thumbnail);
             overflow = view.findViewById(R.id.overflow);
         }

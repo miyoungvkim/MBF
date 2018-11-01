@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +34,9 @@ public class CategoryActivity extends AppCompatActivity {
     private List<AnimationInfo> categoryInfoList;
     private View decorView;
     private int uiOption;
-    private Button btnSetting;
+    private ImageButton btnSetting;
+    private ImageButton btnSearching;
+    private ImageButton btnFavorite;
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -71,6 +74,21 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
+        btnSearching = findViewById(R.id.btn_search);
+        btnSearching.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { launchSearchScreen();
+
+            }
+        });
+
+        btnFavorite = findViewById(R.id.btn_favorite);
+        btnFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { launchFavoriteScreen();
+
+            }
+        });
         categoryInfoList = setCategoryList();
         adapter = new CategoryListAdapter(this, categoryInfoList);
 
@@ -87,6 +105,14 @@ public class CategoryActivity extends AppCompatActivity {
         //prefManager.setFirstTimeLaunch(true);
         //startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
         //finish();
+    }
+
+    private void launchFavoriteScreen() {
+        startActivity(new Intent(CategoryActivity.this, FavoriteActivity.class));
+    }
+
+    private void launchSearchScreen() {
+        startActivity(new Intent(CategoryActivity.this, SearchActivity.class));
     }
 
     private void launchFingerPrintScreen() {

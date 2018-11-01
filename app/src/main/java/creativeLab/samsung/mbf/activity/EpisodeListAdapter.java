@@ -36,7 +36,8 @@ public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.animation_card, parent, false);
+                .inflate(R.layout.episode_card,parent,false);
+        //.inflate(R.layout.episode_card_card, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -51,21 +52,22 @@ public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.
 
         // loading album cover using Glide library
         Glide.with(mContext).load(animationInfo.getThumbnail()).into(holder.thumbnail);
-
+/*
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showPopupMenu(holder.overflow);
             }
         });
-
+*/
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Toast.makeText(mContext, "click " + holder.getNumber() + " " + holder.title.getText(), Toast.LENGTH_SHORT).show();
 
                 try {
-                    Intent intent = new Intent(mContext, PlayActivity_with_tensorflow.class);
+                    //Intent intent = new Intent(mContext, PlayActivity_with_tensorflow.class);
+                    Intent intent = new Intent(mContext, PlayActivity_exoplayer.class);
                     intent.putExtra("FILE_NAME", animationInfo.getFileName());
                     mContext.startActivity(intent);
                 } catch (Exception e) {
@@ -94,14 +96,13 @@ public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
+        public TextView title;
         public ImageView thumbnail, overflow;
         public int number;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
-            count = view.findViewById(R.id.count);
             thumbnail = view.findViewById(R.id.thumbnail);
             overflow = view.findViewById(R.id.overflow);
             number = -1;

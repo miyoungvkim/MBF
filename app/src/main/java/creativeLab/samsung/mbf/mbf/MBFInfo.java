@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import creativeLab.samsung.mbf.mbf.extractor.AudioExtractor;
 import creativeLab.samsung.mbf.utils.DBManager;
@@ -70,7 +71,8 @@ public class MBFInfo {
         mbfDB.dbOpen();
 
         mediaMetadataRetriever = new MediaMetadataRetriever();
-        mediaMetadataRetriever.setDataSource(context, Uri.parse(videoUrl));
+        //mediaMetadataRetriever.setDataSource(context, Uri.parse(videoUrl));
+        mediaMetadataRetriever. setDataSource(videoUrl, new HashMap<String, String>());
     }
 
     public static String LogChecker(int num) {

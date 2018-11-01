@@ -1,10 +1,20 @@
 package creativeLab.samsung.mbf.activity;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Surface;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 
@@ -23,6 +33,7 @@ import com.google.android.exoplayer2.extractor.ExtractorsFactory;
 import com.google.android.exoplayer2.source.LoopingMediaSource;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
+import com.google.android.exoplayer2.source.dash.DashMediaSource;
 import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
@@ -36,7 +47,18 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.exoplayer2.video.VideoRendererEventListener;
 
+import org.tensorflow.demo.Classifier;
+import org.tensorflow.demo.OverlayView;
+import org.tensorflow.demo.OverlayView.DrawCallback;
+import org.tensorflow.demo.env.BorderedText;
+import org.tensorflow.demo.env.ImageUtils;
+import org.tensorflow.demo.tracking.MultiBoxTracker;
+
+import java.util.List;
+
 import creativeLab.samsung.mbf.R;
+import creativeLab.samsung.mbf.mbf.MBFAIController;
+import creativeLab.samsung.mbf.utils.MBFAIDebug;
 
 public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRendererEventListener {
     private static final String TAG = "PlayActivity";
@@ -52,6 +74,11 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
     private TrackSelection.Factory trackSelectionFactory;
     private DefaultBandwidthMeter bandwidthMeterA;
 
+    private MBFAIController MAIC = null;
+    private Context context = null;
+    //private MultiBoxTracker tracker;
+    OverlayView debugTrackingOverlay;
+    private MBFAIDebug mDebug;
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -84,9 +111,11 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         btnCapture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CaptureScreen();
+                debugOnOff();
             }
         });
+
+        context = this;
 
 // 1. Create a default TrackSelector
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
@@ -100,6 +129,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         player = ExoPlayerFactory.newSimpleInstance(this, trackSelector, loadControl);
         simpleExoPlayerView = new SimpleExoPlayerView(this);
         simpleExoPlayerView = findViewById(R.id.player_view);
+        //TextureView textureView = findViewById(R.id.player_view);
 
 //Set media controller
         simpleExoPlayerView.setUseController(true);
@@ -107,7 +137,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
 // Bind the player to the view.
         simpleExoPlayerView.setPlayer(player);
-
+        //simpleExoPlayerView.getPlayer().setVideoTextureView(textureView);
 
 // I. ADJUST HERE:
 //CHOOSE CONTENT: LiveStream / SdCard
@@ -115,7 +145,9 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 //LIVE STREAM SOURCE: * Livestream links may be out of date so find any m3u8 files online and replace:
 
 //        Uri mp4VideoUri =Uri.parse("http://81.7.13.162/hls/ss1/index.m3u8"); //random 720p source
-        Uri mp4VideoUri = Uri.parse("http://54.255.155.24:1935//Live/_definst_/amlst:sweetbcha1novD235L240P/playlist.m3u8"); //Radnom 540p indian channel
+        //Uri mp4VideoUri = Uri.parse("http://54.255.155.24:1935//Live/_definst_/amlst:sweetbcha1novD235L240P/playlist.m3u8"); //Radnom 540p indian channel
+        Uri mp4VideoUri = Uri.parse("http://geonhui83-jpwe.streaming.media.azure.net/41a18283-142b-40d5-a314-3b357031ce7d/robocar_poli_s02e02.ism/manifest(format=m3u8-aapl-v3)"); //Radnom 540p indian channel
+        String mp4SubTitleURL = "https://kidsvideo.blob.core.windows.net/asset-0c208226-d783-4289-8e0a-eefcf7151230/robocar_poli_s02e02.txt?sv=2015-07-08&sr=c&si=3f5e061f-112d-4ab7-aad2-b640dd0be79b&sig=NUH4%2F4EUDdJ%2B014JG9Hxyb9N5Fw20vZIt8PwIO4KWXc%3D&st=2018-10-23T08%3A05%3A44Z&se=2118-10-23T08%3A05%3A44Z";
 //        Uri mp4VideoUri =Uri.parse("FIND A WORKING LINK ABD PLUg INTO HERE"); //PLUG INTO HERE<------------------------------------------
 
 
@@ -192,13 +224,66 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         player.setPlayWhenReady(true); //run file/link when ready to play.
         player.setVideoDebugListener(this); //for listening to resolution change and  outputing the resolution
 
+        //tracker = new MultiBoxTracker(this);
+        debugTrackingOverlay = (OverlayView)findViewById(R.id.tracking_overlay);
+
+        MAIC = new MBFAIController(context);
+        MAIC.start(getAssets(), mp4SubTitleURL, player, simpleExoPlayerView);
+
+        //player.getCurrentPosition();
+
+        mDebug = new MBFAIDebug(simpleExoPlayerView, context, debugTrackingOverlay, MAIC);
+
+
     } // End of Create
 
-    private void CaptureScreen() {
+
+    private void debugOnOff() {
         //finish();
         // extractorsFactory.
+        /*TextureView textureView = (TextureView) simpleExoPlayerView.getVideoSurfaceView();
+        Bitmap bitmap = textureView.getBitmap();
+        int width = textureView.getWidth();
+        int height = textureView.getWidth();*/
+        debugTrackingOverlay.postInvalidate();
+        if(mDebug.isDebug == false)
+        {
+            mDebug.isDebug = true;
+            if(mDebug.debugT == null)
+            {
+                mDebug.startDebugThread();
+            }
+
+        }else{
+            mDebug.isDebug = false;
+            mDebug.debugT.interrupt();
+            mDebug.debugT = null;
+        }
+        return;
 
     }
+/*
+    protected int getScreenOrientation() {
+        switch (getWindowManager().getDefaultDisplay().getRotation()) {
+            case Surface.ROTATION_270:
+                return 270;
+            case Surface.ROTATION_180:
+                return 180;
+            case Surface.ROTATION_90:
+                return 90;
+            default:
+                return 0;
+        }
+    }
+*/
+    /*
+    public Bitmap getBitmapFromView(View view) {
+        Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+        return bitmap;
+    }*/
+
 
     @Override
     public void onVideoEnabled(DecoderCounters counters) {
@@ -228,7 +313,15 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
     @Override
     public void onRenderedFirstFrame(Surface surface) {
-
+        /*if(isFisrtProcessing == false)
+        {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    processingImage();
+                }
+            }).start();
+        }*/
     }
 
     @Override

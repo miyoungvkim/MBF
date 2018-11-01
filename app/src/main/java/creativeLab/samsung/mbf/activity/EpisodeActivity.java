@@ -12,6 +12,7 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +35,8 @@ public class EpisodeActivity extends AppCompatActivity {
     private List<AnimationInfo> episodeInfoList;
     private View decorView;
     private int uiOption;
-    private Button btnSetting;
+    private ImageButton btnSetting;
+    private ImageButton btnSearching;
     private String selectedCategoryID;
 
     @Override
@@ -73,6 +75,13 @@ public class EpisodeActivity extends AppCompatActivity {
             }
         });
 
+        btnSearching = findViewById(R.id.btn_search);
+        btnSearching.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                launchSearchScreen();
+            }
+        });
         selectedCategoryID = this.getIntent().getStringExtra("CATEGORY_ID");
         if(selectedCategoryID == null) {
             Log.e(TAG, "selectedCategoryID == null ");
@@ -93,6 +102,11 @@ public class EpisodeActivity extends AppCompatActivity {
 
     private void launchFingerPrintScreen() {
         startActivity(new Intent(EpisodeActivity.this, SettingsActivity.class)); // FingerprintActivity.class));
+        //finish();
+    }
+
+    private void launchSearchScreen() {
+        startActivity(new Intent(EpisodeActivity.this, SearchActivity.class)); // FingerprintActivity.class));
         //finish();
     }
 

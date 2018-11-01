@@ -45,7 +45,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 // Hide the nav bar and status bar
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
-
         setContentView(R.layout.activity_welcome);
 
         boolean isGrantStorage = grantExternalStoragePermission();

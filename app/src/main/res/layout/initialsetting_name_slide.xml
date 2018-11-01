@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/setting_screen">
+    android:background="@color/light_gold">
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:id="@+id/par"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="36.5dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -18,41 +23,64 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/initial_setting_name_title"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/setting_title"
+            android:textColor="@android:color/black"
+            android:textSize="28sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/img_initial_setting_name_icon"
-            android:layout_width="128dp"
-            android:layout_height="87dp"
-            app:srcCompat="@drawable/initial_setting_baby_icon" />
 
         <TextView
             android:id="@+id/img_initial_setting_name_guide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/initial_setting_name_guide" />
+            android:text="@string/initial_setting_name_guide"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_initial_setting_name_icon"
+            android:layout_width="104dp"
+            android:layout_height="122.7dp"
+            android:layout_marginTop="13.5dp"
+            app:srcCompat="@drawable/setup_name_girl" />
 
-            <TextView
-                android:id="@+id/txt_initial_setting_name_nickname"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="@string/nickname" />
 
-            <EditText
-                android:id="@+id/edittxt_initial_setting_name_baby_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="ex) 민지" />
-        </LinearLayout>
-
+        <EditText
+            android:id="@+id/edittxt_initial_setting_name_baby_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="이름을 입력해주세요"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button_skip"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/hiddenCenter"
+        android:layout_alignRight="@+id/hiddenCenter"
+        android:background="@drawable/round_button_name"
+        android:text="건너뛰기"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_accept"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/hiddenCenter"
+        android:layout_alignLeft="@+id/hiddenCenter"
+        android:background="@drawable/round_button_name"
+        android:text="적용하기"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/hiddenCenter"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/par"
+        android:layout_centerHorizontal="true"
+        android:background="@color/light_gold" />
 
 </RelativeLayout>

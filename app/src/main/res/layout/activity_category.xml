@@ -1,45 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_screen">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#3ed4ff"
+        app:layout_anchor="@+id/relativeLayout"
+        app:layout_anchorGravity="right|top">
 
-        <Button
-            android:id="@+id/btn_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:background="@null"
-            android:text="@string/favorite"
-            android:textColor="#dd222222" />
 
-        <Button
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:background="@null"
-            android:text="@string/search"
-            android:textColor="#dd222222" />
+        <ImageView
+            android:id="@+id/hiddenCenter"
+            android:layout_width="156dp"
+            android:layout_height="26dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37dp"
+            android:background="#3ed4ff" />
 
-        <include layout="@layout/content_main" />
 
-        <Button
-            android:id="@+id/btn_setting"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/bg" />
+
+        <ImageButton
+            android:id="@+id/btn_favorite"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/oval_button2"
+            android:src="@drawable/ic_favorite" />
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:background="@null"
-            android:text="@string/setting"
-            android:textColor="#dd222222" />
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/oval_button2"
+            android:src="@drawable/ic_search" />
+
+
+        <ImageButton
+            android:id="@+id/btn_setting"
+            android:layout_width="34dp"
+            android:layout_height="33dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/oval_button2"
+            android:src="@drawable/shape" />
+
+        <Button
+            android:id="@+id/button_Char"
+            android:layout_width="70dp"
+            android:layout_height="26dp"
+            android:layout_alignBottom="@+id/hiddenCenter"
+            android:layout_alignLeft="@+id/hiddenCenter"
+            android:background="@drawable/round_button_bg1"
+            android:text="캐릭터"
+            android:textColor="#ea3247"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/button_Video"
+            android:layout_width="70dp"
+            android:layout_height="26dp"
+            android:layout_alignBottom="@+id/hiddenCenter"
+            android:layout_alignRight="@+id/hiddenCenter"
+            android:background="@drawable/round_button_bg2"
+            android:text="동영상"
+            android:textColor="#005dc6"
+            android:textSize="15sp" />
+
+        <include
+            layout="@layout/content_main"
+            />
+
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

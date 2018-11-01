@@ -143,7 +143,8 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
         }
 
         // String video_url = "android.resource://" + getPackageName() + "/raw/" + selectedFileName;
-        String video_url = FileManager.getMovieFilePath(context, selectedFileName);
+        //String video_url = FileManager.getMovieFilePath(context, selectedFileName);
+        String video_url = "http://geonhui83-jpwe.streaming.media.azure.net/41a18283-142b-40d5-a314-3b357031ce7d/robocar_poli_s02e02.ism/manifest(format=m3u8-aapl-v3)";
         MBFLog.d("video_url =  " + video_url);
 
         mbfController = new MBFController(context, videoFrameHandler, myVideoView, video_url);
@@ -156,6 +157,7 @@ public class PlayActivity_with_tensorflow extends AppCompatActivity {
         myVideoView.setOnErrorListener(myVideoViewErrorListener);
 
         myVideoView.setVideoURI(Uri.parse(video_url));
+
         myVideoView.requestFocus();
         myVideoView.start();
 

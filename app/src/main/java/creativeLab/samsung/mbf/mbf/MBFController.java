@@ -20,7 +20,6 @@ import com.sh1r0.caffe_android_lib.CaffeMobile;
 
 import org.tensorflow.demo.Classifier;
 import org.tensorflow.demo.TensorFlowObjectDetectionAPIModel;
-import org.tensorflow.demo.TensorFlowSpeechRecognitionAPIModel;
 import org.tensorflow.demo.env.ImageUtils;
 import org.tensorflow.demo.env.Logger;
 import org.tensorflow.demo.tracking.MultiBoxTracker;
@@ -30,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -46,7 +46,7 @@ public class MBFController {
     public Handler videoFrameHandler = null;
     public String videoUrl = null;
     public Context context = null;
-    public MediaMetadataRetriever mediaMetadataRetriever = null;
+    //public MediaMetadataRetriever mediaMetadataRetriever = null;
     public FullscreenVideoView videoView = null;
 
     private boolean runClassifier = false;
@@ -105,7 +105,7 @@ public class MBFController {
     }*/
 
     /*tensorflow speech recognition*/
-    private TensorFlowSpeechRecognitionAPIModel speechRecog;
+    //private TensorFlowSpeechRecognitionAPIModel speechRecog;
     private CaffeMobile caffeMobile;
     private MediaPlayer mediaTTSVoicePlayer = null;
     UtteranceProgressListener ttsUtteranceProgressListener = new UtteranceProgressListener() {
@@ -223,17 +223,17 @@ public class MBFController {
     }
 
     /*tensorflow object detection declaraion*/
-    /*tensorflow speech recognition*/
+    /*tensorflow speech recognition
     private void initSpeechRecognition(AssetManager assetManager) {
         speechRecog = new TensorFlowSpeechRecognitionAPIModel();
         speechRecog.create(assetManager, MODEL_FILENAME, INPUT_DATA_NAME, SAMPLE_RATE, SAMPLE_DURATION_MS);
-    }
+    }*/
     /*caffe scene categization declaraion*/
 
 
 
     /*geonhui83.lee*/
-
+/*
     public String getSpeechRecognize(short[] inputAudio, int sampleRate, int duration) {
         //int bufferSize = AudioRecord.getMinBufferSize(SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
         //int bufferSizeInput = AudioRecord.getMinBufferSize(sampleRate, AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT);
@@ -272,7 +272,7 @@ public class MBFController {
                         });
         speechRecog.recognitionThread.start();
     }
-
+*/
     private MediaPlayer mediaPlayer = null;
 
     private void initSceneCategorization(AssetManager assetManager) {
@@ -359,8 +359,9 @@ public class MBFController {
         this.videoView = videoView;
         this.videoUrl = videoURL;
 
-        mediaMetadataRetriever = new MediaMetadataRetriever();
-        mediaMetadataRetriever.setDataSource(context, Uri.parse(videoUrl));
+        //mediaMetadataRetriever = new MediaMetadataRetriever();
+        //mediaMetadataRetriever.setDataSource(context, Uri.parse(videoUrl));
+        //mediaMetadataRetriever. setDataSource(videoUrl, new HashMap<String, String>());
     }
 
     public void start(AssetManager assetManager) {
