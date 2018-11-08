@@ -1,6 +1,7 @@
 package creativeLab.samsung.mbf.mbf;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -41,6 +42,8 @@ import java.util.TimerTask;
 import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.utils.MBFLog;
 
+import static com.google.android.exoplayer2.Player.STATE_ENDED;
+
 public class MBFAIController {
     private static final String TAG = MBFAIController.class.getSimpleName();
     private String videoUrl = null;
@@ -50,12 +53,23 @@ public class MBFAIController {
     private SimpleExoPlayerView playerView = null;
     private long finalDuration, currentVideoPosition = 0;
     private long currentReactionTime, nextReactionTime = 0;
-    private long [] reactionTime = null;
+    private int [] reactionTime = null;
     private String [] reactionMent = null;
     private int reactionIndex = 0;
+    private Handler videoFrameHandler = null;
+    private Handler exoPlayerHandler = null;
+    private int currentStatus = MBFInfo.MBF_NO_DATA;
+    private boolean needRearangeCurrentReaction = false;
+    private int totalReactionNum = 0;
+    private String keyWord = null;
 
-    public MBFAIController(Context context) {
-        this.context = context;
+    private static int KEYWORD_DURATION_SEC = 10;
+
+    public MBFAIController(Context c, Handler vfh, Handler evh, SimpleExoPlayer sp) {
+        this.player = sp;
+        this.context = c;
+        this.videoFrameHandler = vfh;
+        this.exoPlayerHandler = evh;
     }
 
     /*geonhui83.lee*/
@@ -104,6 +118,9 @@ public class MBFAIController {
     /*tensorflow speech recognition*/
     //private TensorFlowSpeechRecognitionAPIModel speechRecog;
     private CaffeMobile caffeMobile;
+
+
+    private MediaPlayer mediaPlayer = null;
     private MediaPlayer mediaTTSVoicePlayer = null;
     UtteranceProgressListener ttsUtteranceProgressListener = new UtteranceProgressListener() {
         @Override
@@ -118,23 +135,48 @@ public class MBFAIController {
         @Override
         public void onError(String utteranceId) {
             MBFLog.d("UtteranceProgressListener onError " + utteranceId);
-            videoView.start();
+            setExoPlayState(true);
+            //player.setPlayWhenReady(true);
+            //player.getPlaybackState();
         }
     };
+
+    MediaPlayer.OnCompletionListener mediaTTSVoiceCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            MBFLog.d("mediaTTSVoiceCompletionListener end");
+            //player.setPlayWhenReady(true);
+            //player.getPlaybackState();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            setExoPlayState(true);
+            setMBFPlayState(MBFInfo.MBF_STATE_CONTENTS_PLAY);
+        }
+    };
+
     MediaPlayer.OnCompletionListener mediaPlayerCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mediaPlayer) {
 
             String reactionMent = mbfInfo.getReactionMent();
-            if (reactionMent != null && reactionMent.length() > 0) {
+            //mbfttsStart();
+            mbfTTSWaveFileRandomPlayAssets();
+            /*if (reactionMent != null && reactionMent.length() > 0) {
                 // tts.speak(reactionMent);
                 //mbfttsStart();
             } else {
                 MBFLog.e("[error!!] no reaction Ment...." + reactionMent);
-            }
+            }*/
         }
     };
 
+    public void setReactionArrange()
+    {
+        needRearangeCurrentReaction = true;
+    }
     public void start(AssetManager assetManager, String subTitleURL, SimpleExoPlayer p, SimpleExoPlayerView sepv) {
         mbfInfo = new MBFAIDataBase(context);
         initDetector(assetManager);
@@ -144,6 +186,7 @@ public class MBFAIController {
 
         player = p;
         playerView = sepv;
+        mediaTTSVoicePlayer = new MediaPlayer();
         if(player == null || playerView == null)
         {
             Log.i(TAG, "exoplayer is not working!");
@@ -152,15 +195,60 @@ public class MBFAIController {
             finalDuration = player.getDuration();
             startMBFProcess();
         }
+        currentStatus = MBFInfo.MBF_STATE_CONTENTS_PLAY;
         /*geonhui83.lee*/
     }
 
+    public void stop() {
+        stopMBFProcess();
+    }
+
+    private void stopMBFProcess() {
+        if (tts != null && tts.isSpeaking()) {
+            tts.stop();
+        }
+        if (tts != null) {
+            tts.shutdown();
+        }
+        tts = null;
+
+        if(mediaPlayer != null)
+        {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer =null;
+        }
+
+        if(mediaTTSVoicePlayer != null)
+        {
+            mediaTTSVoicePlayer.stop();
+            mediaTTSVoicePlayer.release();
+            mediaTTSVoicePlayer= null;
+        }
+
+        if (timerTask != null) {
+            timerTask.cancel();
+            timerTask = null;
+        }
+        if (timer != null) {
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
+    }
+
     private void startMBFProcess() {
+        //reactionIndex = 0;
         timerTask = new TimerTask() {
             @Override
             public void run() {
                 try {
                     int ret = MBFInfo.MBF_ERROR;
+                    if(player.getPlaybackState() == STATE_ENDED)
+                    {
+                        reactionIndex = 0;
+                        nextReactionTime = reactionTime[reactionIndex];
+                    }
 
                     currentVideoPosition = player.getCurrentPosition();
                     if (currentVideoPosition > finalDuration && finalDuration > 0) {
@@ -170,42 +258,63 @@ public class MBFAIController {
                     if(mbfInfo.getKewordFinishedFlag() == true && currentReactionTime == 0 && reactionTime == null)
                     {
                         ArrayList <String> reactions = mbfInfo.getVoiceKeywordList();
-                        reactionTime = new long[reactions.size()];
+                        reactionTime = new int[reactions.size()];
                         reactionMent = new String[reactions.size()];
-                        int i = 0;
+
+                        int currentReactionTime = 0;
                         for(String reaction : reactions)
                         {
                             String [] time = reaction.split(":");
-                            long tempTime = Long.parseLong(time[0]);
-                            reactionTime[i] = tempTime*1000;
-                            reactionMent[i] = time[1];
-                            i++;
+                            int tempTime = Integer.parseInt(time[0]);
+                            tempTime = tempTime + 2;
+
+                            if(tempTime - currentReactionTime > KEYWORD_DURATION_SEC)
+                            {
+                                reactionTime[totalReactionNum] = tempTime*1000;
+                                reactionMent[totalReactionNum] = time[1];
+                                currentReactionTime = tempTime;
+                                totalReactionNum++;
+                            }
                         }
+                        reactionTime[totalReactionNum] = reactionTime[totalReactionNum-1] - 2000;
                         nextReactionTime = reactionTime[reactionIndex];
                     }
 
-                    if(currentVideoPosition >= nextReactionTime)
+                    if(needRearangeCurrentReaction == true)
                     {
-                        if (reactionTime != null)
+                        for(int i = 0; i < totalReactionNum; i++)
                         {
-                           nextReactionTime = reactionTime[reactionIndex++];
+                            if(reactionTime[i] > currentVideoPosition) {
+                                reactionIndex = i;
+                                nextReactionTime = reactionTime[reactionIndex];
+                                needRearangeCurrentReaction = false;
+                                break;
+                            }
+                        }
+                    }
 
+                    if(currentVideoPosition - nextReactionTime > 0 && currentVideoPosition - nextReactionTime < 1000)
+                    {
+                        reactionIndex++;
+                        nextReactionTime = reactionTime[reactionIndex];
+                        //Log.d(TAG, "in If current position : " + currentVideoPosition + "   next reaction position : " + nextReactionTime);
+                        if (reactionTime != null && currentStatus == MBFInfo.MBF_STATE_CONTENTS_PLAY && reactionIndex < totalReactionNum)
+                        {
                             TextureView textureView = (TextureView) playerView.getVideoSurfaceView();
                             Bitmap bitmap = textureView.getBitmap();
 
                             final long startTime = SystemClock.uptimeMillis();
                             String results = getObjectDetectorMent(bitmap);
                             final long stopTime = SystemClock.uptimeMillis();
-
-                            Log.d(TAG, "current position : " + currentVideoPosition + "next reaction position : " + nextReactionTime);
-                            Log.d(TAG,  "Reaction!! : " +  results+ reactionMent[reactionIndex]);
-
+                            int tempIndex = reactionIndex-1;
+                            video_pause_and_play_mbf_for_demo_sound_play(null, null, reactionMent[tempIndex]);
+                            //Log.d(TAG,  "current Reaction!! : " +  reactionMent[reactionIndex]);
                         }else{
                             Log.d(TAG, "reaction Time array is null");
                         }
 
                     }else {
-                        Log.d(TAG, "current position : " + currentVideoPosition + "next reaction position : " + nextReactionTime);
+                        //Log.d(TAG, "else current position : " + currentVideoPosition + "     next reaction position : " + nextReactionTime);
                     }
 
                 } catch (Exception e) {
@@ -217,6 +326,115 @@ public class MBFAIController {
         timer = new Timer();
         timer.schedule(timerTask, 0, 500);
         //////////////////////////////////////////////////////
+    }
+
+    private void mbfTTSWaveFileRandomPlayAssets()
+    {
+        ArrayList <String> playWaves = mbfInfo.getReactionMentListFromDB(keyWord, "scriptFiles");
+        int numWaves = playWaves.size();
+
+        Random rand = new Random();
+        int voice_index = rand.nextInt() % numWaves;
+        if (voice_index < 0)
+            voice_index = -voice_index;
+        String selectedWaveFilePath = playWaves.get(voice_index);
+        //selectedWaveFilePath = "tts_voice_170_2.wav";
+        if(mediaTTSVoicePlayer != null)
+        {
+            mediaTTSVoicePlayer.stop();
+            mediaTTSVoicePlayer.release();
+            mediaTTSVoicePlayer = new MediaPlayer();
+        }
+
+        try {
+            AssetManager assetManager = context.getAssets();
+            AssetFileDescriptor descriptor = assetManager.openFd("waves/" + selectedWaveFilePath);
+            if(descriptor == null)
+            {
+                mediaTTSVoicePlayer.setOnCompletionListener(mediaTTSVoiceCompletionListener);
+                return;
+            }
+            mediaTTSVoicePlayer.setDataSource(descriptor.getFileDescriptor(), descriptor.getStartOffset(), descriptor.getLength());
+            descriptor.close();
+
+            mediaTTSVoicePlayer.prepare();
+            //mediaTTSVoicePlayer.setVolume(1f, 1f);
+            //mediaTTSVoicePlayer.setLooping(true);
+            mediaTTSVoicePlayer.start();
+            mediaTTSVoicePlayer.setOnCompletionListener(mediaTTSVoiceCompletionListener);
+        } catch (IOException e) {
+            mediaTTSVoicePlayer.setOnCompletionListener(mediaTTSVoiceCompletionListener);
+            e.printStackTrace();
+        }
+    }
+
+    public void mbfttsStart() {
+        String reactionMent2 = mbfInfo.getReactionMent2();
+        MBFLog.d("kmi reactionMent2" + reactionMent2);
+
+        int[] voice_id = {R.raw.tts_voice_32_1, R.raw.tts_voice_32_2, R.raw.tts_voice_32_3, R.raw.tts_voice_32_4, R.raw.tts_voice_32_5,
+                R.raw.tts_voice_67_1, R.raw.tts_voice_67_2, R.raw.tts_voice_67_3, R.raw.tts_voice_74_1, R.raw.tts_voice_74_2, R.raw.tts_voice_74_3, R.raw.tts_voice_74_4, R.raw.tts_voice_170_1,
+                R.raw.tts_voice_170_2, R.raw.tts_voice_170_3, R.raw.tts_voice_170_4, R.raw.tts_voice_195_1, R.raw.tts_voice_195_2, R.raw.tts_voice_195_3, R.raw.tts_voice_195_4, R.raw.tts_voice_217_1,
+                R.raw.tts_voice_217_2, R.raw.tts_voice_217_3, R.raw.tts_voice_217_4, R.raw.tts_voice_217_5, R.raw.tts_voice_217_6,
+                R.raw.tts_voice_320_1, R.raw.tts_voice_320_2, R.raw.tts_voice_320_3, R.raw.tts_voice_320_4, R.raw.tts_voice_487_1,
+                R.raw.tts_voice_487_2, R.raw.tts_voice_487_3, R.raw.tts_voice_487_4, R.raw.tts_voice_487_5, R.raw.tts_voice_487_6};
+        Random rand = new Random();
+        int voice_index = rand.nextInt() % 35;
+        if (voice_index < 0)
+            voice_index = -voice_index;
+        MBFLog.d("kmi  voice_index " + voice_index + "mediaTTSVoicePlayer start");
+
+        if(mediaTTSVoicePlayer != null)
+        {
+            mediaTTSVoicePlayer.stop();
+            mediaTTSVoicePlayer.release();
+            mediaTTSVoicePlayer =null;
+        }
+
+        mediaTTSVoicePlayer = MediaPlayer.create(context, voice_id[voice_index]);
+        mediaTTSVoicePlayer.start();
+        mediaTTSVoicePlayer.setOnCompletionListener(mediaTTSVoiceCompletionListener);
+    }
+
+    public void video_pause_and_play_mbf_for_demo_sound_play(String ment, String reactionMention, String keyword) {
+        MBFLog.d("video_pause_and_play_mbf_for_demo_sound_play start " + ment);
+
+        //if (ment != null && ment.length() > 0) {
+        //player.getPlaybackState();
+        //player.setPlayWhenReady(false);
+        //player.getPlaybackState();
+        setMBFPlayState(MBFInfo.MBF_STATE_MBF_READY);
+        setExoPlayState(false);
+        mbfInfo.setReactionMent(ment, reactionMention);
+        keyWord = keyword;
+        //MBFLog.d("setReactionMent " + reactionMention);
+        ////////////////
+        if(mediaPlayer != null)
+        {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer =null;
+        }
+
+        mediaPlayer = MediaPlayer.create(context, R.raw.mbf_start);
+        mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(mediaPlayerCompletionListener);
+        //}
+
+    }
+
+    void setMBFPlayState(int playState) {
+        Message visible_message = new Message();
+        visible_message.what = playState;
+        currentStatus = playState;
+        videoFrameHandler.sendMessage(visible_message);
+    }
+
+    void setExoPlayState(boolean playState) {
+        Message visible_message = new Message();
+        visible_message.obj = playState;
+        //currentStatus = playState;
+        exoPlayerHandler.sendMessage(visible_message);
     }
 
     private void initKewordRecognition(String subTitleURL)
@@ -341,7 +559,6 @@ public class MBFAIController {
         return ret;
     }
 
-    private MediaPlayer mediaPlayer = null;
 
     private void initSceneCategorization(AssetManager assetManager) {
         System.loadLibrary("caffe");

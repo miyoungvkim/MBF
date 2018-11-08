@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/setting_screen">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/strawberry">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,54 +17,42 @@
             android:layout_height="wrap_content"
             android:text="@string/mode_setting"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/setting_title"
-            android:textStyle="bold" />
+            android:textSize="28sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="@dimen/desc_padding"
-            android:paddingRight="@dimen/desc_padding"
+            android:layout_marginTop="8dp"
             android:text="@string/mode_setting_information"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
-
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="40dp"
+            android:textSize="17sp" />
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:text="@string/mode_setting_information2"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="17sp" />
 
-            <RadioButton
-                android:id="@+id/watch_mode_btn1"
-                android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:button="@drawable/radio_button_age"
-                android:checked="true"
-                android:onClick="didTapButton"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22.5dp"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/setup_parent" />
 
-            <RadioButton
-                android:id="@+id/watch_mode_btn2"
-                android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:button="@drawable/radio_button_girl_selector"
-                android:onClick="didTapButton"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1" />
-
-        </RadioGroup>
-
+        <Button
+            android:id="@+id/button_skip"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/hiddenCenter"
+            android:layout_alignRight="@+id/hiddenCenter"
+            android:background="@drawable/round_button_parent"
+            android:text="이제 시작해 볼까요?"
+            android:textColor="#000000"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </RelativeLayout>

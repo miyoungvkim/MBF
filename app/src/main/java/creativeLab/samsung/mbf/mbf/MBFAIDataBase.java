@@ -184,7 +184,8 @@ public class MBFAIDataBase {
         for (int i = 0; i < parsedString.length; i++) {
 
             String str = getVoiceKeywordFromDB(parsedString[i]);
-            if (str != null) {
+            if (str != null && parsedString[i].length() > 1)
+            {
                 resultStr = resultStr +":"+str;
                 voiceKeywordList.add(resultStr);
             }
@@ -237,7 +238,7 @@ public class MBFAIDataBase {
             return ret;
         }
 
-        ArrayList<String> mReactionMentList = getReactionMentListFromDB(strSTT);
+        ArrayList<String> mReactionMentList = getReactionMentListFromDB(strSTT, "ment");
         if (mReactionMentList != null && mReactionMentList.size() > 0) {
             for (int i = 0; i < mReactionMentList.size(); i++) {
                 String UserInfo_name = UserInfo.getUserName();
@@ -279,7 +280,7 @@ public class MBFAIDataBase {
         return res;
     }
 
-    public ArrayList<String> getReactionMentListFromDB(String voiceKeyword) {
+    public ArrayList<String> getReactionMentListFromDB(String voiceKeyword, String targetString) {
         if (voiceKeyword.length() <= 0) {
             return null;
         }
@@ -291,7 +292,7 @@ public class MBFAIDataBase {
         if (cursor != null && cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
-                res = cursor.getString(cursor.getColumnIndex("ment"));
+                res = cursor.getString(cursor.getColumnIndex(targetString));
                 if (res.length() > 0) {
                     list.add(res);
                 }

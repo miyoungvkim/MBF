@@ -82,6 +82,7 @@ public class EpisodeActivity extends AppCompatActivity {
                 launchSearchScreen();
             }
         });
+
         selectedCategoryID = this.getIntent().getStringExtra("CATEGORY_ID");
         if(selectedCategoryID == null) {
             Log.e(TAG, "selectedCategoryID == null ");

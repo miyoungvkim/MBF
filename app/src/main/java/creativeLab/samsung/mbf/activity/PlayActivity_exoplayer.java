@@ -8,6 +8,8 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -18,6 +20,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -58,6 +61,7 @@ import java.util.List;
 
 import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.mbf.MBFAIController;
+import creativeLab.samsung.mbf.mbf.MBFInfo;
 import creativeLab.samsung.mbf.utils.MBFAIDebug;
 
 public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRendererEventListener {
@@ -79,6 +83,63 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
     //private MultiBoxTracker tracker;
     OverlayView debugTrackingOverlay;
     private MBFAIDebug mDebug;
+
+
+    private LottieAnimationView videoFrameMBFLoading;
+    private LottieAnimationView videoFrameMBFCharactor;
+
+    public final Handler videoFrameHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            int playState = msg.what;
+            mbfFrameVisibleStateChange(playState);
+
+            super.handleMessage(msg);
+        }
+    };
+
+    public final Handler exoPlayerHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            boolean exoplayerState = (boolean)msg.obj;
+            //mbfFrameVisibleStateChange(exoplayerState);
+            player.setPlayWhenReady(exoplayerState);
+
+            super.handleMessage(msg);
+        }
+    };
+
+    private void mbfFrameVisibleStateChange(int playState) {
+        videoFrameMBFLoading.setVisibility(View.GONE);
+        videoFrameMBFCharactor.setVisibility(View.GONE);
+
+        if (playState == MBFInfo.MBF_STATE_CONTENTS_PLAY) {
+            Log.d(TAG, "MBFInfo.MBF_STATE_CONTENTS_PLAY");
+            videoFrameMBFLoading.setVisibility(View.INVISIBLE);
+            videoFrameMBFLoading.pauseAnimation();
+            videoFrameMBFLoading.setProgress(0);
+
+            videoFrameMBFCharactor.setVisibility(View.INVISIBLE);
+            videoFrameMBFCharactor.pauseAnimation();
+            videoFrameMBFCharactor.setProgress(0);
+        } else if (playState == MBFInfo.MBF_STATE_MBF_READY) {
+            Log.d(TAG, "MBFInfo.MBF_STATE_MBF_READY");
+            videoFrameMBFLoading.setVisibility(View.VISIBLE);
+            videoFrameMBFLoading.playAnimation();
+
+            videoFrameMBFCharactor.setVisibility(View.INVISIBLE);
+            videoFrameMBFCharactor.pauseAnimation();
+            videoFrameMBFCharactor.setProgress(0);
+        } else if (playState == MBFInfo.MBF_STATE_MBF_PLAY) {
+            Log.d(TAG, "MBFInfo.MBF_STATE_MBF_PLAY");
+            videoFrameMBFLoading.setVisibility(View.INVISIBLE);
+            videoFrameMBFLoading.pauseAnimation();
+            videoFrameMBFLoading.setProgress(0);
+
+            videoFrameMBFCharactor.setVisibility(View.VISIBLE);
+            videoFrameMBFCharactor.playAnimation();
+        }
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -115,6 +176,8 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
             }
         });
 
+        videoFrameMBFLoading = findViewById(R.id.animationVideoFrameLoading);
+        videoFrameMBFCharactor = findViewById(R.id.animationVideoFrameCharacter);
         context = this;
 
 // 1. Create a default TrackSelector
@@ -208,6 +271,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
                 player.stop();
                 player.prepare(loopingSource);
                 player.setPlayWhenReady(true);
+                //MAIC.stop();
             }
 
             @Override
@@ -224,16 +288,16 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         player.setPlayWhenReady(true); //run file/link when ready to play.
         player.setVideoDebugListener(this); //for listening to resolution change and  outputing the resolution
 
+
         //tracker = new MultiBoxTracker(this);
         debugTrackingOverlay = (OverlayView)findViewById(R.id.tracking_overlay);
 
-        MAIC = new MBFAIController(context);
+        MAIC = new MBFAIController(context, videoFrameHandler, exoPlayerHandler, player);
         MAIC.start(getAssets(), mp4SubTitleURL, player, simpleExoPlayerView);
 
         //player.getCurrentPosition();
 
         mDebug = new MBFAIDebug(simpleExoPlayerView, context, debugTrackingOverlay, MAIC);
-
 
     } // End of Create
 
@@ -322,6 +386,8 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
                 }
             }).start();
         }*/
+        Log.v(TAG, "onRenderedFirstFrame ");
+        MAIC.setReactionArrange();
     }
 
     @Override
@@ -361,5 +427,10 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         super.onDestroy();
         Log.v(TAG, "onDestroy()...");
         player.release();
+        if (MAIC != null)
+        {
+            MAIC.stop();
+            MAIC = null;
+        }
     }
 }

@@ -38,7 +38,6 @@ public class InitialSettingActivity extends AppCompatActivity {
     private EditText txtName;
     private RadioGroup radioAge;
     private RadioGroup radioLimitTime;
-
     //	viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
@@ -107,7 +106,8 @@ public class InitialSettingActivity extends AppCompatActivity {
         layouts = new int[]{
                 R.layout.initialsetting_name_slide,
                 R.layout.initialsetting_age_slide,
-                R.layout.initialsetting_time_limit_slide};
+                R.layout.initialsetting_time_limit_slide,
+                R.layout.initialsetting_watch_mode_slide};
 
         // adding bottom dots
         addBottomDots(0);
@@ -153,8 +153,9 @@ public class InitialSettingActivity extends AppCompatActivity {
                             break;
                         }
                         case R.layout.initialsetting_time_limit_slide : {
-                            int selectedTime = radioLimitTime.getCheckedRadioButtonId();
-                            UserInfo.setLimitedTime(selectedTime);
+                            //int selectedTime = radioLimitTime.getCheckedRadioButtonId();
+                            //UserInfo.setLimitedTime(selectedTime);
+                            viewPager.setCurrentItem(current);
                             break;
                         }
                         default :
@@ -186,14 +187,6 @@ public class InitialSettingActivity extends AppCompatActivity {
             case R.id.age_btn3:
                 break;
             case R.id.age_btn4:
-                break;
-            case R.id.time_limit_btn1:
-                break;
-            case R.id.time_limit_btn2:
-                break;
-            case R.id.time_limit_btn3:
-                break;
-            case R.id.time_limit_btn4:
                 break;
         }
 

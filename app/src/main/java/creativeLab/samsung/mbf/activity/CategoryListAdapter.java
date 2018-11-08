@@ -67,9 +67,18 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
                     //   Toast.makeText(mContext, "click " + holder.title.getText(), Toast.LENGTH_SHORT).show();
 
                     try {
-                        Intent intent = new Intent(mContext, EpisodeActivity.class);
-                        intent.putExtra("CATEGORY_ID", categoryInfo.getID());
-                        mContext.startActivity(intent);
+
+                        if(categoryInfo.getID().equals("pororo") == true || categoryInfo.getID().equals("tayo") == true)
+                        {
+                            Intent intent = new Intent(mContext, EpisodeCharacterActivity.class);
+                            intent.putExtra("CATEGORY_ID", categoryInfo.getID());
+                            mContext.startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(mContext, EpisodeActivity.class);
+                            intent.putExtra("CATEGORY_ID", categoryInfo.getID());
+                            mContext.startActivity(intent);
+                        }
+
                     } catch (Exception e) {
                         Log.e(TAG, "Error! intent " + e);
                     }
