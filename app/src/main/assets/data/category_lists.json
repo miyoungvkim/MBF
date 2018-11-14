@@ -1,28 +1,28 @@
 {
   "category_list": [
     {
+      "id": "frienzoo",
+      "title": "프렌쥬",
+      "episode_num" : 3,
+      "thumbnail": "home_thumbnail_friendzoo"
+    },
+    {
+      "id": "poli",
+      "title": "로보카 폴리",
+      "episode_num" : 3,
+      "thumbnail": "home_thumbnail_poli"
+    },
+    {
       "id": "pororo",
       "title": "뽀로로",
-      "episode_num" : 3,
+      "episode_num": 3,
       "thumbnail": "home_thumbnail_pororo"
     },
     {
       "id": "tayo",
       "title": "꼬마버스 타요",
-      "episode_num" : 3,
+      "episode_num": 3,
       "thumbnail": "home_thumbnail_tayo"
-    },
-    {
-      "id": "cocomong",
-      "title": "코코몽",
-      "episode_num": 3,
-      "thumbnail": "home_thumbnail_coco"
-    },
-    {
-      "id": "cocomong2",
-      "title": "코코몽2",
-      "episode_num": 3,
-      "thumbnail": "home_thumbnail_coco"
     }
   ]
 }

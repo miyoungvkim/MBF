@@ -130,6 +130,8 @@ public class EpisodeActivity extends AppCompatActivity {
                     String title = jsonSubObject.getString("title");
                     String file_name = jsonSubObject.getString("file_name");
                     String image = jsonSubObject.getString("thumbnail");
+                    String contentsAddress = jsonSubObject.getString("contents_address");
+                    String subtitleAddress = jsonSubObject.getString("subtitle_address");
                     int thumbnail_image = this.getResources().getIdentifier(image, "drawable", this.getPackageName());
 
                     AnimationInfo episodeInfo = new AnimationInfo();
@@ -138,6 +140,8 @@ public class EpisodeActivity extends AppCompatActivity {
                     episodeInfo.setThumbnail(thumbnail_image);
                     episodeInfo.setFileName(file_name);
                     episodeInfo.setEpisodeNum(i);
+                    episodeInfo.setContentsAddres(contentsAddress);
+                    episodeInfo.setSubtitleAddress(subtitleAddress);
 
                     InfoList.add(episodeInfo);
                 }

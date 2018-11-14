@@ -1,11 +1,15 @@
 package creativeLab.samsung.mbf.activity;
 
+import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +23,8 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.exoplayer2.DefaultLoadControl;
@@ -28,6 +34,7 @@ import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackParameters;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.decoder.DecoderCounters;
@@ -83,10 +90,20 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
     //private MultiBoxTracker tracker;
     OverlayView debugTrackingOverlay;
     private MBFAIDebug mDebug;
+    private Uri mp4VideoUri = null;
+    private String mp4SubTitleURL = null;
 
 
     private LottieAnimationView videoFrameMBFLoading;
     private LottieAnimationView videoFrameMBFCharactor;
+    private TextView textVideoSubscription;
+
+
+    private AudioManager audioManager = null;
+    private int CurrentVol = 0;
+    private int MaxVol = 0;
+
+    private boolean durationSet = false;
 
     public final Handler videoFrameHandler = new Handler() {
         @Override
@@ -108,13 +125,23 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
             super.handleMessage(msg);
         }
     };
-
     private void mbfFrameVisibleStateChange(int playState) {
         videoFrameMBFLoading.setVisibility(View.GONE);
         videoFrameMBFCharactor.setVisibility(View.GONE);
+        textVideoSubscription.setVisibility(View.GONE);
 
+        String selectedMention = MBFAIController.getSelectedMention();
         if (playState == MBFInfo.MBF_STATE_CONTENTS_PLAY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_CONTENTS_PLAY");
+
+            textVideoSubscription.setVisibility(View.INVISIBLE);
+
+            //int Vol = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            //if(Vol == MaxVol)
+            //{
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,CurrentVol,0);
+            //}
+            Log.d(TAG, "MBFInfo.MBF_STATE_CONTENTS_PLAY volume" + audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
             videoFrameMBFLoading.setVisibility(View.INVISIBLE);
             videoFrameMBFLoading.pauseAnimation();
             videoFrameMBFLoading.setProgress(0);
@@ -122,22 +149,66 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
             videoFrameMBFCharactor.setVisibility(View.INVISIBLE);
             videoFrameMBFCharactor.pauseAnimation();
             videoFrameMBFCharactor.setProgress(0);
+
         } else if (playState == MBFInfo.MBF_STATE_MBF_READY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_MBF_READY");
+
+            textVideoSubscription.setVisibility(View.VISIBLE);
+            textVideoSubscription.setText(selectedMention);
+
+            //int dur = MAIC.getMediaTTSDuration();
+            //videoFrameHandler
+            //videoFrameMBFLoading.setAnimation("@raw/pelican_start_bubble3");
+            //int Vol = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            //if(Vol == CurrentVol)
+            //{
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,MaxVol,0);
+            //}
+            Log.d(TAG, "MBFInfo.MBF_STATE_MBF_READY volume" + audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
             videoFrameMBFLoading.setVisibility(View.VISIBLE);
             videoFrameMBFLoading.playAnimation();
 
             videoFrameMBFCharactor.setVisibility(View.INVISIBLE);
             videoFrameMBFCharactor.pauseAnimation();
             videoFrameMBFCharactor.setProgress(0);
+
         } else if (playState == MBFInfo.MBF_STATE_MBF_PLAY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_MBF_PLAY");
+
+            textVideoSubscription.setVisibility(View.VISIBLE);
+            textVideoSubscription.setText(selectedMention);
+
             videoFrameMBFLoading.setVisibility(View.INVISIBLE);
             videoFrameMBFLoading.pauseAnimation();
             videoFrameMBFLoading.setProgress(0);
 
             videoFrameMBFCharactor.setVisibility(View.VISIBLE);
+            videoFrameMBFCharactor.loop(false);
             videoFrameMBFCharactor.playAnimation();
+
+            videoFrameMBFCharactor.addAnimatorListener(new Animator.AnimatorListener() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    player.setPlayWhenReady(true);
+                    MAIC.setCurrentStatus(MBFInfo.MBF_STATE_CONTENTS_PLAY);
+                    mbfFrameVisibleStateChange(MBFInfo.MBF_STATE_CONTENTS_PLAY);
+                }
+
+                @Override
+                public void onAnimationCancel(Animator animation) {
+
+                }
+
+                @Override
+                public void onAnimationRepeat(Animator animation) {
+
+                }
+            });
         }
     }
 
@@ -153,6 +224,10 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        MaxVol = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        CurrentVol = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
         //hide status and navigation bar
         decorView = getWindow().getDecorView();
@@ -178,6 +253,8 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
         videoFrameMBFLoading = findViewById(R.id.animationVideoFrameLoading);
         videoFrameMBFCharactor = findViewById(R.id.animationVideoFrameCharacter);
+        textVideoSubscription = findViewById(R.id.textVideoSubscription);
+
         context = this;
 
 // 1. Create a default TrackSelector
@@ -195,6 +272,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         //TextureView textureView = findViewById(R.id.player_view);
 
 //Set media controller
+        player.setRepeatMode(Player.REPEAT_MODE_OFF);
         simpleExoPlayerView.setUseController(true);
         simpleExoPlayerView.requestFocus();
 
@@ -209,8 +287,16 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
 //        Uri mp4VideoUri =Uri.parse("http://81.7.13.162/hls/ss1/index.m3u8"); //random 720p source
         //Uri mp4VideoUri = Uri.parse("http://54.255.155.24:1935//Live/_definst_/amlst:sweetbcha1novD235L240P/playlist.m3u8"); //Radnom 540p indian channel
-        Uri mp4VideoUri = Uri.parse("http://geonhui83-jpwe.streaming.media.azure.net/41a18283-142b-40d5-a314-3b357031ce7d/robocar_poli_s02e02.ism/manifest(format=m3u8-aapl-v3)"); //Radnom 540p indian channel
-        String mp4SubTitleURL = "https://kidsvideo.blob.core.windows.net/asset-0c208226-d783-4289-8e0a-eefcf7151230/robocar_poli_s02e02.txt?sv=2015-07-08&sr=c&si=3f5e061f-112d-4ab7-aad2-b640dd0be79b&sig=NUH4%2F4EUDdJ%2B014JG9Hxyb9N5Fw20vZIt8PwIO4KWXc%3D&st=2018-10-23T08%3A05%3A44Z&se=2118-10-23T08%3A05%3A44Z";
+        Intent intent = getIntent();
+        String tempContentsURL = intent.getExtras().getString("CONTENTS_ADDRESS");
+        mp4SubTitleURL = intent.getExtras().getString("SUBTITLE_ADDRESS");
+        if(mp4SubTitleURL == null)
+        {
+            Toast toast = Toast.makeText(this, "수다쟁이 인공지능 기술이 적용되지 않은 영상입니다.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        mp4VideoUri = Uri.parse(tempContentsURL); //Radnom 540p indian channel
+        //mp4SubTitleURL = "https://kidsvideo.blob.core.windows.net/asset-0c208226-d783-4289-8e0a-eefcf7151230/robocar_poli_s02e02.txt?sv=2015-07-08&sr=c&si=3f5e061f-112d-4ab7-aad2-b640dd0be79b&sig=NUH4%2F4EUDdJ%2B014JG9Hxyb9N5Fw20vZIt8PwIO4KWXc%3D&st=2018-10-23T08%3A05%3A44Z&se=2118-10-23T08%3A05%3A44Z";
 //        Uri mp4VideoUri =Uri.parse("FIND A WORKING LINK ABD PLUg INTO HERE"); //PLUG INTO HERE<------------------------------------------
 
 
@@ -238,7 +324,6 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
 // Prepare the player with the source.
         player.prepare(loopingSource);
-
         player.addListener(new ExoPlayer.EventListener() {
             @Override
             public void onTimelineChanged(Timeline timeline, Object manifest) {
@@ -258,6 +343,16 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
             @Override
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
                 Log.v(TAG, "Listener-onPlayerStateChanged..." + playbackState);
+                if (playbackState == ExoPlayer.STATE_READY && !durationSet) {
+                    long realDurationMillis = player.getDuration();
+                    durationSet = true;
+                    MAIC.setFinalDuration(realDurationMillis);
+                }
+                /*if(playbackState == Player.STATE_ENDED)
+                {
+                    MediaPlayer mediaEndingMentionTTSVoicePlayer = MediaPlayer.create(context, R.raw.goodbye);
+                    mediaEndingMentionTTSVoicePlayer.start();
+                }*/
             }
 
             @Override

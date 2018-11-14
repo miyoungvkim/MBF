@@ -23,12 +23,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="@android:color/white"
+        android:background="@android:color/transparent"
         android:text="debug Mode"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/transparent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationVideoFrameLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#88000000"
+        android:visibility="invisible"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/pelican_start_bubble4_long" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationVideoFrameCharacter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
@@ -36,19 +49,20 @@
         android:visibility="invisible"
         app:lottie_autoPlay="false"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/party_penguin" />
+        app:lottie_rawRes="@raw/pelican_end" />
 
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationVideoFrameCharacter"
-        android:layout_width="239dp"
-        android:layout_height="122dp"
+    <TextView
+        android:id="@+id/textVideoSubscription"
+        android:layout_width="382dp"
+        android:layout_height="59dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="31dp"
-        android:visibility="invisible"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/happybirthday" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="24dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:visibility="invisible" />
 
 </RelativeLayout>

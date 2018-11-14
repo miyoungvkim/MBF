@@ -68,7 +68,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
                     try {
 
-                        if(categoryInfo.getID().equals("pororo") == true || categoryInfo.getID().equals("tayo") == true)
+                        if(categoryInfo.getID().equals("pororo") == true || categoryInfo.getID().equals("poli") == true || categoryInfo.getID().equals("frienzoo") == true)
                         {
                             Intent intent = new Intent(mContext, EpisodeCharacterActivity.class);
                             intent.putExtra("CATEGORY_ID", categoryInfo.getID());

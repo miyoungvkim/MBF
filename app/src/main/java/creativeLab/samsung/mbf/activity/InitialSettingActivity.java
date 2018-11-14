@@ -34,27 +34,17 @@ public class InitialSettingActivity extends AppCompatActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext;
+    private Button[] button_skip, button_accept;
     private EditText txtName;
     private RadioGroup radioAge;
     private RadioGroup radioLimitTime;
+
     //	viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageSelected(int position) {
             addBottomDots(position);
-
-            // changing the next button text 'NEXT' / 'GOT IT'
-            if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
-                btnNext.setText(getString(R.string.start));
-                btnSkip.setVisibility(View.GONE);
-            } else {
-                // still pages are left
-                btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.VISIBLE);
-            }
         }
 
         @Override
@@ -98,16 +88,18 @@ public class InitialSettingActivity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.view_pager);
         dotsLayout = findViewById(R.id.layoutDots);
-        btnSkip = findViewById(R.id.btn_skip);
-        btnNext = findViewById(R.id.btn_next);
 
         // layouts of all welcome sliders
         // add few more layouts if you want
         layouts = new int[]{
+                R.layout.initialsetting_greeting_slide,
                 R.layout.initialsetting_name_slide,
                 R.layout.initialsetting_age_slide,
                 R.layout.initialsetting_time_limit_slide,
-                R.layout.initialsetting_watch_mode_slide};
+                R.layout.initialsetting_parents_slide};
+
+        button_accept = new Button[layouts.length];
+        button_skip = new Button[layouts.length];
 
         // adding bottom dots
         addBottomDots(0);
@@ -118,65 +110,19 @@ public class InitialSettingActivity extends AppCompatActivity {
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
-        btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchHomeScreen();
-            }
-        });
-
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // checking for last page
-                // if last page home screen will be launched
-                int current = getItem(+1);
-
-                if (current < layouts.length) {
-                    switch(layouts[current-1]) {
-                        case R.layout.initialsetting_name_slide : {
-                            if (txtName.getText().toString().length() == 0) {
-                                Toast.makeText(InitialSettingActivity.this, R.string.initial_setting_name_input_wrong_message, Toast.LENGTH_SHORT).show();
-                                viewPager.setCurrentItem(current); //temporary
-                            } else {
-                                String babyNickName = txtName.getText().toString();
-                                UserInfo.setUserName(babyNickName);
-                                viewPager.setCurrentItem(current);
-                            }
-                            break;
-                        }
-                        case R.layout.initialsetting_age_slide : {
-                            int selectedAge = radioAge.getCheckedRadioButtonId();
-                            UserInfo.setUserAge(selectedAge);
-                            viewPager.setCurrentItem(current);
-                            break;
-                        }
-                        case R.layout.initialsetting_time_limit_slide : {
-                            //int selectedTime = radioLimitTime.getCheckedRadioButtonId();
-                            //UserInfo.setLimitedTime(selectedTime);
-                            viewPager.setCurrentItem(current);
-                            break;
-                        }
-                        default :
-                            break;
-                    }
-                } else {
-                    launchHomeScreen();
-                }
-            }
-        });
-
     }
 
     public void didTapButton(View view) {
+
         int rb_id = view.getId();
+        /*
         final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
         // Use bounce interpolator with amplitude 0.2 and frequency 20
         BounceInterpolator interpolator = new BounceInterpolator(0.05, 13);
         myAnim.setInterpolator(interpolator);
         Button button = findViewById(rb_id);
         button.startAnimation(myAnim);
+        */
         // Write what kind of setting value
         switch (rb_id) {
             // TO DO
@@ -230,6 +176,12 @@ public class InitialSettingActivity extends AppCompatActivity {
         finish();
     }
 
+    private void onClickNextPage() {
+        int current = getItem(+1);
+        viewPager.setCurrentItem(current);
+    }
+
+
     /**
      * Making notification bar transparent
      */
@@ -257,16 +209,80 @@ public class InitialSettingActivity extends AppCompatActivity {
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
             switch(layouts[position]) {
+                case R.layout.initialsetting_greeting_slide : {
+                    button_accept[position] = view.findViewById(R.id.button_next);
+                    button_accept[position].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onClickNextPage();
+                        }
+                    });
+                    break;
+                }
                 case R.layout.initialsetting_name_slide : {
                     txtName = view.findViewById(R.id.edittxt_initial_setting_name_baby_name);
+                    button_skip[position] = view.findViewById(R.id.button_skip);
+                    button_skip[position].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchHomeScreen();
+                        }
+                    });
+                    button_accept[position] = view.findViewById(R.id.button_accept);
+                    button_accept[position].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (txtName.getText().toString().length() == 0) {
+                                Toast.makeText(InitialSettingActivity.this, R.string.initial_setting_name_input_wrong_message, Toast.LENGTH_SHORT).show();
+                            } else {
+                                String babyNickName = txtName.getText().toString();
+                                UserInfo.setUserName(babyNickName);
+                            }
+                            onClickNextPage();
+                        }
+                    });
                     break;
                 }
                 case R.layout.initialsetting_age_slide : {
                     radioAge = view.findViewById(R.id.radioGroup_age);
+                    button_skip[position] = view.findViewById(R.id.button_skip);
+                    button_skip[position].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchHomeScreen();
+                        }
+                    });
+                    button_accept[position] = view.findViewById(R.id.button_accept);
+                    button_accept[position].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            /*
+                            int selectedAge = radioAge.getCheckedRadioButtonId();
+                            UserInfo.setUserAge(selectedAge);
+                            */
+                            onClickNextPage();
+                        }
+                    });
                     break;
                 }
                 case R.layout.initialsetting_time_limit_slide : {
-                    radioLimitTime = view.findViewById(R.id.radioGroup_age);
+                    button_accept[position] = view.findViewById(R.id.button_next);
+                    button_accept[position].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            onClickNextPage();
+                        }
+                    });
+                    break;
+                }
+                case R.layout.initialsetting_parents_slide : {
+                    button_accept[position] = view.findViewById(R.id.button_start);
+                    button_accept[position].setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            launchHomeScreen();
+                        }
+                    });
                     break;
                 }
                 default :

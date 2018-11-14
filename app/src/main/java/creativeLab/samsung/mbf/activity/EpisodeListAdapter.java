@@ -65,10 +65,18 @@ public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.
             public void onClick(View view) {
                 // Toast.makeText(mContext, "click " + holder.getNumber() + " " + holder.title.getText(), Toast.LENGTH_SHORT).show();
 
+                if(animationInfo.getContentsAddress().equals("null"))
+                {
+                    Toast toast = Toast.makeText(mContext, "죄송합니다. 다른 컨텐츠를 선택해 주세요.", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
                 try {
                     //Intent intent = new Intent(mContext, PlayActivity_with_tensorflow.class);
                     Intent intent = new Intent(mContext, PlayActivity_exoplayer.class);
                     intent.putExtra("FILE_NAME", animationInfo.getFileName());
+                    intent.putExtra("CONTENTS_ADDRESS", animationInfo.getContentsAddress());
+                    intent.putExtra("SUBTITLE_ADDRESS", animationInfo.getSubtitleAddress());
                     mContext.startActivity(intent);
                 } catch (Exception e) {
                     Log.e(TAG, "Error! intent " + e);

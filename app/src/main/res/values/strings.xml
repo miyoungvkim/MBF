@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">soodajam</string>
+    <string name="app_name">수다잼</string>
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -8,23 +8,27 @@
     <string name="search">SEARCH</string>
     <string name="setting">SETTING</string>
 
+    <string name="initial_setting_greeting_title">여러분, 환영합니다!</string>
+    <string name="initial_setting_greeting_guide">우리 아이에게 말을 걸어주는 영상과 함께 수다잼 하세요.</string>
+    <string name="initial_setting_next">다음으로</string>
+
     <string name="initial_setting_name_title">아이의 이름을 알려주세요.</string>
     <string name="initial_setting_name_guide">자녀 이름을 입력하면 이름을 넣어서 말을 걸어 줍니다.</string>
     <string name="nickname">아이의 닉네임   </string>
     <string name="initial_setting_name_input_wrong_message">아이의 이름을 입력해주세요</string>
 
-    <string name="initial_setting_age_setting_title">시간 제한 설정에 맞춰 끝맺음 인사를 해줘요.</string>
-    <string name="initial_setting_age_setting_guide_text">아이가 영상을 멈추고 자연스럽게 다른 활동을 할 수 있도록 도와줍니다.</string>
+    <string name="initial_setting_age_setting_title">아이의 연령에 따라 영상을 보여주세요.</string>
+    <string name="initial_setting_age_setting_guide_text">아이의 연령에 맞는 영상을 볼 수 있도록 연령을 설정할 수 있습니다.</string>
     <string name="finger_print_setting">지문 사용</string>
     <string name="finger_print_information">자녀의 무분별한 앱 사용을 방지할 수 있어요</string>
 
-    <string name="initial_setting_limitied_time_title">부모님을 위한 안심 시간 설정</string>
+    <string name="initial_setting_limitied_time_title">시간 제한 설정에 맞춰 끝맺음 인사를 해줘요.</string>
+    <string name="initial_setting_limitied_time_guide">아이가 영상을 멈추고 자연스럽게 다른 활동을 할 수 있도록 도와줍니다.</string>
 
-    <string name="initial_setting_limitied_time_guide">아이가 영상을 보는 최대 시간을 설정해보세요</string>
-    <string name="mode_setting">부모님이 함께 참여해 주세요.</string>
-    <string name="mode_setting_information">수다쟁이가 던져주는 질문은 아이와 나눌 대화의 주제가 될 수 있습니다. </string>
-    <string name="mode_setting_information2">아이가 대답할 수 있도록 처음에는 부모님이 함께 해 주세요.</string>
-
+    <string name="initial_setting_parent_title">부모님이 함께 참여해 주세요.</string>
+    <string name="initial_setting_parents_guide_text">수다쟁이가 던져주는 질문은 아이와 나눌 대화의 주제가 될 수 있습니다.</string>
+    <string name="initial_setting_parents_guide_text2">아이가 대답할 수 있도록 처음에는 부모님이 함께 해 주세요.</string>
+    <string name="initial_setting_start">이제 시작해 볼까요?</string>
 
     <string name="slide_1_title">Hello Food!</string>
     <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>

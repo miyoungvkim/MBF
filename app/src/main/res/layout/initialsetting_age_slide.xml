@@ -9,162 +9,191 @@
 
     <LinearLayout
         android:id="@+id/par"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_width="546dp"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="36.5dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textBig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="아이의 연령에 따라 영상을 보여주세요."
+            android:text="@string/initial_setting_age_setting_title"
             android:textColor="@android:color/white"
-            android:textSize="28sp" />
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/title_margen"
+            android:layout_width="280dp"
+            android:layout_height="8dp"
+            android:layout_alignBottom="@+id/par"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/guideText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textBig"
             android:gravity="center_horizontal"
-            android:text="아이의 연령에 맞는 영상을 볼 수 있도록 연령을 설정할 수 있습니다. "
+            android:text="@string/initial_setting_age_setting_guide_text"
             android:textColor="@android:color/white"
             android:textSize="17sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|bottom"
-            android:layout_weight="0.25"
-            app:srcCompat="@drawable/setup_age_bird" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_gravity="center_vertical|bottom"
-            android:layout_weight="0.25"
-            app:srcCompat="@drawable/setup_age_cat" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|bottom"
-            android:layout_weight="0.25"
-            app:srcCompat="@drawable/setup_age_pelican" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|bottom"
-            android:layout_weight="0.25"
-            app:srcCompat="@drawable/setup_age_girl" />
-
-    </LinearLayout>
-        <RadioGroup
-            android:id="@+id/radioGroup_age"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:layout_below="@+id/centerLL"
-            android:layout_alignLeft="@+id/centerLL"
-            android:layout_alignRight="@+id/centerLL"
-            android:layout_marginBottom="20dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/age_btn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_weight="0.25"
-                android:button="@drawable/radio_button_age"
-                android:checked="true"
-                android:gravity="center_vertical|center_horizontal"
-                android:onClick="didTapButton"
-                android:textColor="@color/white"
-                android:text="0-2세" />
+    <RadioGroup
+        android:id="@+id/radioGroup_age"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_above="@+id/hiddenCenter"
+        android:layout_alignLeft="@+id/par"
+        android:layout_alignRight="@+id/par"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/age_btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_weight="0.25"
-                android:button="@drawable/radio_button_age"
-                android:gravity="center_vertical|center_horizontal"
-                android:onClick="didTapButton"
-                android:textColor="@color/white"
-                android:text="3-5세" />
-
-            <RadioButton
-                android:id="@+id/age_btn3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_weight="0.25"
-                android:button="@drawable/radio_button_age"
-                android:gravity="center_vertical|center_horizontal"
-                android:onClick="didTapButton"
-                android:textColor="@color/white"
-                android:text="6-7세" />
-
-            <RadioButton
-                android:id="@+id/age_btn4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_weight="0.25"
-                android:button="@drawable/radio_button_age"
-                android:gravity="center_vertical|center_horizontal"
-                android:onClick="didTapButton"
-                android:textColor="@color/white"
-                android:text="전체" />
-        </RadioGroup>
-        <LinearLayout
+        <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
+            android:layout_weight="0.25" />
 
-            <Button
-                android:id="@+id/button_accept"
-                android:layout_width="130dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center|bottom"
-                android:background="@drawable/round_button_age"
-                android:text="적용하기"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-            <View
-                android:layout_width="10dp"
-                android:layout_height="0dp"/>
-            <Button
-                android:id="@+id/button_skip"
-                android:layout_width="130dp"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom|center"
-                android:background="@drawable/round_button_age"
-                android:text="건너뛰기"
-                android:textColor="#000000"
-                android:textSize="20sp" />
+        <RadioButton
+            android:id="@+id/age_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.25"
+            android:button="@drawable/radio_button_age"
+            android:checked="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="didTapButton"
+            android:textColor="@color/white"
+            android:text="0-2세" />
 
-        </LinearLayout>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
 
+        <RadioButton
+            android:id="@+id/age_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.25"
+            android:button="@drawable/radio_button_age"
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="didTapButton"
+            android:text="3-5세"
+            android:textColor="@color/white" />
 
-    </LinearLayout>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
+
+        <RadioButton
+            android:id="@+id/age_btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.25"
+            android:button="@drawable/radio_button_age"
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="didTapButton"
+            android:textColor="@color/white"
+            android:text="6-7세" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25" />
+
+        <RadioButton
+            android:id="@+id/age_btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="0.25"
+            android:button="@drawable/radio_button_age"
+            android:gravity="center_vertical|center_horizontal"
+            android:onClick="didTapButton"
+            android:textColor="@color/white"
+            android:text="전체" />
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup_age"
+        android:layout_toStartOf="@+id/imageView2"
+        android:layout_marginEnd="64dp"
+        app:srcCompat="@drawable/setup_age_bird" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup_age"
+        android:layout_toLeftOf="@+id/imageView4"
+        android:layout_marginEnd="42.1dp"
+        app:srcCompat="@drawable/setup_age_cat" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup_age"
+        android:layout_alignEnd="@+id/par"
+        app:srcCompat="@drawable/setup_age_girl" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup_age"
+        android:layout_toLeftOf="@+id/imageView3"
+        android:layout_marginEnd="29.3dp"
+        app:srcCompat="@drawable/setup_age_pelican" />
+
+    <ImageView
+        android:id="@+id/hiddenCenter"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/par"
+        android:layout_centerHorizontal="true"
+        android:background="@color/cerulean_blue" />
+
+    <Button
+        android:id="@+id/button_accept"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/hiddenCenter"
+        android:layout_alignBottom="@+id/hiddenCenter"
+        android:background="@drawable/round_button_age_accept"
+        android:text="적용하기"
+        android:textColor="@color/text_button_white_black"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button_skip"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/hiddenCenter"
+        android:layout_alignBottom="@+id/hiddenCenter"
+        android:background="@drawable/round_button_age"
+        android:text="건너뛰기"
+        android:textColor="@color/text_button_black_white"
+        android:textSize="20sp" />
+
 
 </RelativeLayout>

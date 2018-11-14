@@ -302,6 +302,27 @@ public class MBFAIDataBase {
         return list;
     }
 
+    public ArrayList<String> getVoiceMentionFromDB(String fileNames, String targetString) {
+        if (fileNames.length() <= 0) {
+            return null;
+        }
+
+        String query = "SELECT * FROM " + DATABASE_TABLE_REACTION + " WHERE scriptFiles =\'" + fileNames + "\'";
+        Cursor cursor = mbfDB.getDBCusor(query);
+        ArrayList<String> list = new ArrayList<String>();
+        String res = null;
+        if (cursor != null && cursor.getCount() != 0) {
+            cursor.moveToFirst();
+            do {
+                res = cursor.getString(cursor.getColumnIndex(targetString));
+                if (res.length() > 0) {
+                    list.add(res);
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return list;
+    }
     public String getSceneTextFromDB(String str) {
         if (str.length() <= 0) {
             return null;

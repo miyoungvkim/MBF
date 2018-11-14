@@ -87,7 +87,7 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
             selectedCategoryID = "pororo"; // default animation categoryID
         }
 
-        if(selectedCategoryID.equals("tayo"))
+        if(selectedCategoryID.equals("poli"))
         {
             TextView charText = (TextView)findViewById(R.id.txt_character_name);
             charText.setText("로보카폴리");
@@ -99,18 +99,43 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
             ImageView IView = (ImageView)findViewById(R.id.characterImage);
             //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
             IView.setImageResource(R.drawable.thumbnail_poli);
+
+            ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
+            BView.setBackground(getDrawable(R.drawable.bg_red));
             //IView.setImageDrawable(characterImage);
         }else if(selectedCategoryID.equals("pororo")){
             TextView charText = (TextView)findViewById(R.id.txt_character_name);
             charText.setText("뽀로로");
 
             RelativeLayout RLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
-            int cerulean_blue = getResources().getColor(R.color.light_gold);
-            RLayout.setBackgroundColor(cerulean_blue);
+            int light_gold = getResources().getColor(R.color.light_gold);
+            RLayout.setBackgroundColor(light_gold);
 
             ImageView IView = (ImageView)findViewById(R.id.characterImage);
             //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
             IView.setImageResource(R.drawable.thumbnail_pororo);
+
+            ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
+            BView.setBackground(getDrawable(R.drawable.bg_blue));
+            //IView.setImageDrawable(characterImage);
+        }else if(selectedCategoryID.equals("frienzoo")){
+            TextView charText = (TextView)findViewById(R.id.txt_character_name);
+            charText.setText("프렌쥬");
+            int white = getResources().getColor(R.color.white);
+            charText.setTextColor(white);
+
+            RelativeLayout RLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
+            int strawberry = getResources().getColor(R.color.strawberry);
+            RLayout.setBackgroundColor(strawberry);
+
+            ImageView IView = (ImageView)findViewById(R.id.characterImage);
+            //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
+            IView.setImageResource(R.drawable.thumbnail_friendzoo);
+
+            ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
+            BView.setBackground(getDrawable(R.drawable.bg_black));
+
+
             //IView.setImageDrawable(characterImage);
         }
 
@@ -156,6 +181,8 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
                     String title = jsonSubObject.getString("title");
                     String file_name = jsonSubObject.getString("file_name");
                     String image = jsonSubObject.getString("thumbnail");
+                    String contentsAddress = jsonSubObject.getString("contents_address");
+                    String subtitleAddress = jsonSubObject.getString("subtitle_address");
                     int thumbnail_image = this.getResources().getIdentifier(image, "drawable", this.getPackageName());
 
                     AnimationInfo episodeInfo = new AnimationInfo();
@@ -164,6 +191,8 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
                     episodeInfo.setThumbnail(thumbnail_image);
                     episodeInfo.setFileName(file_name);
                     episodeInfo.setEpisodeNum(i);
+                    episodeInfo.setContentsAddres(contentsAddress);
+                    episodeInfo.setSubtitleAddress(subtitleAddress);
 
                     InfoList.add(episodeInfo);
                 }

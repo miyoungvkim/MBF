@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.os.Handler;
@@ -62,6 +63,11 @@ public class MBFAIController {
     private boolean needRearangeCurrentReaction = false;
     private int totalReactionNum = 0;
     private String keyWord = null;
+    private boolean isFinalMent = false;
+    static String selectedWaveFilePath = null;
+    static String selectedMention= null;
+    int currentVolume = 0;
+    //AudioManager audioManagerMBF = null;
 
     private static int KEYWORD_DURATION_SEC = 10;
 
@@ -121,6 +127,7 @@ public class MBFAIController {
 
 
     private MediaPlayer mediaPlayer = null;
+    private MediaPlayer mediaInitialMentionTTSVoicePlayer = null;
     private MediaPlayer mediaTTSVoicePlayer = null;
     UtteranceProgressListener ttsUtteranceProgressListener = new UtteranceProgressListener() {
         @Override
@@ -141,6 +148,23 @@ public class MBFAIController {
         }
     };
 
+   /* MediaPlayer.OnCompletionListener mediaMBFAnimationEnding = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            setExoPlayState(true);
+            setMBFPlayState(MBFInfo.MBF_STATE_CONTENTS_PLAY);
+        }
+    };*/
+
+    public void setFinalDuration(long fd)
+    {
+        finalDuration = fd;
+    }
+    public void setCurrentStatus(int status)
+    {
+        currentStatus = status;
+    }
+
     MediaPlayer.OnCompletionListener mediaTTSVoiceCompletionListener = new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mediaPlayer) {
@@ -152,8 +176,9 @@ public class MBFAIController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            setExoPlayState(true);
-            setMBFPlayState(MBFInfo.MBF_STATE_CONTENTS_PLAY);
+            setMBFPlayState(MBFInfo.MBF_STATE_MBF_PLAY);
+            //isFinalMent = false;
+            //mediaTTSVoicePlayer.setOnCompletionListener(mediaMBFAnimationEnding);
         }
     };
 
@@ -172,7 +197,19 @@ public class MBFAIController {
             }*/
         }
     };
+    MediaPlayer.OnCompletionListener mediaFinalTTSCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            mbfFinalttsStart();
+        }
+    };
 
+    MediaPlayer.OnCompletionListener mediaInitialMentionTTSCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            mbfttsStart();
+        }
+    };
     public void setReactionArrange()
     {
         needRearangeCurrentReaction = true;
@@ -180,19 +217,22 @@ public class MBFAIController {
     public void start(AssetManager assetManager, String subTitleURL, SimpleExoPlayer p, SimpleExoPlayerView sepv) {
         mbfInfo = new MBFAIDataBase(context);
         initDetector(assetManager);
-        initSceneCategorization(assetManager);
+        //initSceneCategorization(assetManager);
         //initSpeechRecognition(assetManager);
         initKewordRecognition(subTitleURL);
 
         player = p;
         playerView = sepv;
         mediaTTSVoicePlayer = new MediaPlayer();
+
+        //audioManagerMBF = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
         if(player == null || playerView == null)
         {
             Log.i(TAG, "exoplayer is not working!");
             return;
         }else{
-            finalDuration = player.getDuration();
+            //finalDuration = player.getDuration();
             startMBFProcess();
         }
         currentStatus = MBFInfo.MBF_STATE_CONTENTS_PLAY;
@@ -251,8 +291,10 @@ public class MBFAIController {
                     }
 
                     currentVideoPosition = player.getCurrentPosition();
-                    if (currentVideoPosition > finalDuration && finalDuration > 0) {
-                        return;
+                    if (currentVideoPosition > (finalDuration-1000) && finalDuration > 0 && isFinalMent == false) {
+                        isFinalMent = true;
+                        video_pause_and_play_mbf_for_demo_sound_play(null,null,"final");
+                        //return;
                     }
 
                     if(mbfInfo.getKewordFinishedFlag() == true && currentReactionTime == 0 && reactionTime == null)
@@ -328,17 +370,34 @@ public class MBFAIController {
         //////////////////////////////////////////////////////
     }
 
+    /*public long getMediaTTSDuration() {
+        return selectedWaveFilePath;
+    }*/
+
     private void mbfTTSWaveFileRandomPlayAssets()
     {
+/* 20181113 - tmp change...
+        //long startTime = SystemClock.uptimeMillis();
         ArrayList <String> playWaves = mbfInfo.getReactionMentListFromDB(keyWord, "scriptFiles");
+        //long stopTime = SystemClock.uptimeMillis();
+
+        //long dur = stopTime - startTime;
+        //MBFLog.d("geonhui83 getReactionMentListFromDB : " + dur);
+        //startTime = SystemClock.uptimeMillis();
         int numWaves = playWaves.size();
 
         Random rand = new Random();
         int voice_index = rand.nextInt() % numWaves;
         if (voice_index < 0)
             voice_index = -voice_index;
-        String selectedWaveFilePath = playWaves.get(voice_index);
+        selectedWaveFilePath = playWaves.get(voice_index);
+*/
+        //stopTime = SystemClock.uptimeMillis();
+        //dur = stopTime - startTime;
+        //MBFLog.d("geonhui83 Random time : " + dur);
         //selectedWaveFilePath = "tts_voice_170_2.wav";
+
+        MBFLog.d("selectedWaveFilePath " + selectedWaveFilePath);
         if(mediaTTSVoicePlayer != null)
         {
             mediaTTSVoicePlayer.stop();
@@ -360,6 +419,9 @@ public class MBFAIController {
             mediaTTSVoicePlayer.prepare();
             //mediaTTSVoicePlayer.setVolume(1f, 1f);
             //mediaTTSVoicePlayer.setLooping(true);
+            //startTime = SystemClock.uptimeMillis();
+            //MBFLog.d("geonhui83 Setup Player time : " + (startTime-stopTime));
+            mediaTTSVoicePlayer.setVolume(5.0f, 5.0f);
             mediaTTSVoicePlayer.start();
             mediaTTSVoicePlayer.setOnCompletionListener(mediaTTSVoiceCompletionListener);
         } catch (IOException e) {
@@ -368,11 +430,40 @@ public class MBFAIController {
         }
     }
 
+    private void mbfMakeTTSInfo(){
+        //long startTime = SystemClock.uptimeMillis();
+        ArrayList <String> playWaves = mbfInfo.getReactionMentListFromDB(keyWord, "scriptFiles");
+        //long stopTime = SystemClock.uptimeMillis();
+
+        //long dur = stopTime - startTime;
+        //MBFLog.d("geonhui83 getReactionMentListFromDB : " + dur);
+        //startTime = SystemClock.uptimeMillis();
+        int numWaves = playWaves.size();
+
+        Random rand = new Random();
+        int voice_index = rand.nextInt() % numWaves;
+        if (voice_index < 0)
+            voice_index = -voice_index;
+        selectedWaveFilePath = playWaves.get(voice_index);
+
+        ArrayList <String> playMention = mbfInfo.getVoiceMentionFromDB(selectedWaveFilePath, "ment");
+        if(playMention.size() == 0) {
+            selectedMention = "";
+        } else {
+            selectedMention= playMention.get(0);
+        }
+    }
+
+    public static String getSelectedMention(){
+        MBFLog.d("kmi getSelectedMention" + selectedMention);
+        return selectedMention;
+    }
+
     public void mbfttsStart() {
         String reactionMent2 = mbfInfo.getReactionMent2();
         MBFLog.d("kmi reactionMent2" + reactionMent2);
 
-        int[] voice_id = {R.raw.tts_voice_32_1, R.raw.tts_voice_32_2, R.raw.tts_voice_32_3, R.raw.tts_voice_32_4, R.raw.tts_voice_32_5,
+        /*int[] voice_id = {R.raw.tts_voice_32_1, R.raw.tts_voice_32_2, R.raw.tts_voice_32_3, R.raw.tts_voice_32_4, R.raw.tts_voice_32_5,
                 R.raw.tts_voice_67_1, R.raw.tts_voice_67_2, R.raw.tts_voice_67_3, R.raw.tts_voice_74_1, R.raw.tts_voice_74_2, R.raw.tts_voice_74_3, R.raw.tts_voice_74_4, R.raw.tts_voice_170_1,
                 R.raw.tts_voice_170_2, R.raw.tts_voice_170_3, R.raw.tts_voice_170_4, R.raw.tts_voice_195_1, R.raw.tts_voice_195_2, R.raw.tts_voice_195_3, R.raw.tts_voice_195_4, R.raw.tts_voice_217_1,
                 R.raw.tts_voice_217_2, R.raw.tts_voice_217_3, R.raw.tts_voice_217_4, R.raw.tts_voice_217_5, R.raw.tts_voice_217_6,
@@ -381,34 +472,63 @@ public class MBFAIController {
         Random rand = new Random();
         int voice_index = rand.nextInt() % 35;
         if (voice_index < 0)
-            voice_index = -voice_index;
-        MBFLog.d("kmi  voice_index " + voice_index + "mediaTTSVoicePlayer start");
+            voice_index = -voice_index;*/
+        //MBFLog.d("kmi  voice_index " + voice_index + "mediaTTSVoicePlayer start");
 
-        if(mediaTTSVoicePlayer != null)
+        if(mediaInitialMentionTTSVoicePlayer != null)
         {
-            mediaTTSVoicePlayer.stop();
-            mediaTTSVoicePlayer.release();
-            mediaTTSVoicePlayer =null;
+            mediaInitialMentionTTSVoicePlayer.stop();
+            mediaInitialMentionTTSVoicePlayer.release();
+            mediaInitialMentionTTSVoicePlayer =null;
         }
 
-        mediaTTSVoicePlayer = MediaPlayer.create(context, voice_id[voice_index]);
-        mediaTTSVoicePlayer.start();
-        mediaTTSVoicePlayer.setOnCompletionListener(mediaTTSVoiceCompletionListener);
+        mediaInitialMentionTTSVoicePlayer = MediaPlayer.create(context, R.raw.name10);
+        mediaInitialMentionTTSVoicePlayer.setVolume(5.0f, 5.0f);
+        mediaInitialMentionTTSVoicePlayer.start();
+        mediaInitialMentionTTSVoicePlayer.setOnCompletionListener(mediaPlayerCompletionListener);
+    }
+
+    public void mbfFinalttsStart() {
+        String reactionMent2 = mbfInfo.getReactionMent2();
+        MBFLog.d("kmi reactionMent2" + reactionMent2);
+
+        /*int[] voice_id = {R.raw.tts_voice_32_1, R.raw.tts_voice_32_2, R.raw.tts_voice_32_3, R.raw.tts_voice_32_4, R.raw.tts_voice_32_5,
+                R.raw.tts_voice_67_1, R.raw.tts_voice_67_2, R.raw.tts_voice_67_3, R.raw.tts_voice_74_1, R.raw.tts_voice_74_2, R.raw.tts_voice_74_3, R.raw.tts_voice_74_4, R.raw.tts_voice_170_1,
+                R.raw.tts_voice_170_2, R.raw.tts_voice_170_3, R.raw.tts_voice_170_4, R.raw.tts_voice_195_1, R.raw.tts_voice_195_2, R.raw.tts_voice_195_3, R.raw.tts_voice_195_4, R.raw.tts_voice_217_1,
+                R.raw.tts_voice_217_2, R.raw.tts_voice_217_3, R.raw.tts_voice_217_4, R.raw.tts_voice_217_5, R.raw.tts_voice_217_6,
+                R.raw.tts_voice_320_1, R.raw.tts_voice_320_2, R.raw.tts_voice_320_3, R.raw.tts_voice_320_4, R.raw.tts_voice_487_1,
+                R.raw.tts_voice_487_2, R.raw.tts_voice_487_3, R.raw.tts_voice_487_4, R.raw.tts_voice_487_5, R.raw.tts_voice_487_6};
+        Random rand = new Random();
+        int voice_index = rand.nextInt() % 35;
+        if (voice_index < 0)
+            voice_index = -voice_index;*/
+        //MBFLog.d("kmi  voice_index " + voice_index + "mediaTTSVoicePlayer start");
+
+        if(mediaInitialMentionTTSVoicePlayer != null)
+        {
+            mediaInitialMentionTTSVoicePlayer.stop();
+            mediaInitialMentionTTSVoicePlayer.release();
+            mediaInitialMentionTTSVoicePlayer =null;
+        }
+
+        mediaInitialMentionTTSVoicePlayer = MediaPlayer.create(context, R.raw.goodbye);
+        mediaInitialMentionTTSVoicePlayer.start();
+        mediaInitialMentionTTSVoicePlayer.setOnCompletionListener(mediaTTSVoiceCompletionListener);
     }
 
     public void video_pause_and_play_mbf_for_demo_sound_play(String ment, String reactionMention, String keyword) {
         MBFLog.d("video_pause_and_play_mbf_for_demo_sound_play start " + ment);
 
-        //if (ment != null && ment.length() > 0) {
-        //player.getPlaybackState();
-        //player.setPlayWhenReady(false);
-        //player.getPlaybackState();
-        setMBFPlayState(MBFInfo.MBF_STATE_MBF_READY);
+
         setExoPlayState(false);
+        //  RandomSelect();
         mbfInfo.setReactionMent(ment, reactionMention);
         keyWord = keyword;
-        //MBFLog.d("setReactionMent " + reactionMention);
-        ////////////////
+
+        mbfMakeTTSInfo();
+
+        MBFLog.d("selectedWaveFilePath " + selectedWaveFilePath + "selectedMention " + selectedMention);
+
         if(mediaPlayer != null)
         {
             mediaPlayer.stop();
@@ -416,9 +536,16 @@ public class MBFAIController {
             mediaPlayer =null;
         }
 
-        mediaPlayer = MediaPlayer.create(context, R.raw.mbf_start);
+        setMBFPlayState(MBFInfo.MBF_STATE_MBF_READY);
+        mediaPlayer = MediaPlayer.create(context, R.raw.sound_start);
         mediaPlayer.start();
-        mediaPlayer.setOnCompletionListener(mediaPlayerCompletionListener);
+        if(keyword.equals("final"))
+        {
+            mediaPlayer.setOnCompletionListener(mediaFinalTTSCompletionListener);
+        }else{
+            mediaPlayer.setOnCompletionListener(mediaInitialMentionTTSCompletionListener);
+        }
+
         //}
 
     }
