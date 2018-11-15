@@ -9,8 +9,8 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:icon="@drawable/icon_soodajam"
-        android:roundIcon="@drawable/icon_soodajam"
+        android:icon="@drawable/icon_soodajam_144"
+        android:roundIcon="@drawable/icon_soodajam_144"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

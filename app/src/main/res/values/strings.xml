@@ -26,8 +26,7 @@
     <string name="initial_setting_limitied_time_guide">아이가 영상을 멈추고 자연스럽게 다른 활동을 할 수 있도록 도와줍니다.</string>
 
     <string name="initial_setting_parent_title">부모님이 함께 참여해 주세요.</string>
-    <string name="initial_setting_parents_guide_text">수다쟁이가 던져주는 질문은 아이와 나눌 대화의 주제가 될 수 있습니다.</string>
-    <string name="initial_setting_parents_guide_text2">아이가 대답할 수 있도록 처음에는 부모님이 함께 해 주세요.</string>
+    <string name="initial_setting_parents_guide_text">수다쟁이가 던져주는 질문은 아이와 나눌 대화의 주제가 될 수 있습니다.\n아이가 대답할 수 있도록 처음에는 부모님이 함께 해 주세요.</string>
     <string name="initial_setting_start">이제 시작해 볼까요?</string>
 
     <string name="slide_1_title">Hello Food!</string>

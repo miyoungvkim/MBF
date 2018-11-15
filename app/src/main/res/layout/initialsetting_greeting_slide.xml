@@ -1,82 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bright_cyan">
+    android:background="@color/bright_cyan"
+    android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/par"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:gravity="top"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/initial_setting_greeting_title"
-                android:textColor="@android:color/black"
-                android:textSize="28sp"
-                android:textStyle="bold" />
-
-            <Space
-                android:id="@+id/title_margen"
-                android:layout_width="match_parent"
-                android:layout_height="8dp" />
-
-            <TextView
-                android:id="@+id/guideText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/initial_setting_greeting_guide"
-                android:textColor="@android:color/black"
-                android:textSize="17sp" />
-
-            <Space
-                android:id="@+id/guide_margen"
-                android:layout_width="match_parent"
-                android:layout_height="4dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView4"
+    <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/hiddenCenter"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:clickable="false"
-        app:srcCompat="@drawable/setup_greeting" />
+        app:scale_base_height="360"
+        app:scale_base_width="640">
 
-    <ImageView
-        android:id="@+id/hiddenCenter"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" />
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/initial_setting_greeting_title"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:scale_textsize="28"
+            app:scale_left="62"
+            app:scale_top="36"
+            app:scale_width="516"
+            app:scale_height="59" />
 
-    <Button
-        android:id="@+id/button_next"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/hiddenCenter"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/round_button_next"
-        android:text="@string/initial_setting_next"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/txt_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/initial_setting_greeting_guide"
+            android:textColor="@android:color/black"
+            app:scale_textsize="17"
+            app:scale_left="62"
+            app:scale_top="75"
+            app:scale_width="516"
+            app:scale_height="59" />
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/setup_greeting"
+            android:clickable="false"
+            app:scale_left="150"
+            app:scale_top="104.3"
+            app:scale_width="330"
+            app:scale_height="227" />
+
+        <Button
+            android:id="@+id/button_next"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_button_next"
+            android:text="@string/initial_setting_next"
+            android:textColor="@color/black"
+            app:scale_textsize="20"
+            app:scale_left="255"
+            app:scale_height="40"
+            app:scale_top="300"
+            app:scale_width="130" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</LinearLayout>

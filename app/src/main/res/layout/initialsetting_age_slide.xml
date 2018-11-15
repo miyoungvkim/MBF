@@ -1,199 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cerulean_blue">
+    android:background="@color/cerulean_blue"
+    android:gravity="center">
 
-
-    <LinearLayout
-        android:id="@+id/par"
-        android:layout_width="546dp"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="36.5dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:scale_base_height="360"
+        app:scale_base_width="640">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_age_setting_title"
             android:textColor="@android:color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/title_margen"
-            android:layout_width="280dp"
-            android:layout_height="8dp"
-            android:layout_alignBottom="@+id/par"
-            android:layout_centerHorizontal="true" />
+            android:textStyle="bold"
+            app:scale_textsize="28"
+            app:scale_left="62"
+            app:scale_top="36"
+            app:scale_width="516"
+            app:scale_height="59" />
 
         <TextView
-            android:id="@+id/guideText"
-            android:layout_width="match_parent"
+            android:id="@+id/txt_guide"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_age_setting_guide_text"
             android:textColor="@android:color/white"
-            android:textSize="17sp" />
+            app:scale_textsize="17"
+            app:scale_left="62"
+            app:scale_top="75"
+            app:scale_width="516"
+            app:scale_height="59" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <RadioGroup
-        android:id="@+id/radioGroup_age"
-        android:layout_width="match_parent"
-        android:layout_height="26dp"
-        android:layout_above="@+id/hiddenCenter"
-        android:layout_alignLeft="@+id/par"
-        android:layout_alignRight="@+id/par"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
-
-        <Space
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25" />
+            app:srcCompat="@drawable/setup_age_all"
+            app:scale_left="30"
+            app:scale_top="110.3"
+            app:scale_width="580"
+            app:scale_height="139.8" />
 
-        <RadioButton
-            android:id="@+id/age_btn1"
+        <RadioGroup
+            android:id="@+id/radioGroup_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_weight="0.25"
-            android:button="@drawable/radio_button_age"
-            android:checked="true"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="didTapButton"
-            android:textColor="@color/white"
-            android:text="0-2세" />
+            android:orientation="horizontal"
+            app:scale_height="26"
+            app:scale_left="60"
+            app:scale_top="254"
+            app:scale_width="516">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25" />
+            <RadioButton
+                android:id="@+id/age_btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:button="@drawable/radio_button_age"
+                android:checked="true"
+                android:onClick="didTapButton"
+                android:text="  0-2세"
+                android:textColor="@color/white"
+                app:scale_textsize="15" />
 
-        <RadioButton
-            android:id="@+id/age_btn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_weight="0.25"
-            android:button="@drawable/radio_button_age"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="didTapButton"
-            android:text="3-5세"
-            android:textColor="@color/white" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25" />
+            <RadioButton
+                android:id="@+id/age_btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:button="@drawable/radio_button_age"
+                android:onClick="didTapButton"
+                android:text="  3-5세"
+                android:textColor="@color/white"
+                app:scale_textsize="15" />
 
-        <RadioButton
-            android:id="@+id/age_btn3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_weight="0.25"
-            android:button="@drawable/radio_button_age"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="didTapButton"
-            android:textColor="@color/white"
-            android:text="6-7세" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25" />
+            <RadioButton
+                android:id="@+id/age_btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:button="@drawable/radio_button_age"
+                android:onClick="didTapButton"
+                android:text="  6-7세"
+                android:textColor="@color/white"
+                app:scale_textsize="15" />
 
-        <RadioButton
-            android:id="@+id/age_btn4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_weight="0.25"
-            android:button="@drawable/radio_button_age"
-            android:gravity="center_vertical|center_horizontal"
-            android:onClick="didTapButton"
-            android:textColor="@color/white"
-            android:text="전체" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1" />
 
-    </RadioGroup>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroup_age"
-        android:layout_toStartOf="@+id/imageView2"
-        android:layout_marginEnd="64dp"
-        app:srcCompat="@drawable/setup_age_bird" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroup_age"
-        android:layout_toLeftOf="@+id/imageView4"
-        android:layout_marginEnd="42.1dp"
-        app:srcCompat="@drawable/setup_age_cat" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroup_age"
-        android:layout_alignEnd="@+id/par"
-        app:srcCompat="@drawable/setup_age_girl" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroup_age"
-        android:layout_toLeftOf="@+id/imageView3"
-        android:layout_marginEnd="29.3dp"
-        app:srcCompat="@drawable/setup_age_pelican" />
-
-    <ImageView
-        android:id="@+id/hiddenCenter"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/par"
-        android:layout_centerHorizontal="true"
-        android:background="@color/cerulean_blue" />
+            <RadioButton
+                android:id="@+id/age_btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:button="@drawable/radio_button_age"
+                android:onClick="didTapButton"
+                android:text="  전체"
+                android:textColor="@color/white"
+                app:scale_textsize="15" />
+        </RadioGroup>
 
     <Button
         android:id="@+id/button_accept"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/hiddenCenter"
-        android:layout_alignBottom="@+id/hiddenCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/round_button_age_accept"
         android:text="적용하기"
         android:textColor="@color/text_button_white_black"
-        android:textSize="20sp" />
+        app:scale_textsize="20"
+        app:scale_left="180"
+        app:scale_top="300"
+        app:scale_width="130"
+        app:scale_height="40" />
 
     <Button
         android:id="@+id/button_skip"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/hiddenCenter"
-        android:layout_alignBottom="@+id/hiddenCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/round_button_age"
         android:text="건너뛰기"
         android:textColor="@color/text_button_black_white"
-        android:textSize="20sp" />
-
-
-</RelativeLayout>
+        app:scale_textsize="20"
+        app:scale_left="330"
+        app:scale_top="300"
+        app:scale_width="130"
+        app:scale_height="40" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</LinearLayout>

@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gold">
+    android:background="@color/light_gold"
+    android:gravity="center">
 
-
-    <LinearLayout
-        android:id="@+id/par"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="36.5dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        app:scale_base_height="360"
+        app:scale_base_width="640">
 
         <TextView
-            android:id="@+id/txt_initial_setting_name_title"
-            android:layout_width="wrap_content"
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="@string/initial_setting_name_title"
             android:textColor="@android:color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/title_margen"
-            android:layout_width="280dp"
-            android:layout_height="8dp"
-            android:layout_alignBottom="@+id/par"
-            android:layout_centerHorizontal="true" />
+            android:textStyle="bold"
+            app:scale_textsize="28"
+            app:scale_left="62"
+            app:scale_top="36"
+            app:scale_width="516"
+            app:scale_height="59" />
 
         <TextView
-            android:id="@+id/img_initial_setting_name_guide"
+            android:id="@+id/txt_guide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="@string/initial_setting_name_guide"
             android:textColor="@android:color/black"
-            android:textSize="17sp" />
+            app:scale_textsize="17"
+            app:scale_left="62"
+            app:scale_top="75"
+            app:scale_width="516"
+            app:scale_height="59" />
 
         <ImageView
-            android:id="@+id/img_initial_setting_name_icon"
-            android:layout_width="104dp"
-            android:layout_height="122.7dp"
-            android:layout_marginTop="13.5dp"
-            app:srcCompat="@drawable/setup_name_girl" />
+            android:id="@+id/img_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/setup_name_girl"
+            android:clickable="false"
+            app:scale_left="270.8"
+            app:scale_top="108"
+            app:scale_width="104"
+            app:scale_height="122.7" />
 
 
         <EditText
             android:id="@+id/edittxt_initial_setting_name_baby_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:hint="이름을 입력해주세요"
-            android:paddingBottom="10dp"
-            android:orientation="horizontal" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/hiddenCenter"
-        android:layout_width="280dp"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/par"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="6dp"
-        android:background="@color/light_gold" />
-
-    <Button
-        android:id="@+id/button_skip"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_alignRight="@+id/hiddenCenter"
-        android:layout_alignBottom="@+id/hiddenCenter"
-        android:background="@drawable/round_button_name"
-        android:text="건너뛰기"
-        android:textColor="@color/text_button_black_white"
-        android:textSize="20sp" />
+            app:scale_textsize="22"
+            app:scale_left="219.5"
+            app:scale_top="234.6"
+            app:scale_height="50"
+            app:scale_width="202" />
 
     <Button
         android:id="@+id/button_accept"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_alignLeft="@+id/hiddenCenter"
-        android:layout_alignBottom="@+id/hiddenCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/round_button_name_accept"
         android:text="적용하기"
         android:textColor="@color/text_button_white_black"
-        android:textSize="20sp" />
+        app:scale_textsize="20"
+        app:scale_left="180"
+        app:scale_top="300"
+        app:scale_width="130"
+        app:scale_height="40" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/button_skip"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button_name"
+            android:text="건너뛰기"
+            android:textColor="@color/text_button_black_white"
+            app:scale_textsize="20"
+            app:scale_left="330"
+            app:scale_top="300"
+            app:scale_width="130"
+            app:scale_height="40" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+</LinearLayout>

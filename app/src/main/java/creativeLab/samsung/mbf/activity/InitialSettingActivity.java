@@ -29,7 +29,7 @@ import creativeLab.samsung.mbf.utils.UserInfo;
 
 public class InitialSettingActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
+    private CustomViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
     private TextView[] dots;
@@ -39,24 +39,6 @@ public class InitialSettingActivity extends AppCompatActivity {
     private RadioGroup radioAge;
     private RadioGroup radioLimitTime;
 
-    //	viewpager change listener
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
     private PrefManager prefManager;
     private View decorView;
     private int uiOption;
@@ -101,15 +83,11 @@ public class InitialSettingActivity extends AppCompatActivity {
         button_accept = new Button[layouts.length];
         button_skip = new Button[layouts.length];
 
-        // adding bottom dots
-        addBottomDots(0);
-
         // making notification bar transparent
         changeStatusBarColor();
 
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
     }
 
     public void didTapButton(View view) {
@@ -144,25 +122,6 @@ public class InitialSettingActivity extends AppCompatActivity {
         if (hasFocus) {
             decorView.setSystemUiVisibility(uiOption);
         }
-    }
-
-    private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
-
-        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
-        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
-
-        dotsLayout.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(colorsInactive[currentPage]);
-            dotsLayout.addView(dots[i]);
-        }
-
-        if (dots.length > 0)
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
     private int getItem(int i) {

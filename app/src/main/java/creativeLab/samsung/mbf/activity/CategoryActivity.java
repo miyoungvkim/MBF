@@ -37,6 +37,8 @@ public class CategoryActivity extends AppCompatActivity {
     private ImageButton btnSetting;
     private ImageButton btnSearching;
     private ImageButton btnFavorite;
+    private Button btnChracter;
+    private Button btnVideo;
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -82,6 +84,24 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
+        btnChracter= findViewById(R.id.btn_chracter);
+        btnChracter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnChracter.setSelected(true);
+                btnVideo.setSelected(false);
+            }
+        });
+
+        btnVideo= findViewById(R.id.btn_video);
+        btnVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnChracter.setSelected(false);
+                btnVideo.setSelected(true);
+            }
+        });
+
         btnFavorite = findViewById(R.id.btn_favorite);
         btnFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +109,9 @@ public class CategoryActivity extends AppCompatActivity {
 
             }
         });
+
+        btnChracter.setSelected(true);
+
         categoryInfoList = setCategoryList();
         adapter = new CategoryListAdapter(this, categoryInfoList);
 
