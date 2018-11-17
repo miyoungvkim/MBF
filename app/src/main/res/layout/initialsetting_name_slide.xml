@@ -59,25 +59,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="이름을 입력해주세요"
+            android:inputType="text"
+            android:imeOptions="flagNoExtractUi|actionDone"
+            android:maxLines="1"
             app:scale_textsize="22"
             app:scale_left="219.5"
             app:scale_top="234.6"
             app:scale_height="50"
             app:scale_width="202" />
 
-    <Button
-        android:id="@+id/button_accept"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_button_name_accept"
-        android:text="적용하기"
-        android:textColor="@color/text_button_white_black"
-        app:scale_textsize="20"
-        app:scale_left="180"
-        app:scale_top="300"
-        app:scale_width="130"
-        app:scale_height="40" />
+        <Button
+            android:id="@+id/button_accept"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_button_name_accept"
+            android:text="적용하기"
+            android:textColor="@color/text_button_white_black"
+            app:scale_textsize="20"
+            app:scale_left="180"
+            app:scale_top="300"
+            app:scale_width="130"
+            app:scale_height="40" />
 
         <Button
             android:id="@+id/button_skip"

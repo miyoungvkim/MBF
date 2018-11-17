@@ -1,5 +1,6 @@
 package creativeLab.samsung.mbf.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -25,6 +29,7 @@ import android.widget.Toast;
 
 import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.utils.BounceInterpolator;
+import creativeLab.samsung.mbf.utils.MBFLog;
 import creativeLab.samsung.mbf.utils.UserInfo;
 
 public class InitialSettingActivity extends AppCompatActivity {
@@ -180,6 +185,19 @@ public class InitialSettingActivity extends AppCompatActivity {
                 }
                 case R.layout.initialsetting_name_slide : {
                     txtName = view.findViewById(R.id.edittxt_initial_setting_name_baby_name);
+                    txtName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                        @Override
+                        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                            switch(actionId) {
+                                case EditorInfo.IME_ACTION_DONE:
+                                    break;
+                                default :
+                                    break;
+                            }
+                            return false;
+                        }
+                    });
+
                     button_skip[position] = view.findViewById(R.id.button_skip);
                     button_skip[position].setOnClickListener(new View.OnClickListener() {
                         @Override
