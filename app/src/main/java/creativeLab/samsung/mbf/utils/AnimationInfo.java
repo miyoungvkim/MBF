@@ -2,6 +2,7 @@ package creativeLab.samsung.mbf.utils;
 
 public class AnimationInfo {
     private String category_id;
+    private String selected_category_id;
     private String title;
     private String file_name;
     private int thumbnail;
@@ -14,6 +15,13 @@ public class AnimationInfo {
     }
     public void setID(String category_id) {
         this.category_id = category_id;
+    }
+
+    public String getSelected_categoryID() {
+        return selected_category_id;
+    }
+    public void setSelected_categoryID(String selected_category_id) {
+        this.selected_category_id = selected_category_id;
     }
 
     public String getTitle() {

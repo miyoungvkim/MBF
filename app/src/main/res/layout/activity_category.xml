@@ -84,9 +84,19 @@
             app:scale_width="70"
             app:scale_height="26" />
 
-        <include
-            layout="@layout/content_main"
-            android:layout_gravity="center" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:scale_left="0"
+            app:scale_top="86"
+            app:scale_width="640"
+            app:scale_height="196">
+
+            <include
+                layout="@layout/content_main"
+                android:layout_gravity="center" />
+        </LinearLayout>
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
 </LinearLayout>

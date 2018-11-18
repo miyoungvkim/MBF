@@ -49,7 +49,11 @@ public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.
 
         holder.title.setText(animationInfo.getTitle());
         holder.number = position;
-
+        String selectedCategoryId = animationInfo.getSelected_categoryID();
+        if(selectedCategoryId.equals("frienzoo") || selectedCategoryId.equals("poli") || selectedCategoryId.equals("banji") || selectedCategoryId.equals("woodang") ){
+            int white = mContext.getResources().getColor(R.color.white);
+            holder.title.setTextColor(white);
+        }
         // loading album cover using Glide library
         Glide.with(mContext).load(animationInfo.getThumbnail()).into(holder.thumbnail);
 /*
@@ -105,14 +109,13 @@ public class EpisodeListAdapter extends RecyclerView.Adapter<EpisodeListAdapter.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title;
-        public ImageView thumbnail, overflow;
+        public ImageView thumbnail;
         public int number;
 
         public MyViewHolder(View view) {
             super(view);
             title = view.findViewById(R.id.title);
             thumbnail = view.findViewById(R.id.thumbnail);
-            overflow = view.findViewById(R.id.overflow);
             number = -1;
         }
 

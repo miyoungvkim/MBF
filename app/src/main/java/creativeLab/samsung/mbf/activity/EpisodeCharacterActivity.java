@@ -3,7 +3,6 @@ package creativeLab.samsung.mbf.activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -91,6 +90,8 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
         {
             TextView charText = (TextView)findViewById(R.id.txt_character_name);
             charText.setText("로보카폴리");
+            int white = getResources().getColor(R.color.white);
+            charText.setTextColor(white);
 
             RelativeLayout RLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
             int cerulean_blue = getResources().getColor(R.color.cerulean_blue);
@@ -134,8 +135,6 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
 
             ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
             BView.setBackground(getDrawable(R.drawable.bg_black));
-
-
             //IView.setImageDrawable(characterImage);
         }
 
@@ -186,6 +185,7 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
                     int thumbnail_image = this.getResources().getIdentifier(image, "drawable", this.getPackageName());
 
                     AnimationInfo episodeInfo = new AnimationInfo();
+                    episodeInfo.setSelected_categoryID(category_id);
                     episodeInfo.setID(id);
                     episodeInfo.setTitle(title);
                     episodeInfo.setThumbnail(thumbnail_image);

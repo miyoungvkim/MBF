@@ -51,13 +51,6 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         // loading album cover using Glide library
         Glide.with(mContext).load(categoryInfo.getThumbnail()).into(holder.thumbnail);
 
-        holder.overflow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showPopupMenu(holder.overflow);
-            }
-        });
-
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +107,6 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             super(view);
             title = view.findViewById(R.id.title);
             thumbnail = view.findViewById(R.id.thumbnail);
-            overflow = view.findViewById(R.id.overflow);
         }
     }
 
