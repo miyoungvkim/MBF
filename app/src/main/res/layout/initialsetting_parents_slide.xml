@@ -53,19 +53,19 @@
             app:scale_width="353.9"
             app:scale_height="192.9" />
 
-    <Button
-        android:id="@+id/button_start"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/round_button_start"
-        android:text="@string/initial_setting_start"
-        android:textColor="@color/black"
-        app:scale_textsize="20"
-        app:scale_left="200"
-        app:scale_top="300"
-        app:scale_width="240"
-        app:scale_height="40" />
+        <Button
+            android:id="@+id/button_start"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/round_button_start"
+            android:text="@string/initial_setting_start"
+            android:textColor="@color/black"
+            app:scale_textsize="20"
+            app:scale_left="200"
+            app:scale_top="300"
+            app:scale_width="240"
+            app:scale_height="40" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 </LinearLayout>

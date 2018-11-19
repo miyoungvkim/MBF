@@ -84,7 +84,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btnChracter= findViewById(R.id.btn_chracter);
+        btnChracter= findViewById(R.id.button_Char);
         btnChracter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +93,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
 
-        btnVideo= findViewById(R.id.btn_video);
+        btnVideo= findViewById(R.id.button_Video);
         btnVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

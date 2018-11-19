@@ -3,8 +3,8 @@ package creativeLab.samsung.mbf.activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -124,6 +124,7 @@ public class FavoriteActivity extends AppCompatActivity {
                     int thumbnail_image = this.getResources().getIdentifier(image, "drawable", this.getPackageName());
 
                     AnimationInfo episodeInfo = new AnimationInfo();
+                    episodeInfo.setSelected_categoryID(category_id);
                     episodeInfo.setID(id);
                     episodeInfo.setTitle(title);
                     episodeInfo.setThumbnail(thumbnail_image);

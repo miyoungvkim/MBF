@@ -1,102 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bright_cyan"
-    android:gravity="center">
+    android:background="@color/main_screen">
 
-    <com.ssomai.android.scalablelayout.ScalableLayout
+    <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:scale_base_height="360"
-        app:scale_base_width="640">
+        android:background="#3ed4ff"
+        app:layout_anchor="@+id/relativeLayout"
+        app:layout_anchorGravity="right|top">
+
+        <ImageView
+            android:id="@+id/hiddenCenter"
+            android:layout_width="156dp"
+            android:layout_height="26dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37dp"
+            android:background="#3ed4ff" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg"
-            app:scale_top="177"
-            app:scale_width="640"
-            app:scale_height="183" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/bg" />
 
         <ImageButton
             android:id="@+id/btn_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_favorite"
-            app:scale_left="20"
-            app:scale_top="20"
-            app:scale_width="50"
-            app:scale_height="50" />
+            android:src="@drawable/ic_favorite" />
 
         <ImageButton
             android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_search"
-            app:scale_left="570"
-            app:scale_top="20"
-            app:scale_width="50"
-            app:scale_height="50" />
+            android:src="@drawable/ic_search" />
+
 
         <ImageButton
             android:id="@+id/btn_setting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="34dp"
+            android:layout_height="33dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/oval_button2"
-            android:src="@drawable/shape"
-            app:scale_height="34"
-            app:scale_left="570"
-            app:scale_top="317"
-            app:scale_width="34" />
+            android:src="@drawable/shape" />
 
         <Button
-            android:id="@+id/btn_chracter"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/button_Char"
+            android:layout_width="70dp"
+            android:layout_height="26dp"
+            android:layout_alignBottom="@+id/hiddenCenter"
+            android:layout_alignLeft="@+id/hiddenCenter"
             android:background="@drawable/round_button_bg1"
             android:text="캐릭터"
             android:textColor="#ea3247"
-            app:scale_textsize="15"
-            app:scale_left="242"
-            app:scale_top="33"
-            app:scale_width="70"
-            app:scale_height="26" />
+            android:textSize="15sp"/>
 
         <Button
-            android:id="@+id/btn_video"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/button_Video"
+            android:layout_width="70dp"
+            android:layout_height="26dp"
+            android:layout_alignBottom="@+id/hiddenCenter"
+            android:layout_alignRight="@+id/hiddenCenter"
             android:background="@drawable/round_button_bg2"
             android:text="동영상"
             android:textColor="#005dc6"
-            app:scale_textsize="15"
-            app:scale_left="328"
-            app:scale_top="33"
-            app:scale_width="70"
-            app:scale_height="26" />
+            android:textSize="15sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:scale_left="0"
-            app:scale_top="86"
-            app:scale_width="640"
-            app:scale_height="196">
+    </RelativeLayout>
 
-            <include
-                layout="@layout/content_main"
-                android:layout_gravity="center" />
-        </LinearLayout>
 
-    </com.ssomai.android.scalablelayout.ScalableLayout>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="86dp"
+        android:orientation="vertical">
+        <include
+            layout="@layout/content_main"
+            />
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
