@@ -29,21 +29,19 @@
     <dimen name="ic_album_overflow_height">30dp</dimen>
     <dimen name="ic_album_overflow_margin_top">10dp</dimen>
 
-    <!-- for category main layout -->
-    <dimen name="chracter_layout_thumbnail_padding_start">69.2dp</dimen>
-    <dimen name="chracter_layout_thumbnail_padding_end">15.9dp</dimen>
+    <!-- for content main layout -->
+    <dimen name="chracter_layout_thumbnail_padding_start">109.2dp</dimen>
+    <dimen name="chracter_layout_thumbnail_padding_end">31.8dp</dimen>
 
-    <dimen name="category_main_layout_thumbnail_padding_top">86dp</dimen>
-    <dimen name="category_main_layout_thumbnail_text_size">15sp</dimen>
-
+    <dimen name="category_main_layout_thumbnail_padding_top">237dp</dimen>
+    <dimen name="category_main_layout_thumbnail_text_size">20sp</dimen>
 
     <!-- for episode main layout -->
-    <dimen name="episode_layout_chracter_padding_bottom">2dp</dimen>
-    <dimen name="episode_layout_chracter_padding_left">5dp</dimen>
+    <dimen name="episode_layout_chracter_padding_bottom">6dp</dimen>
+    <dimen name="episode_layout_chracter_padding_left">15dp</dimen>
 
-    <dimen name="episode_layout_thumbnail_padding_start">220dp</dimen>
-    <dimen name="episode_layout_thumbnail_padding_end">70dp</dimen>
+    <dimen name="episode_layout_thumbnail_padding_start">320dp</dimen>
+    <dimen name="episode_layout_thumbnail_padding_end">150dp</dimen>
 
-    <dimen name="episode_layout_thumbnailcategory_main_layout_thumbnail_text_size">200dp</dimen>
-
+    <dimen name="episode_layout_thumbnailcategory_main_layout_thumbnail_text_size">378dp</dimen>
 </resources>

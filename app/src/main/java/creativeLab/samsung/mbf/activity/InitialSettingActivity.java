@@ -202,7 +202,8 @@ public class InitialSettingActivity extends AppCompatActivity {
                     button_skip[position].setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            launchHomeScreen();
+                            // launchHomeScreen()
+                            onClickNextPage();
                         }
                     });
                     button_accept[position] = view.findViewById(R.id.button_accept);
@@ -226,7 +227,8 @@ public class InitialSettingActivity extends AppCompatActivity {
                     button_skip[position].setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            launchHomeScreen();
+                            // launchHomeScreen()
+                            onClickNextPage();
                         }
                     });
                     button_accept[position] = view.findViewById(R.id.button_accept);

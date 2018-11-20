@@ -8,11 +8,12 @@
     android:gravity="center">
 
     <com.ssomai.android.scalablelayout.ScalableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         app:scale_base_height="360"
-        app:scale_base_width="640">
+        app:scale_base_width="740"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/txt_title"
@@ -21,11 +22,11 @@
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_limitied_time_title"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="28"
-            app:scale_left="43.5"
+            app:scale_left="20"
             app:scale_top="36"
-            app:scale_width="553"
+            app:scale_width="700"
             app:scale_height="100" />
 
         <TextView
@@ -35,10 +36,11 @@
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_limitied_time_guide"
             android:textColor="@android:color/white"
+            android:fontFamily="@font/thejunggt150"
             app:scale_textsize="17"
-            app:scale_left="43.5"
+            app:scale_left="20"
             app:scale_top="75.5"
-            app:scale_width="553"
+            app:scale_width="700"
             app:scale_height="100" />
 
         <ImageView
@@ -48,7 +50,7 @@
             android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/setup_time"
             android:clickable="false"
-            app:scale_left="227.5"
+            app:scale_left="277.5"
             app:scale_top="123.2"
             app:scale_width="175.7"
             app:scale_height="176.6" />
@@ -62,8 +64,9 @@
             android:background="@drawable/round_button_next"
             android:text="@string/initial_setting_next"
             android:textColor="@color/black"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="20"
-            app:scale_left="255"
+            app:scale_left="305"
             app:scale_height="40"
             app:scale_top="300"
             app:scale_width="130" />

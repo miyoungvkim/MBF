@@ -55,26 +55,29 @@
       ],
       "poli": [
         {
-          "id": "robocar_poli_s02e02",
-          "contents_address": "http://geonhui83-jpwe.streaming.media.azure.net/41a18283-142b-40d5-a314-3b357031ce7d/robocar_poli_s02e02.ism/manifest(format=m3u8-aapl-v3)",
-          "subtitle_address": "https://kidsvideo.blob.core.windows.net/asset-0c208226-d783-4289-8e0a-eefcf7151230/robocar_poli_s02e02.txt?sv=2015-07-08&sr=c&si=3f5e061f-112d-4ab7-aad2-b640dd0be79b&sig=NUH4%2F4EUDdJ%2B014JG9Hxyb9N5Fw20vZIt8PwIO4KWXc%3D&st=2018-10-23T08%3A05%3A44Z&se=2118-10-23T08%3A05%3A44Z",
-          "title": "로보카폴리 시즌2 2화 따라하지 말아요",
-          "file_name": "robocar_poli_s02e02",
-          "thumbnail": "movie_thumbnail_poli_1"
-        },
-        {
           "id": "robocar_poli_s01e21",
           "contents_address": "http://geonhui83-jpwe.streaming.media.azure.net/65e899cb-2ea9-4b4d-9cc9-3d88d0e1a149/robocar_poli_s01s21.ism/manifest(format=m3u8-aapl-v3)",
           "subtitle_address": "https://kidsvideo.blob.core.windows.net/asset-b3d50759-e967-4d8d-8fd4-8876737470a5/robocar_poli_s01e21.txt?sv=2015-07-08&sr=c&si=6c294e83-4745-4055-a172-0545e7cb8189&sig=e9N%2FeOFvy%2BL9F2Ga5JGxqu6wx8j4nb9eZo%2BUkg6ErfM%3D&st=2018-11-09T07%3A51%3A34Z&se=2118-11-09T07%3A51%3A34Z",
           "title": "로보카폴리 시즌1 21화 숨바꼭질",
+          "time" : "14:33",
           "file_name": "robocar_poli_s01e21",
+          "thumbnail": "movie_thumbnail_poli_1"
+        },
+        {
+          "id": "robocar_poli_s02e02",
+          "contents_address": "http://geonhui83-jpwe.streaming.media.azure.net/41a18283-142b-40d5-a314-3b357031ce7d/robocar_poli_s02e02.ism/manifest(format=m3u8-aapl-v3)",
+          "subtitle_address": "https://kidsvideo.blob.core.windows.net/asset-0c208226-d783-4289-8e0a-eefcf7151230/robocar_poli_s02e02.txt?sv=2015-07-08&sr=c&si=3f5e061f-112d-4ab7-aad2-b640dd0be79b&sig=NUH4%2F4EUDdJ%2B014JG9Hxyb9N5Fw20vZIt8PwIO4KWXc%3D&st=2018-10-23T08%3A05%3A44Z&se=2118-10-23T08%3A05%3A44Z",
+          "title": "로보카폴리 시즌2 2화 따라하지 말아요",
+          "time" : "12:26",
+          "file_name": "robocar_poli_s02e02",
           "thumbnail": "movie_thumbnail_poli_2"
         },
         {
           "id": "robocar_poli_s02e44",
           "contents_address": "http://geonhui83-jpwe.streaming.media.azure.net/65e899cb-2ea9-4b4d-9cc9-3d88d0e1a149/robocar_poli_s01s21.ism/manifest(format=m3u8-aapl-v3)",
           "subtitle_address": "null",
-          "title": "로보카폴리 시즌1 21화 어디있니 진",
+          "title": "로보카폴리 시즌2 21화 어디있니 진",
+          "time" : "01:27",
           "file_name": "robocar_poli_s02e44",
           "thumbnail": "movie_thumbnail_poli_3"
         }
@@ -85,6 +88,7 @@
           "contents_address": "http://geonhui83-jpwe.streaming.media.azure.net/27b84bab-5ced-447d-bd2c-6244fdf31bde/frienzoo_s00s08.ism/manifest(format=m3u8-aapl-v3)",
           "subtitle_address": "https://kidsvideo.blob.core.windows.net/asset-ebf34a07-4df7-4749-aa1b-e1ec20cd47a7/frienzoo_s00s08.txt?sv=2015-07-08&sr=c&si=9deb808a-fe4a-447d-9e5a-7aed505e03a5&sig=JdyOV3GsQHhdGYMCVgpUUhG0bQhgge0YMg4fjTeYTKg%3D&st=2018-11-09T16%3A31%3A17Z&se=2118-11-09T16%3A31%3A17Z",
           "title": "프렌쥬 7화 : 치코의 남쪽여행",
+          "time" : "01:27",
           "file_name": "frienzoo_s00_s07",
           "thumbnail": "movie_thumbnail_zoo_1"
         },
@@ -93,6 +97,7 @@
           "contents_address": "http://geonhui83-jpwe.streaming.media.azure.net/2baaa56d-8c17-4d61-b233-e31d80addb18/frienzoo_s00s20.ism/manifest(format=m3u8-aapl-v3)",
           "subtitle_address": "https://kidsvideo.blob.core.windows.net/asset-0e4ccb44-a77a-4c75-8784-9b117842cd8a/frienzoo_s00s20.txt?sv=2015-07-08&sr=c&si=3440b241-ad86-4aa4-adb2-ea6e1a28a33d&sig=1AvXvpOFR1uGhGDMm1GquYLLsVdLqwlatx67%2FMW5YxY%3D&st=2018-11-09T16%3A11%3A35Z&se=2118-11-09T16%3A11%3A35Z",
           "title": "프렌쥬 20화 : 타라와 귀여운 불청객",
+          "time" : "01:27",
           "file_name": "frienzoo_s00_s20",
           "thumbnail": "movie_thumbnail_zoo_2"
         },
@@ -100,7 +105,8 @@
           "id": "frienzoo_s00_s44",
           "contents_address": "http://geonhui83-jpwe.streaming.media.azure.net/a1548cb7-25a1-4484-bef5-0c70c3629a0f/frienzoo_s00e37.ism/manifest(format=m3u8-aapl-v3)",
           "subtitle_address": "null",
-          "title": "프렌쥬 44화 : 치코의 세가지 소원 (Frienzoo EP44)",
+          "title": "프렌쥬 44화 : 치코의 세가지 소원",
+          "time" : "01:27",
           "file_name": "frienzoo_s00_s44",
           "thumbnail": "movie_thumbnail_zoo_3"
         }

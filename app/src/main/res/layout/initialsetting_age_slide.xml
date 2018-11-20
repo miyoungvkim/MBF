@@ -8,11 +8,12 @@
     android:gravity="center">
 
     <com.ssomai.android.scalablelayout.ScalableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         app:scale_base_height="360"
-        app:scale_base_width="640">
+        app:scale_base_width="740"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/txt_title"
@@ -21,9 +22,9 @@
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_age_setting_title"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="28"
-            app:scale_left="62"
+            app:scale_left="112"
             app:scale_top="36"
             app:scale_width="516"
             app:scale_height="59" />
@@ -35,8 +36,9 @@
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_age_setting_guide_text"
             android:textColor="@android:color/white"
+            android:fontFamily="@font/thejunggt150"
             app:scale_textsize="17"
-            app:scale_left="62"
+            app:scale_left="112"
             app:scale_top="75"
             app:scale_width="516"
             app:scale_height="59" />
@@ -46,10 +48,66 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/setup_age_all"
-            app:scale_left="30"
+            app:scale_left="80"
             app:scale_top="110.3"
             app:scale_width="580"
             app:scale_height="139.8" />
+
+        <TextView
+            android:id="@+id/radiogroup_age_text_0_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/initial_setting_age_0_2"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/thejunggt150"
+            android:gravity="center_horizontal"
+            app:scale_textsize="15"
+            app:scale_height="17"
+            app:scale_left="123.2"
+            app:scale_top="259.5"
+            app:scale_width="42" />
+
+        <TextView
+            android:id="@+id/radiogroup_age_text_3_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/initial_setting_age_3_5"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/thejunggt150"
+            app:scale_height="17"
+            app:scale_left="267.7"
+            app:scale_textsize="15"
+            app:scale_top="259.5"
+            app:scale_width="42" />
+
+        <TextView
+            android:id="@+id/radiogroup_age_text_6_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/initial_setting_age_6_7"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/thejunggt150"
+            android:gravity="center_horizontal"
+            app:scale_textsize="15"
+            app:scale_height="17"
+            app:scale_left="411.8"
+            app:scale_top="259.5"
+            app:scale_width="42" />
+
+        <TextView
+            android:id="@+id/radiogroup_age_text_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/initial_setting_age_all"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/thejunggt150"
+            app:scale_height="17"
+            app:scale_left="561.9"
+            app:scale_textsize="15"
+            app:scale_top="259.5"
+            app:scale_width="42" />
 
         <RadioGroup
             android:id="@+id/radioGroup_age"
@@ -57,69 +115,67 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:scale_height="26"
-            app:scale_left="60"
+            app:scale_left="80"
             app:scale_top="254"
-            app:scale_width="516">
+            app:scale_width="580">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.05" />
 
             <RadioButton
                 android:id="@+id/age_btn1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_height="match_parent"
+                android:layout_weight="0.44"
                 android:button="@drawable/radio_button_age"
                 android:checked="true"
-                android:onClick="didTapButton"
-                android:text="  0-2세"
-                android:textColor="@color/white"
-                app:scale_textsize="15" />
+                android:onClick="didTapButton" />
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.2" />
 
             <RadioButton
                 android:id="@+id/age_btn2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_height="match_parent"
+                android:layout_weight="0.44"
                 android:button="@drawable/radio_button_age"
-                android:onClick="didTapButton"
-                android:text="  3-5세"
-                android:textColor="@color/white"
-                app:scale_textsize="15" />
+                android:onClick="didTapButton" />
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.2" />
 
             <RadioButton
                 android:id="@+id/age_btn3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_height="match_parent"
+                android:layout_weight="0.44"
                 android:button="@drawable/radio_button_age"
-                android:onClick="didTapButton"
-                android:text="  6-7세"
-                android:textColor="@color/white"
-                app:scale_textsize="15" />
+                android:onClick="didTapButton" />
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1" />
+                android:layout_height="match_parent"
+                android:layout_weight="0.2" />
 
             <RadioButton
                 android:id="@+id/age_btn4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
+                android:layout_height="match_parent"
+                android:layout_weight="0.44"
                 android:button="@drawable/radio_button_age"
-                android:onClick="didTapButton"
-                android:text="  전체"
-                android:textColor="@color/white"
-                app:scale_textsize="15" />
+                android:onClick="didTapButton" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.12" />
         </RadioGroup>
 
         <Button
@@ -127,11 +183,12 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_button_age_accept"
-            android:text="적용하기"
-            android:textColor="@color/text_button_white_black"
+            android:background="@drawable/round_button_initial_setting_white_to_strawberry"
+            android:text="@string/initial_setting_apply"
+            android:textColor="@color/text_button_black_white"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="20"
-            app:scale_left="180"
+            app:scale_left="230"
             app:scale_top="300"
             app:scale_width="130"
             app:scale_height="40" />
@@ -141,11 +198,12 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_button_age"
-            android:text="건너뛰기"
+            android:background="@drawable/round_button_initial_setting_white_to_strawberry"
+            android:text="@string/initial_setting_skip"
             android:textColor="@color/text_button_black_white"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="20"
-            app:scale_left="330"
+            app:scale_left="380"
             app:scale_top="300"
             app:scale_width="130"
             app:scale_height="40" />

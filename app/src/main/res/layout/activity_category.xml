@@ -5,97 +5,145 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_screen">
+    android:background="#3ed4ff">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <LinearLayout
+        android:id="@+id/scalable_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:scale_base_height="183"
+            app:scale_base_width="740">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg"
+                app:scale_left="0"
+                app:scale_top="0"
+                app:scale_width="740"
+                app:scale_height="183" />
+
+            <ImageButton
+                android:id="@+id/btn_setting_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/oval_button2"
+                app:scale_left="686"
+                app:scale_top="140"
+                app:scale_width="34"
+                app:scale_height="33" />
+
+            <ImageButton
+                android:id="@+id/btn_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/oval_button2"
+                android:scaleType="fitXY"
+                android:src="@drawable/shape"
+                app:scale_height="21"
+                app:scale_left="693"
+                app:scale_top="146"
+                app:scale_width="20.4" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#3ed4ff"
-        app:layout_anchor="@+id/relativeLayout"
-        app:layout_anchorGravity="right|top">
+        android:layout_centerHorizontal="true"
+        app:scale_base_height="360"
+        app:scale_base_width="740"
+        android:gravity="top">
 
-        <ImageView
-            android:id="@+id/hiddenCenter"
-            android:layout_width="156dp"
-            android:layout_height="26dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="37dp"
-            android:background="#3ed4ff" />
-
-        <ImageView
+        <ImageButton
+            android:id="@+id/btn_favorite_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/bg" />
+            android:background="@drawable/oval_button2"
+            app:scale_left="20"
+            app:scale_top="20"
+            app:scale_width="50"
+            app:scale_height="50" />
 
         <ImageButton
             android:id="@+id/btn_favorite"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_favorite"
+            app:scale_height="26.6"
+            app:scale_left="29.5"
+            app:scale_top="33"
+            app:scale_width="31" />
+
+        <ImageButton
+            android:id="@+id/btn_search_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_favorite" />
+            app:scale_left="670"
+            app:scale_top="20"
+            app:scale_width="50"
+            app:scale_height="50" />
 
         <ImageButton
             android:id="@+id/btn_search"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_search" />
-
-
-        <ImageButton
-            android:id="@+id/btn_setting"
-            android:layout_width="34dp"
-            android:layout_height="33dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/oval_button2"
-            android:src="@drawable/shape" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_search"
+            app:scale_height="28"
+            app:scale_left="682"
+            app:scale_top="31"
+            app:scale_width="27.6" />
 
         <Button
             android:id="@+id/button_Char"
-            android:layout_width="70dp"
-            android:layout_height="26dp"
-            android:layout_alignBottom="@+id/hiddenCenter"
-            android:layout_alignLeft="@+id/hiddenCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/round_button_bg1"
-            android:text="캐릭터"
+            android:text="@string/chracter_main_button_chracter"
             android:textColor="#ea3247"
-            android:textSize="15sp"/>
+            android:fontFamily="@font/thejunggt160"
+            app:scale_textsize="15"
+            app:scale_left="292"
+            app:scale_top="33"
+            app:scale_width="70"
+            app:scale_height="26" />
 
         <Button
             android:id="@+id/button_Video"
-            android:layout_width="70dp"
-            android:layout_height="26dp"
-            android:layout_alignBottom="@+id/hiddenCenter"
-            android:layout_alignRight="@+id/hiddenCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/round_button_bg2"
-            android:text="동영상"
+            android:text="@string/chracter_main_button_video"
             android:textColor="#005dc6"
-            android:textSize="15sp" />
-
-    </RelativeLayout>
+            android:fontFamily="@font/thejunggt160"
+            app:scale_textsize="15"
+            app:scale_left="378"
+            app:scale_top="33"
+            app:scale_width="70"
+            app:scale_height="26" />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="86dp"
+        android:layout_marginTop="@dimen/category_main_layout_thumbnail_padding_top"
         android:orientation="vertical">
         <include
             layout="@layout/content_main"
             />
     </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>

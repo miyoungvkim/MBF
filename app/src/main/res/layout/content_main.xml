@@ -13,8 +13,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="59.2dp"
-        android:paddingEnd="15.9dp"
+        android:paddingStart="@dimen/chracter_layout_thumbnail_padding_start"
+        android:paddingEnd="@dimen/chracter_layout_thumbnail_padding_end"
         android:clipToPadding="false" />
-
 </RelativeLayout>

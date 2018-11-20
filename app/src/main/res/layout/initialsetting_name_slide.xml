@@ -8,11 +8,11 @@
     android:gravity="center">
 
     <com.ssomai.android.scalablelayout.ScalableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:scale_base_height="360"
-        app:scale_base_width="640">
+        app:scale_base_width="740"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/txt_title"
@@ -21,9 +21,9 @@
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_name_title"
             android:textColor="@android:color/black"
-            android:textStyle="bold"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="28"
-            app:scale_left="62"
+            app:scale_left="112"
             app:scale_top="36"
             app:scale_width="516"
             app:scale_height="59" />
@@ -35,8 +35,9 @@
             android:gravity="center_horizontal"
             android:text="@string/initial_setting_name_guide"
             android:textColor="@android:color/black"
+            android:fontFamily="@font/thejunggt150"
             app:scale_textsize="17"
-            app:scale_left="62"
+            app:scale_left="112"
             app:scale_top="75"
             app:scale_width="516"
             app:scale_height="59" />
@@ -48,7 +49,7 @@
             android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/setup_name_girl"
             android:clickable="false"
-            app:scale_left="270.8"
+            app:scale_left="320.8"
             app:scale_top="108"
             app:scale_width="104"
             app:scale_height="122.7" />
@@ -56,25 +57,29 @@
 
         <EditText
             android:id="@+id/edittxt_initial_setting_name_baby_name"
-            android:layout_width="wrap_content"
+            android:layout_width="202dp"
             android:layout_height="wrap_content"
-            android:hint="이름을 입력해주세요"
+            android:hint="@string/initial_setting_name_input_hint_text"
+            android:maxLength ="10"
+            android:textColorHint="#9b9b9b"
+            android:fontFamily="@font/thejunggt140"
             app:scale_textsize="22"
-            app:scale_left="219.5"
+            app:scale_left="268.5"
             app:scale_top="234.6"
             app:scale_height="50"
-            app:scale_width="202" />
+            app:scale_width="220" />
 
         <Button
             android:id="@+id/button_accept"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_button_name_accept"
-            android:text="적용하기"
-            android:textColor="@color/text_button_white_black"
+            android:background="@drawable/round_button_initial_setting_white_to_blue"
+            android:text="@string/initial_setting_apply"
+            android:textColor="@color/text_button_black_white"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="20"
-            app:scale_left="180"
+            app:scale_left="230"
             app:scale_top="300"
             app:scale_width="130"
             app:scale_height="40" />
@@ -84,11 +89,12 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_button_name"
-            android:text="건너뛰기"
+            android:background="@drawable/round_button_initial_setting_white_to_blue"
+            android:text="@string/initial_setting_skip"
             android:textColor="@color/text_button_black_white"
+            android:fontFamily="@font/thejunggt160"
             app:scale_textsize="20"
-            app:scale_left="330"
+            app:scale_left="380"
             app:scale_top="300"
             app:scale_width="130"
             app:scale_height="40" />
