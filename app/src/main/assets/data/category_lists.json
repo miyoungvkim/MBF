@@ -3,26 +3,32 @@
     {
       "id": "frienzoo",
       "title": "프렌쥬",
-      "episode_num" : 3,
+      "episode_num" : 2,
       "thumbnail": "home_thumbnail_friendzoo"
     },
     {
       "id": "poli",
-      "title": "로보카 폴리",
-      "episode_num" : 3,
+      "title": "로보카폴리",
+      "episode_num" : 2,
       "thumbnail": "home_thumbnail_poli"
     },
     {
-      "id": "pororo",
-      "title": "뽀로로",
-      "episode_num": 3,
-      "thumbnail": "home_thumbnail_pororo"
+      "id": "cloudbread",
+      "title": "구름빵",
+      "episode_num": 0,
+      "thumbnail": "home_thumbnail_cloudbread"
     },
     {
-      "id": "tayo",
-      "title": "꼬마버스 타요",
+      "id": "banji",
+      "title": "반지의 비밀일기",
       "episode_num": 0,
-      "thumbnail": "home_thumbnail_tayo"
+      "thumbnail": "home_thumbnail_banji"
+    },
+    {
+      "id": "woodang",
+      "title": "우당탕탕 아이쿠",
+      "episode_num": 0,
+      "thumbnail": "home_thumbnail_woodang"
     }
   ]
 }

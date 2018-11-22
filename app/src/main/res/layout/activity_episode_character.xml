@@ -4,80 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cerulean_blue"
     tools:context=".activity.EpisodeCharacterActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <LinearLayout
+        android:id="@+id/bg_layout_group"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_gold"
-        app:layout_anchorGravity="right|top">
-
-        <ImageButton
-            android:id="@+id/btn_Back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_back" />
-
-        <ImageView
-            android:id="@+id/backgroundImage"
+        android:gravity="bottom">
+        <com.ssomai.android.scalablelayout.ScalableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/bg_blue" />
+            android:gravity="bottom"
+            app:scale_base_width="740"
+            app:scale_base_height="290">
 
-        <ImageView
-            android:id="@+id/characterImage"
-            android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/backgroundImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:background="@drawable/character_bg_poli"
+                    app:scale_left="0"
+                    app:scale_top="90"
+                    app:scale_width="740"
+                    app:scale_height="200" />
+
+                <ImageView
+                    android:id="@+id/characterImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/character_poli"
+                    app:scale_left="0"
+                    app:scale_top="0"
+                    app:scale_width="230"
+                    app:scale_height="290" />
+
+                <ImageButton
+                    android:id="@+id/btn_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/btn_setting"
+                    android:scaleType="fitCenter"
+                    app:scale_left="686"
+                    app:scale_top="246"
+                    app:scale_width="34"
+                    app:scale_height="34" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/btn_Back"
-            android:layout_alignParentBottom="true"
-            android:layout_alignTop="@+id/recycler_view"
-            android:layout_marginBottom="2dp"
-            android:layout_marginLeft="5dp"
-            app:srcCompat="@drawable/thumbnail_pororo"
-            />
+            android:gravity="top"
+            app:scale_base_height="70"
+            app:scale_base_width="740">
 
+            <ImageButton
+                android:id="@+id/btn_Back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/btn_back"
+                android:scaleType="fitCenter"
+                app:scale_left="20"
+                app:scale_top="20"
+                app:scale_width="50"
+                app:scale_height="50" />
+
+            <TextView
+                android:id="@+id/txt_character_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="로보카폴리"
+                android:fontFamily="@font/thejunggt160"
+                android:textColor="@android:color/white"
+                app:scale_textsize="30"
+                app:scale_left="0"
+                app:scale_top="28.6"
+                app:scale_width="740"
+                app:scale_height="33" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_below="@+id/btn_Back"
-            android:layout_toRightOf="@+id/characterImage"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="25dp"
-            android:clipToPadding="false" />
-
-        <TextView
-            android:id="@+id/txt_character_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="뽀로로"
-            android:layout_centerInParent="true"
-            android:layout_alignTop="@+id/btn_Back"
-            android:layout_alignBottom="@+id/btn_Back"
-            android:textColor="@android:color/black"
-            android:textSize="30sp" />
-
-        <ImageButton
-            android:id="@+id/btn_setting"
-            android:layout_width="34dp"
-            android:layout_height="33dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/oval_button2"
-            android:src="@drawable/shape" />
-
-    </RelativeLayout>
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:clipToPadding="false"
+                android:paddingEnd="@dimen/episode_chracter_layout_thumbnail_padding_end"
+                android:paddingStart="@dimen/episode_chracter_layout_thumbnail_padding_start" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

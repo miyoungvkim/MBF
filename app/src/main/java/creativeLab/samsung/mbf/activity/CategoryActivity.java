@@ -139,8 +139,8 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void launchFingerPrintScreen() {
-        startActivity(new Intent(CategoryActivity.this, SettingsActivity.class));// FingerprintActivity.class));
-        //finish();
+        // startActivity(new Intent(CategoryActivity.this, SettingsActivity.class));// FingerprintActivity.class));
+        // finish();
     }
 
     private List<AnimationInfo> setCategoryList(){

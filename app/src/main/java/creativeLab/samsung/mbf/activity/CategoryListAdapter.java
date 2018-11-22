@@ -21,6 +21,7 @@ import java.util.List;
 
 import creativeLab.samsung.mbf.R;
 import creativeLab.samsung.mbf.utils.AnimationInfo;
+import creativeLab.samsung.mbf.utils.MBFLog;
 
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.MyViewHolder> {
     private static final String TAG = CategoryListAdapter.class.getSimpleName();
@@ -47,6 +48,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         AnimationInfo categoryInfo = categoryList.get(position);
 
         holder.title.setText(categoryInfo.getTitle());
+        MBFLog.d("KMI title " +categoryInfo.getTitle());
 
         // loading album cover using Glide library
         Glide.with(mContext).load(categoryInfo.getThumbnail()).into(holder.thumbnail);
@@ -55,13 +57,14 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             @Override
             public void onClick(View view) {
                 if(categoryInfo.getEpisodeNum() == 0) {
-                    Toast.makeText(mContext, "No Episode now ....." + holder.title.getText(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext,"아직 준비된 에피소드가 없습니다", Toast.LENGTH_SHORT).show();
                 } else {
                     //   Toast.makeText(mContext, "click " + holder.title.getText(), Toast.LENGTH_SHORT).show();
 
                     try {
 
-                        if(categoryInfo.getID().equals("pororo") == true || categoryInfo.getID().equals("poli") == true || categoryInfo.getID().equals("frienzoo") == true)
+                        if(categoryInfo.getID().equals("pororo") == true || categoryInfo.getID().equals("poli") == true || categoryInfo.getID().equals("frienzoo") == true
+                            || categoryInfo.getID().equals("cloudbread") == true || categoryInfo.getID().equals("banji") == true || categoryInfo.getID().equals("woodang") == true )
                         {
                             Intent intent = new Intent(mContext, EpisodeCharacterActivity.class);
                             intent.putExtra("CATEGORY_ID", categoryInfo.getID());

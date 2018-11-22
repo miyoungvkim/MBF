@@ -1,0 +1,59 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. For Welcome Activity -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="setting_title">30dp</dimen>
+    <dimen name="slide_desc">16dp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
+    <dimen name="main_activity_top_height">60dp</dimen>
+    <dimen name="main_activity_bottom_height">30dp</dimen>
+
+
+    <!-- for main activity -->
+    <dimen name="item_offset">10dp</dimen>
+    <dimen name="detail_backdrop_height">250dp</dimen>
+    <dimen name="backdrop_title">30dp</dimen>
+    <dimen name="backdrop_subtitle">18dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_album_radius">5dp</dimen>
+    <dimen name="album_cover_height">160dp</dimen>
+    <dimen name="album_title_padding">10dp</dimen>
+    <dimen name="album_title">15dp</dimen>
+    <dimen name="songs_count_padding_bottom">5dp</dimen>
+    <dimen name="songs_count">12dp</dimen>
+    <dimen name="ic_album_overflow_width">20dp</dimen>
+    <dimen name="ic_album_overflow_height">30dp</dimen>
+    <dimen name="ic_album_overflow_margin_top">10dp</dimen>
+
+    <!-- for content main layout -->
+    <dimen name="category_main_layout_thumbnail_padding_top">237dp</dimen>
+    <dimen name="category_main_layout_thumbnail_padding_start">17.7dp</dimen>
+    <dimen name="category_main_layout_thumbnail_padding_end">67.4dp</dimen>
+
+    <!-- for episode_chracter layout -->
+    <dimen name="episode_chracter_layout_thumbnail_padding_start">50dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_padding_end">116dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_image_width">378dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_image_height">224dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_top_padding">209.3dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_left_padding">14dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_right_padding">79.1dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_width">284.9dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_size">20sp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_width">52dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_height">52dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_top_padding">207.6dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_right_padding">14.2dp</dimen>
+
+    <!-- for epicose favorite layout -->
+    <dimen name="favorite_layout_thumbnail_padding_start">90dp</dimen>
+    <dimen name="favorite_layout_thumbnail_padding_end">116dp</dimen>
+
+    <!-- for common button layout -->
+    <dimen name="initial_setting_button_radius">28dp</dimen>
+    <dimen name="episode_chracter_layout_button_radius">17dp</dimen>
+</resources>

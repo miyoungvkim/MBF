@@ -71,7 +71,7 @@ public class EpisodeActivity extends AppCompatActivity {
         btnSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchFingerPrintScreen();
+                // launchFingerPrintScreen();
             }
         });
 
@@ -102,7 +102,7 @@ public class EpisodeActivity extends AppCompatActivity {
     }
 
     private void launchFingerPrintScreen() {
-        startActivity(new Intent(EpisodeActivity.this, SettingsActivity.class)); // FingerprintActivity.class));
+     //   startActivity(new Intent(EpisodeActivity.this, SettingsActivity.class)); // FingerprintActivity.class));
         //finish();
     }
 

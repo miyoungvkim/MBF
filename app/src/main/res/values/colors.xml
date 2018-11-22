@@ -34,6 +34,9 @@
     <color name="cerulean_blue">#006ce5</color>
     <color name="blue">#005dc6</color>
     <color name="black_two">#131313</color>
+    <color name="bubble_gum_pink">#ed79a7</color>
+    <color name="azure">#0099f9</color>
+    <color name="black_70">#b3000000</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#d1395c</color>

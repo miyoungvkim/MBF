@@ -63,6 +63,8 @@
             android:maxLength ="10"
             android:textColorHint="#9b9b9b"
             android:fontFamily="@font/thejunggt140"
+            android:imeOptions="flagNoExtractUi|actionGo"
+            android:singleLine="true"
             app:scale_textsize="22"
             app:scale_left="268.5"
             app:scale_top="234.6"

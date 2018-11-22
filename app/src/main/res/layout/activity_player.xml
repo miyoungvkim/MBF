@@ -9,60 +9,124 @@
         android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:resize_mode="fill"
-        />
+        app:resize_mode="fill" />
 
     <org.tensorflow.demo.OverlayView
         android:id="@+id/tracking_overlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/btn_capture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/transparent"
-        android:text="debug Mode"
-        android:textColor="@android:color/transparent" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationVideoFrameLoading"
+    <View
+        android:id="@+id/animationVideoFrameBG"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="#88000000"
         android:visibility="invisible"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/pelican_start_bubble4_long" />
+        android:background="@color/black_70"/>
 
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationVideoFrameCharacter"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:background="#88000000"
-        android:visibility="invisible"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/pelican_end" />
+        android:gravity="bottom"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textVideoSubscription"
-        android:layout_width="382dp"
-        android:layout_height="59dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="80dp"
-        android:layout_marginEnd="24dp"
-        android:text=""
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:visibility="invisible" />
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            app:scale_base_height="360"
+            app:scale_base_width="740">
+
+            <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationVideoFrameLoading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:visibility="invisible"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            android:background="@android:color/transparent"
+            app:lottie_rawRes="@raw/pelican_start_bubble4_long"
+            app:scale_top="0"
+            app:scale_left="0"
+            app:scale_width="740"
+            app:scale_height="360"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationVideoFrameCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@android:color/transparent"
+            android:visibility="invisible"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/pelican_end"
+            app:scale_height="0"
+            app:scale_left="0"
+            app:scale_top="740"
+            app:scale_width="360" />
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:scale_base_height="150"
+            app:scale_base_width="740">
+
+            <Button
+                android:id="@+id/btn_capture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="@android:color/transparent"
+                android:text="Debug Mode"
+                android:textColor="@android:color/transparent"
+                android:fontFamily="@font/thejunggt160"
+                app:scale_textsize="20"
+                app:scale_left="480"
+                app:scale_top="0"
+                app:scale_width="260"
+                app:scale_height="100" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|right"
+        android:orientation="vertical">
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:scale_base_height="150"
+            app:scale_base_width="740">
+
+            <TextView
+                android:id="@+id/textVideoSubscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/thejunggt160"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:visibility="invisible"
+                app:scale_height="100"
+                app:scale_left="280"
+                app:scale_textsize="20"
+                app:scale_top="20"
+                app:scale_width="420" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
 
 </RelativeLayout>

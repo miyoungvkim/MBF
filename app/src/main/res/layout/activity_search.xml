@@ -4,15 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SearchActivity">
+    tools:context=".activity.SearchActivity"
+    android:background="@color/bright_cyan">
 
     <RelativeLayout
         android:id="@+id/par"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:background="@color/bright_cyan">
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
+
+            <com.ssomai.android.scalablelayout.ScalableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                app:scale_base_height="229"
+                app:scale_base_width="740"
+                android:gravity="bottom">
+
+                <ImageView
+                    android:id="@+id/backgroundImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/bg_search"
+                    app:scale_left="0"
+                    app:scale_top="0"
+                    app:scale_width="740"
+                    app:scale_height="229" />
+            </com.ssomai.android.scalablelayout.ScalableLayout>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/editSearch"
@@ -20,15 +45,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="170dp"
             android:layout_marginTop="34.5dp"
-            android:imeOptions="flagNoFullscreen"
-            android:hint="검색어를 입력해주세요." />
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@drawable/bg_search"/>
+            android:imeOptions="flagNoExtractUi|actionGo"
+            android:hint="검색어를 입력해주세요."
+            android:fontFamily="@font/thejunggt140" />
 
         <ListView
             android:id="@+id/listView"
@@ -39,16 +58,31 @@
             android:layout_marginBottom="34dp"
             android:background="@color/white"></ListView>
 
-        <ImageButton
-            android:id="@+id/btn_searchBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_back" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top">
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            app:scale_base_height="70"
+            app:scale_base_width="740">
+
+            <ImageButton
+                android:id="@+id/btn_searchBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/btn_back"
+                android:scaleType="fitCenter"
+                app:scale_left="20"
+                app:scale_top="20"
+                app:scale_width="50"
+                app:scale_height="50" />
+            </com.ssomai.android.scalablelayout.ScalableLayout>
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -56,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/editSearch"
             android:layout_alignTop="@+id/editSearch"
-            android:background="@null"
+            android:background="@android:color/transparent"
             android:src="@drawable/search" />
 
     </RelativeLayout>

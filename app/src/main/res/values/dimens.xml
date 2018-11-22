@@ -30,20 +30,31 @@
     <dimen name="ic_album_overflow_margin_top">10dp</dimen>
 
     <!-- for category main layout -->
-    <dimen name="chracter_layout_thumbnail_padding_start">69.2dp</dimen>
-    <dimen name="chracter_layout_thumbnail_padding_end">15.9dp</dimen>
-
     <dimen name="category_main_layout_thumbnail_padding_top">86dp</dimen>
-    <dimen name="category_main_layout_thumbnail_text_size">15sp</dimen>
+    <dimen name="category_main_layout_thumbnail_padding_start">69.2dp</dimen>
+    <dimen name="category_main_layout_thumbnail_padding_end">15.9dp</dimen>
 
+    <!-- for episode_chracter layout -->
+    <dimen name="episode_chracter_layout_thumbnail_padding_start">220dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_padding_end">70dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_image_width">270dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_image_height">160dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_top_padding">149dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_left_padding">10dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_right_padding">56.5dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_width">203.5dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_text_size">15sp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_width">38dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_height">38dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_top_padding">148dp</dimen>
+    <dimen name="episode_chracter_layout_thumbnail_button_favorite_bg_right_padding">10dp</dimen>
 
-    <!-- for episode main layout -->
-    <dimen name="episode_layout_chracter_padding_bottom">2dp</dimen>
-    <dimen name="episode_layout_chracter_padding_left">5dp</dimen>
+    <!-- for epicose favorite layout -->
+    <dimen name="favorite_layout_thumbnail_padding_start">90dp</dimen>
+    <dimen name="favorite_layout_thumbnail_padding_end">70dp</dimen>
 
-    <dimen name="episode_layout_thumbnail_padding_start">220dp</dimen>
-    <dimen name="episode_layout_thumbnail_padding_end">70dp</dimen>
-
-    <dimen name="episode_layout_thumbnailcategory_main_layout_thumbnail_text_size">200dp</dimen>
+    <!-- for common button layout -->
+    <dimen name="initial_setting_button_radius">20dp</dimen>
+    <dimen name="episode_chracter_layout_button_radius">13dp</dimen>
 
 </resources>

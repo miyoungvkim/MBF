@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -90,27 +91,30 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
         {
             TextView charText = (TextView)findViewById(R.id.txt_character_name);
             charText.setText("로보카폴리");
-            int white = getResources().getColor(R.color.white);
-            charText.setTextColor(white);
+            int textColor = getResources().getColor(R.color.white);
+            charText.setTextColor(textColor);
 
-            RelativeLayout RLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
-            int cerulean_blue = getResources().getColor(R.color.cerulean_blue);
-            RLayout.setBackgroundColor(cerulean_blue);
+            LinearLayout RLayout = (LinearLayout)findViewById(R.id.bg_layout_group);
+            int bgColor = getResources().getColor(R.color.cerulean_blue);
+            RLayout.setBackgroundColor(bgColor);
 
             ImageView IView = (ImageView)findViewById(R.id.characterImage);
             //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
-            IView.setImageResource(R.drawable.thumbnail_poli);
+            IView.setImageResource(R.drawable.character_poli);
 
             ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
-            BView.setBackground(getDrawable(R.drawable.bg_red));
+            BView.setBackground(getDrawable(R.drawable.character_bg_poli));
             //IView.setImageDrawable(characterImage);
         }else if(selectedCategoryID.equals("pororo")){
             TextView charText = (TextView)findViewById(R.id.txt_character_name);
             charText.setText("뽀로로");
 
-            RelativeLayout RLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
-            int light_gold = getResources().getColor(R.color.light_gold);
-            RLayout.setBackgroundColor(light_gold);
+            int textColor = getResources().getColor(R.color.black);
+            charText.setTextColor(textColor);
+
+            LinearLayout RLayout = (LinearLayout)findViewById(R.id.bg_layout_group);
+            int bgColor = getResources().getColor(R.color.light_gold);
+            RLayout.setBackgroundColor(bgColor);
 
             ImageView IView = (ImageView)findViewById(R.id.characterImage);
             //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
@@ -122,22 +126,72 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
         }else if(selectedCategoryID.equals("frienzoo")){
             TextView charText = (TextView)findViewById(R.id.txt_character_name);
             charText.setText("프렌쥬");
-            int white = getResources().getColor(R.color.white);
-            charText.setTextColor(white);
+            int textColor = getResources().getColor(R.color.white);
+            charText.setTextColor(textColor);
 
-            RelativeLayout RLayout = (RelativeLayout)findViewById(R.id.relativeLayout);
-            int strawberry = getResources().getColor(R.color.strawberry);
-            RLayout.setBackgroundColor(strawberry);
+            LinearLayout RLayout = (LinearLayout)findViewById(R.id.bg_layout_group);
+            int bgColor = getResources().getColor(R.color.strawberry);
+            RLayout.setBackgroundColor(bgColor);
 
             ImageView IView = (ImageView)findViewById(R.id.characterImage);
             //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
-            IView.setImageResource(R.drawable.thumbnail_friendzoo);
+            IView.setImageResource(R.drawable.character_frinedzoo);
 
             ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
-            BView.setBackground(getDrawable(R.drawable.bg_black));
+            BView.setBackground(getDrawable(R.drawable.character_bg_frinedzoo));
+            //IView.setImageDrawable(characterImage);
+        } else if(selectedCategoryID.equals("cloudbread")){
+            TextView charText = (TextView)findViewById(R.id.txt_character_name);
+            charText.setText("구름빵");
+            int textColor = getResources().getColor(R.color.black);
+            charText.setTextColor(textColor);
+
+            LinearLayout RLayout = (LinearLayout)findViewById(R.id.bg_layout_group);
+            int bgColor = getResources().getColor(R.color.light_gold);
+            RLayout.setBackgroundColor(bgColor);
+
+            ImageView IView = (ImageView)findViewById(R.id.characterImage);
+            //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
+            IView.setImageResource(R.drawable.character_cloudbread);
+
+            ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
+            BView.setBackground(getDrawable(R.drawable.character_bg_cloudbread));
+            //IView.setImageDrawable(characterImage);
+        } else if(selectedCategoryID.equals("banji")){
+            TextView charText = (TextView)findViewById(R.id.txt_character_name);
+            charText.setText("반지의 비밀일기");
+            int textColor = getResources().getColor(R.color.white);
+            charText.setTextColor(textColor);
+
+            LinearLayout RLayout = (LinearLayout)findViewById(R.id.bg_layout_group);
+            int bgColor = getResources().getColor(R.color.bubble_gum_pink);
+            RLayout.setBackgroundColor(bgColor);
+
+            ImageView IView = (ImageView)findViewById(R.id.characterImage);
+            //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
+            IView.setImageResource(R.drawable.character_banji);
+
+            ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
+            BView.setBackground(getDrawable(R.drawable.character_bg_banji));
+            //IView.setImageDrawable(characterImage);
+        } else if(selectedCategoryID.equals("woodang")){
+            TextView charText = (TextView)findViewById(R.id.txt_character_name);
+            charText.setText("우당탕탕 아이쿠");
+            int textColor = getResources().getColor(R.color.white);
+            charText.setTextColor(textColor);
+
+            LinearLayout RLayout = (LinearLayout)findViewById(R.id.bg_layout_group);
+            int bgColor = getResources().getColor(R.color.azure);
+            RLayout.setBackgroundColor(bgColor);
+
+            ImageView IView = (ImageView)findViewById(R.id.characterImage);
+            //Drawable characterImage = getResources().getDrawable(R.drawable.thumbnail_poli);
+            IView.setImageResource(R.drawable.character_woodang);
+
+            ImageView BView = (ImageView)findViewById(R.id.backgroundImage);
+            BView.setBackground(getDrawable(R.drawable.character_bg_woodang));
             //IView.setImageDrawable(characterImage);
         }
-
 
         episodeInfoList = setEpisodeList(selectedCategoryID);
         adapter = new EpisodeListAdapter(this, episodeInfoList);
@@ -152,7 +206,7 @@ public class EpisodeCharacterActivity extends AppCompatActivity {
     }
 
     private void launchFingerPrintScreen() {
-        startActivity(new Intent(EpisodeCharacterActivity.this, SettingsActivity.class)); // FingerprintActivity.class));
+        // startActivity(new Intent(EpisodeCharacterActivity.this, SettingsActivity.class)); // FingerprintActivity.class));
         //finish();
     }
 

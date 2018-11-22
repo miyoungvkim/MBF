@@ -4,68 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3ed4ff"
     tools:context=".activity.FavoriteActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#3ed4ff"
-        app:layout_anchorGravity="right|top">
-
-        <ImageButton
-            android:id="@+id/btn_searchBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_back" />
-
-        <ImageView
+        android:gravity="bottom">
+        <com.ssomai.android.scalablelayout.ScalableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/bg_allmovies" />
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:scale_base_height="192.8"
+            app:scale_base_width="740">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_favorite"
+                app:scale_height="192.8"
+                app:scale_left="0"
+                app:scale_top="0"
+                app:scale_width="740" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top">
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="top"
+            app:scale_base_height="360"
+            app:scale_base_width="740">
+            <ImageButton
+                android:id="@+id/btn_searchBack"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_back"
+                app:scale_left="20"
+                app:scale_top="20"
+                app:scale_width="50"
+                app:scale_height="50" />
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_search"
+                app:scale_height="50"
+                app:scale_left="670"
+                app:scale_top="20"
+                app:scale_width="50" />
+            <TextView
+                android:id="@+id/txt_favorite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/btn_searchBack"
+                android:layout_alignTop="@+id/btn_searchBack"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/thejunggt160"
+                android:gravity="center_horizontal"
+                android:text="즐겨찾기"
+                android:textColor="@android:color/black"
+                app:scale_textsize="30"
+                app:scale_left="0"
+                app:scale_top="28.6"
+                app:scale_width="740"
+                app:scale_height="33" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/btn_searchBack"
-            android:layout_marginLeft="-10dp"
-            android:layout_below="@+id/btn_searchBack"
-            android:layout_marginTop="25dp"
-            android:clipToPadding="false" />
-
-        <ImageButton
-            android:id="@+id/btn_search"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/oval_button2"
-            android:src="@drawable/ic_search" />
-
-        <TextView
-            android:id="@+id/txt_favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="즐겨찾기"
-            android:layout_centerInParent="true"
-            android:layout_alignTop="@+id/btn_searchBack"
-            android:layout_alignBottom="@+id/btn_searchBack"
-            android:textColor="@android:color/black"
-            android:textSize="30sp" />
-
-    </RelativeLayout>
-
-
-
+            android:clipToPadding="false"
+            android:paddingEnd="@dimen/favorite_layout_thumbnail_padding_start"
+            android:paddingStart="@dimen/favorite_layout_thumbnail_padding_end" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

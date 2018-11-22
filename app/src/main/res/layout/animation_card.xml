@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -7,26 +8,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/thumbnail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:scaleType="center" />
-
-        <TextView
-            android:id="@+id/title"
+        <com.ssomai.android.scalablelayout.ScalableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/thumbnail"
-            android:gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:lineSpacingExtra="0sp"
-            android:textSize="@dimen/category_main_layout_thumbnail_text_size"
-            android:fontFamily="@font/thejunggt160"/>
+            android:layout_height="match_parent"
+            app:scale_base_width="200"
+            app:scale_base_height="200">
 
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:scaleType="fitCenter"
+                app:scale_left="0"
+                app:scale_top="0"
+                app:scale_width="200"
+                app:scale_height="196" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/thumbnail"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
+                android:fontFamily="@font/thejunggt160"
+                app:scale_textsize="15"
+                app:scale_left="0"
+                app:scale_top="183"
+                app:scale_width="200"
+                app:scale_height="17" />
+            </com.ssomai.android.scalablelayout.ScalableLayout>
     </RelativeLayout>
-
-
 </LinearLayout>

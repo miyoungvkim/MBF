@@ -96,6 +96,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
     private LottieAnimationView videoFrameMBFLoading;
     private LottieAnimationView videoFrameMBFCharactor;
+    private View videoFrameBG;
     private TextView textVideoSubscription;
 
 
@@ -129,19 +130,21 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         videoFrameMBFLoading.setVisibility(View.GONE);
         videoFrameMBFCharactor.setVisibility(View.GONE);
         textVideoSubscription.setVisibility(View.GONE);
+        videoFrameBG.setVisibility(View.GONE);
 
         String selectedMention = MBFAIController.getSelectedMention();
         if (playState == MBFInfo.MBF_STATE_CONTENTS_PLAY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_CONTENTS_PLAY");
 
             textVideoSubscription.setVisibility(View.INVISIBLE);
-
             //int Vol = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
             //if(Vol == MaxVol)
             //{
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,CurrentVol,0);
             //}
             Log.d(TAG, "MBFInfo.MBF_STATE_CONTENTS_PLAY volume" + audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+            videoFrameBG.setVisibility(View.INVISIBLE);
+
             videoFrameMBFLoading.setVisibility(View.INVISIBLE);
             videoFrameMBFLoading.pauseAnimation();
             videoFrameMBFLoading.setProgress(0);
@@ -165,6 +168,8 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
             audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,MaxVol,0);
             //}
             Log.d(TAG, "MBFInfo.MBF_STATE_MBF_READY volume" + audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+            videoFrameBG.setVisibility(View.VISIBLE);
+
             videoFrameMBFLoading.setVisibility(View.VISIBLE);
             videoFrameMBFLoading.playAnimation();
 
@@ -177,6 +182,8 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
             textVideoSubscription.setVisibility(View.VISIBLE);
             textVideoSubscription.setText(selectedMention);
+
+            videoFrameBG.setVisibility(View.VISIBLE);
 
             videoFrameMBFLoading.setVisibility(View.INVISIBLE);
             videoFrameMBFLoading.pauseAnimation();
@@ -254,6 +261,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         videoFrameMBFLoading = findViewById(R.id.animationVideoFrameLoading);
         videoFrameMBFCharactor = findViewById(R.id.animationVideoFrameCharacter);
         textVideoSubscription = findViewById(R.id.textVideoSubscription);
+        videoFrameBG = findViewById(R.id.animationVideoFrameBG);
 
         context = this;
 

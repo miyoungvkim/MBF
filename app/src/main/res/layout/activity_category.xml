@@ -31,26 +31,15 @@
                 app:scale_height="183" />
 
             <ImageButton
-                android:id="@+id/btn_setting_bg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/oval_button2"
-                app:scale_left="686"
-                app:scale_top="140"
-                app:scale_width="34"
-                app:scale_height="33" />
-
-            <ImageButton
                 android:id="@+id/btn_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/oval_button2"
-                android:scaleType="fitXY"
-                android:src="@drawable/shape"
-                app:scale_height="21"
-                app:scale_left="693"
-                app:scale_top="146"
-                app:scale_width="20.4" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/btn_setting"
+                app:scale_left="686"
+                app:scale_top="139"
+                app:scale_width="34"
+                app:scale_height="33" />
         </com.ssomai.android.scalablelayout.ScalableLayout>
     </LinearLayout>
 
@@ -63,33 +52,13 @@
         android:gravity="top">
 
         <ImageButton
-            android:id="@+id/btn_favorite_bg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/oval_button2"
-            app:scale_left="20"
-            app:scale_top="20"
-            app:scale_width="50"
-            app:scale_height="50" />
-
-        <ImageButton
             android:id="@+id/btn_favorite"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_favorite"
-            app:scale_height="26.6"
-            app:scale_left="29.5"
-            app:scale_top="33"
-            app:scale_width="31" />
-
-        <ImageButton
-            android:id="@+id/btn_search_bg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/oval_button2"
-            app:scale_left="670"
+            android:src="@drawable/btn_favorite"
+            android:scaleType="fitCenter"
+            app:scale_left="20"
             app:scale_top="20"
             app:scale_width="50"
             app:scale_height="50" />
@@ -99,12 +68,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_search"
-            app:scale_height="28"
-            app:scale_left="682"
-            app:scale_top="31"
-            app:scale_width="27.6" />
+            android:src="@drawable/btn_search"
+            android:scaleType="fitCenter"
+            app:scale_left="670"
+            app:scale_top="20"
+            app:scale_width="50"
+            app:scale_height="50" />
 
         <Button
             android:id="@+id/button_Char"
@@ -135,15 +104,25 @@
             app:scale_height="26" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/category_main_layout_thumbnail_padding_top"
-        android:orientation="vertical">
-        <include
-            layout="@layout/content_main"
-            />
-    </LinearLayout>
+        android:layout_gravity="center">
+
+        <com.ssomai.android.scalablelayout.ScalableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_vertical|center_horizontal|center"
+            app:scale_base_width="740"
+            app:scale_base_height="200">
+            <include
+                layout="@layout/content_main"
+                app:scale_left="0"
+                app:scale_top="0"
+                app:scale_width="740"
+                app:scale_height="200" />
+        </com.ssomai.android.scalablelayout.ScalableLayout>
+</LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

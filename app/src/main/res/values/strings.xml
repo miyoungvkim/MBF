@@ -38,6 +38,7 @@
 
     <string name="chracter_main_button_chracter">캐릭터</string>
     <string name="chracter_main_button_video">동영상</string>
+    <string name="favorite_layout_title">즐겨찾기</string>
 
     <string name="slide_1_title">Hello Food!</string>
     <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
