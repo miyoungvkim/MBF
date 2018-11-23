@@ -147,7 +147,6 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         String selectedMention = MBFAIController.getSelectedMention();
         if (playState == MBFInfo.MBF_STATE_CONTENTS_PLAY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_CONTENTS_PLAY");
-            simpleExoPlayerView.showController();
 
             textVideoSubscription.setVisibility(View.INVISIBLE);
             //int Vol = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -168,8 +167,6 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
         } else if (playState == MBFInfo.MBF_STATE_MBF_READY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_MBF_READY");
-
-            simpleExoPlayerView.hideController();
 
             textVideoSubscription.setVisibility(View.VISIBLE);
             textVideoSubscription.setText(selectedMention);
@@ -194,7 +191,6 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
         } else if (playState == MBFInfo.MBF_STATE_MBF_PLAY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_MBF_PLAY");
-            simpleExoPlayerView.hideController();
 
             textVideoSubscription.setVisibility(View.VISIBLE);
             textVideoSubscription.setText(selectedMention);
