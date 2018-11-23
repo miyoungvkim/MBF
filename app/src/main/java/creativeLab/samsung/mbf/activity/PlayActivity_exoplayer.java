@@ -122,10 +122,22 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
             boolean exoplayerState = (boolean)msg.obj;
             //mbfFrameVisibleStateChange(exoplayerState);
             player.setPlayWhenReady(exoplayerState);
-
+            simpleExoPlayerView.hideController(); // hide controller when mbf change about play state
             super.handleMessage(msg);
         }
     };
+
+    private void pausePlayer(){
+        Log.v(TAG, "player pause...");
+        player.setPlayWhenReady(false);
+        player.getPlaybackState();
+    }
+    private void startPlayer(){
+        Log.v(TAG, "player start...");
+        player.setPlayWhenReady(true);
+        player.getPlaybackState();
+    }
+
     private void mbfFrameVisibleStateChange(int playState) {
         videoFrameMBFLoading.setVisibility(View.GONE);
         videoFrameMBFCharactor.setVisibility(View.GONE);
@@ -135,6 +147,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
         String selectedMention = MBFAIController.getSelectedMention();
         if (playState == MBFInfo.MBF_STATE_CONTENTS_PLAY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_CONTENTS_PLAY");
+            simpleExoPlayerView.showController();
 
             textVideoSubscription.setVisibility(View.INVISIBLE);
             //int Vol = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
@@ -155,6 +168,8 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
         } else if (playState == MBFInfo.MBF_STATE_MBF_READY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_MBF_READY");
+
+            simpleExoPlayerView.hideController();
 
             textVideoSubscription.setVisibility(View.VISIBLE);
             textVideoSubscription.setText(selectedMention);
@@ -179,6 +194,7 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
 
         } else if (playState == MBFInfo.MBF_STATE_MBF_PLAY) {
             Log.d(TAG, "MBFInfo.MBF_STATE_MBF_PLAY");
+            simpleExoPlayerView.hideController();
 
             textVideoSubscription.setVisibility(View.VISIBLE);
             textVideoSubscription.setText(selectedMention);
@@ -517,11 +533,14 @@ public class PlayActivity_exoplayer extends AppCompatActivity implements VideoRe
     protected void onResume() {
         super.onResume();
         Log.v(TAG, "onResume()...");
+        startPlayer();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        pausePlayer();
+
         Log.v(TAG, "onPause()...");
     }
 

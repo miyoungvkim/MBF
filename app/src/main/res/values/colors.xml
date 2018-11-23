@@ -17,7 +17,7 @@
     <color name="bg_screen3">#3395ff</color>
     <color name="bg_screen4">#c873f4</color>
     <color name="bg_screen5">#20d2bb</color>
-    <color name="welcome_screen">#fffde7</color>
+    <color name="welcome_screen">#fbf7f6</color>
     <color name="setting_screen">#40c4ff</color>
     <color name="main_screen">#ffeeeeee</color>
 
@@ -37,6 +37,7 @@
     <color name="bubble_gum_pink">#ed79a7</color>
     <color name="azure">#0099f9</color>
     <color name="black_70">#b3000000</color>
+    <color name="black_40">#66000000</color>
 
     <!-- dots inactive colors -->
     <color name="dot_dark_screen1">#d1395c</color>

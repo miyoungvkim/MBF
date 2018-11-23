@@ -18,7 +18,7 @@ import creativeLab.samsung.mbf.utils.MBFLog;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 8000;
     private View decorView;
     private int uiOption;
 

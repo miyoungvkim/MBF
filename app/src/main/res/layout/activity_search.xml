@@ -46,6 +46,7 @@
             android:layout_marginHorizontal="170dp"
             android:layout_marginTop="34.5dp"
             android:imeOptions="flagNoExtractUi|actionGo"
+            android:singleLine="true"
             android:hint="검색어를 입력해주세요."
             android:fontFamily="@font/thejunggt140" />
 

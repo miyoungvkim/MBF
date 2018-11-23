@@ -9,7 +9,8 @@
         android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:resize_mode="fill" />
+        app:resize_mode="fill"
+        app:controller_layout_id="@layout/layout_playback_control" />
 
     <org.tensorflow.demo.OverlayView
         android:id="@+id/tracking_overlay"
@@ -61,10 +62,10 @@
             app:lottie_autoPlay="false"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/pelican_end"
-            app:scale_height="0"
             app:scale_left="0"
-            app:scale_top="740"
-            app:scale_width="360" />
+            app:scale_top="0"
+            app:scale_width="740"
+            app:scale_height="360" />
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
     </LinearLayout>
@@ -117,15 +118,16 @@
                 android:id="@+id/textVideoSubscription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/thejunggt160"
+                android:fontFamily="@font/thejunggt150"
                 android:text=""
                 android:textColor="@android:color/white"
                 android:visibility="invisible"
-                app:scale_height="100"
-                app:scale_left="280"
+                android:lineSpacingExtra="@dimen/subscription_text_line_spacing_extra"
                 app:scale_textsize="20"
-                app:scale_top="20"
-                app:scale_width="420" />
+                app:scale_left="280"
+                app:scale_top="50"
+                app:scale_width="420"
+                app:scale_height="100" />
         </com.ssomai.android.scalablelayout.ScalableLayout>
     </LinearLayout>
 

@@ -53,6 +53,9 @@
     <dimen name="favorite_layout_thumbnail_padding_start">90dp</dimen>
     <dimen name="favorite_layout_thumbnail_padding_end">116dp</dimen>
 
+    <!-- for video layout -->
+    <dimen name="subscription_text_line_spacing_extra">7dp</dimen>
+
     <!-- for common button layout -->
     <dimen name="initial_setting_button_radius">28dp</dimen>
     <dimen name="episode_chracter_layout_button_radius">17dp</dimen>
