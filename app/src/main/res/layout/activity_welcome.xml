@@ -12,8 +12,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:scaleType="centerCrop"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
         app:lottie_rawRes="@raw/title_bg" />
 
     <com.airbnb.lottie.LottieAnimationView
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:scaleType="fitCenter"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
         app:lottie_rawRes="@raw/title" />
 </RelativeLayout>
